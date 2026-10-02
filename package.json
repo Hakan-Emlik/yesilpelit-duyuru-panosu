@@ -1,0 +1,23 @@
+{
+  "name": "yesilpelit-ogrenci-yurdu-duyuru-panosu",
+  "version": "1.0.0",
+  "description": "Yeşilpelit Öğrenci Yurdu Duyuru Panosu - Namaz Vakitleri & Haftasonu Programı",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build:pdf": "node scripts/generate_pdf.js"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  },
+  "keywords": [
+    "yesilpelit",
+    "yurt",
+    "duyuru-panosu",
+    "fazilet-takvimi",
+    "namaz-vakitleri"
+  ],
+  "author": "",
+  "license": "ISC"
+}
