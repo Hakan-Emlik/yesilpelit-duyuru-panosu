@@ -6,13 +6,14 @@
 
 ## 📌 Özellikler ve Entegrasyonlar
 
-### 1. 🕌 Fazilet Takvimi Namaz Vakitleri Entegrasyonu
-- **Resmi Kaynak:** [fazilettakvimi.com/namaz-vakitleri/](https://fazilettakvimi.com/namaz-vakitleri/)
-- **Vakitler:** İmsak, Güneş, Öğle, İkindi, Akşam, Yatsı.
+### 1. 🕌 Fazilet Takvimi Samsun Namaz Vakitleri Entegrasyonu
+- **Resmi Kaynak:** [namaz-vakitleri.fazilettakvimi.com/samsun/57](https://namaz-vakitleri.fazilettakvimi.com/samsun/57)
+- **İl:** Samsun (İl Kodu: 57)
+- **Vakitler:** İmsak, Güneş, Öğle, İkindi, Akşam, Yatsı (Fazilet Takvimi şer'î temkinli vakitleri).
 - **Canlı Geri Sayım:** Bir sonraki vakte kalan süre saniyesi saniyesine gösterilir.
 - **Aktif Vakit Vurgusu:** İçinde bulunulan namaz vakti parlak yeşil ve altın renk tonlarıyla otomatik olarak öne çıkarılır.
-- **Şehir Değiştirici:** İstanbul, Ankara, İzmir, Bursa, Konya, Antalya, Trabzon ve Diyarbakır gibi iller tek tıkla seçilebilir.
-- **Fazilet Takvimi Canlı Penceresi:** Fazilet Takvimi'nin resmi interaktif günlük penceresi (`/gunluk/`) tek tıkla açılıp incelenebilir.
+- **Fazilet Takvimi Canlı Penceresi:** Fazilet Takvimi'nin resmi interaktif Samsun sayfası tek tıkla açılıp incelenebilir.
+
 
 ### 2. 📜 1. Fotoğraf: Kurumsal Logo
 - Yeşilpelit Öğrenci Yurdu'nun resmi logosu (`assets/images/logo.png`) sitenin ana başlığında ve duyuru bandında altın çerçeveyle yer alır.

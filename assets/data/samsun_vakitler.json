@@ -1,0 +1,1509 @@
+{
+  "success": true,
+  "bolge_adi": "Samsun",
+  "bolge_saatdilimi": "Europe/Istanbul",
+  "form": {
+    "ulke_id": 1,
+    "sehir_id": 57,
+    "ilce_id": null
+  },
+  "ayin_safhalari": [
+    {
+      "tarih": "2026-10-02",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/21.png"
+    },
+    {
+      "tarih": "2026-10-03",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/22.png"
+    },
+    {
+      "tarih": "2026-10-04",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/23.png"
+    }
+  ],
+  "istatistikler": [
+    {
+      "tarih": "2026-10-02",
+      "kacinci_gun": 275,
+      "kacinci_hafta": 40,
+      "kacinci_ay": 10
+    },
+    {
+      "tarih": "2026-10-03",
+      "kacinci_gun": 276,
+      "kacinci_hafta": 40,
+      "kacinci_ay": 10
+    },
+    {
+      "tarih": "2026-10-04",
+      "kacinci_gun": 277,
+      "kacinci_hafta": 40,
+      "kacinci_ay": 10
+    }
+  ],
+  "kronolojiler": [
+    {
+      "tarih": "2026-10-02",
+      "kronoloji": [
+        "Azîz Mahmûd Hüdâî Hazretlerinin vefâtı (1628)",
+        "İşgalci Fransız ve İngilizlerin İstanbul'dan çekilmesi (1923)",
+        "Selahaddin Eyyûbî'nin Kudüs'ü fethi (1187)"
+      ]
+    },
+    {
+      "tarih": "2026-10-03",
+      "kronoloji": [
+        "Doğu ve Batı Almanya'nın birleşmesi (1990)",
+        "Türkiye Cumhuriyet Merkez Bankası'nın Kuruluşu (1931)",
+        "Dünya Mimarlık ve Konut Günü (Ekim’in İlk Pazartesi )"
+      ]
+    },
+    {
+      "tarih": "2026-10-04",
+      "kronoloji": [
+        "Dünya Hayvanları Koruma Günü",
+        "Fırtına",
+        "Uzay Haftası (4-10 Ekim)"
+      ]
+    }
+  ],
+  "takvimler": [
+    {
+      "tarih": "2026-10-02",
+      "hicri_tarih": "21 Rebîulâhir 1448",
+      "rumi_tarih": "19 Eylül 1442"
+    },
+    {
+      "tarih": "2026-10-03",
+      "hicri_tarih": "22 Rebîulâhir 1448",
+      "rumi_tarih": "20 Eylül 1442"
+    },
+    {
+      "tarih": "2026-10-04",
+      "hicri_tarih": "23 Rebîulâhir 1448",
+      "rumi_tarih": "21 Eylül 1442"
+    }
+  ],
+  "vakitler": [
+    {
+      "tarih": "2026-10-02",
+      "imsak": [
+        {
+          "tarih": "2026-10-02T01:44:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "israk": [],
+      "sabah": [
+        {
+          "tarih": "2026-10-02T02:04:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "gunes": [
+        {
+          "tarih": "2026-10-02T03:24:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ogle": [
+        {
+          "tarih": "2026-10-02T09:34:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ikindi": [
+        {
+          "tarih": "2026-10-02T12:51:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "aksam": [
+        {
+          "tarih": "2026-10-02T15:24:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "yatsi": [
+        {
+          "tarih": "2026-10-02T16:52:00Z",
+          "is_takdiri": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-03",
+      "imsak": [
+        {
+          "tarih": "2026-10-03T01:45:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "israk": [],
+      "sabah": [
+        {
+          "tarih": "2026-10-03T02:05:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "gunes": [
+        {
+          "tarih": "2026-10-03T03:25:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ogle": [
+        {
+          "tarih": "2026-10-03T09:34:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ikindi": [
+        {
+          "tarih": "2026-10-03T12:50:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "aksam": [
+        {
+          "tarih": "2026-10-03T15:22:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "yatsi": [
+        {
+          "tarih": "2026-10-03T16:50:00Z",
+          "is_takdiri": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-04",
+      "imsak": [
+        {
+          "tarih": "2026-10-04T01:46:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "israk": [],
+      "sabah": [
+        {
+          "tarih": "2026-10-04T02:06:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "gunes": [
+        {
+          "tarih": "2026-10-04T03:26:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ogle": [
+        {
+          "tarih": "2026-10-04T09:33:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ikindi": [
+        {
+          "tarih": "2026-10-04T12:48:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "aksam": [
+        {
+          "tarih": "2026-10-04T15:20:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "yatsi": [
+        {
+          "tarih": "2026-10-04T16:49:00Z",
+          "is_takdiri": false
+        }
+      ]
+    }
+  ],
+  "ulkeler": [
+    {
+      "id": 1,
+      "adi": "Türkiye"
+    },
+    {
+      "id": 57,
+      "adi": "ABD"
+    },
+    {
+      "id": 3,
+      "adi": "Afganistan"
+    },
+    {
+      "id": 14,
+      "adi": "Almanya"
+    },
+    {
+      "id": 134,
+      "adi": "Andorra"
+    },
+    {
+      "id": 120,
+      "adi": "Angola"
+    },
+    {
+      "id": 135,
+      "adi": "Anguilla "
+    },
+    {
+      "id": 208,
+      "adi": "Antarktika"
+    },
+    {
+      "id": 136,
+      "adi": "Antigua ve Barbuda"
+    },
+    {
+      "id": 132,
+      "adi": "Arjantin"
+    },
+    {
+      "id": 4,
+      "adi": "Arnavutluk"
+    },
+    {
+      "id": 137,
+      "adi": "Aruba"
+    },
+    {
+      "id": 5,
+      "adi": "Avustralya"
+    },
+    {
+      "id": 2,
+      "adi": "Avusturya"
+    },
+    {
+      "id": 6,
+      "adi": "Azerbaycan"
+    },
+    {
+      "id": 138,
+      "adi": "Bahamalar"
+    },
+    {
+      "id": 110,
+      "adi": "Bahreyn"
+    },
+    {
+      "id": 8,
+      "adi": "Bangladeş"
+    },
+    {
+      "id": 139,
+      "adi": "Barbados"
+    },
+    {
+      "id": 128,
+      "adi": "Belarus"
+    },
+    {
+      "id": 7,
+      "adi": "Belçika"
+    },
+    {
+      "id": 140,
+      "adi": "Belize"
+    },
+    {
+      "id": 98,
+      "adi": "Benin"
+    },
+    {
+      "id": 141,
+      "adi": "Bermuda"
+    },
+    {
+      "id": 100,
+      "adi": "Birleşik Arap Emirlikleri"
+    },
+    {
+      "id": 18,
+      "adi": "Birleşik Krallık"
+    },
+    {
+      "id": 142,
+      "adi": "Bolivya"
+    },
+    {
+      "id": 10,
+      "adi": "Bosna Hersek"
+    },
+    {
+      "id": 143,
+      "adi": "Botsvana"
+    },
+    {
+      "id": 130,
+      "adi": "Brezilya"
+    },
+    {
+      "id": 71,
+      "adi": "Brunei"
+    },
+    {
+      "id": 9,
+      "adi": "Bulgaristan"
+    },
+    {
+      "id": 81,
+      "adi": "Burkina Faso"
+    },
+    {
+      "id": 83,
+      "adi": "Burundi"
+    },
+    {
+      "id": 144,
+      "adi": "Butan"
+    },
+    {
+      "id": 85,
+      "adi": "Çad"
+    },
+    {
+      "id": 210,
+      "adi": "Cayman Adaları"
+    },
+    {
+      "id": 13,
+      "adi": "Çek Cumhuriyeti"
+    },
+    {
+      "id": 72,
+      "adi": "Cezayir"
+    },
+    {
+      "id": 84,
+      "adi": "Cibuti"
+    },
+    {
+      "id": 96,
+      "adi": "Çin"
+    },
+    {
+      "id": 15,
+      "adi": "Danimarka"
+    },
+    {
+      "id": 102,
+      "adi": "Doğu Timor"
+    },
+    {
+      "id": 146,
+      "adi": "Dominik Cumhuriyeti"
+    },
+    {
+      "id": 145,
+      "adi": "Dominika"
+    },
+    {
+      "id": 147,
+      "adi": "Ekvator"
+    },
+    {
+      "id": 148,
+      "adi": "Ekvator Ginesi"
+    },
+    {
+      "id": 149,
+      "adi": "El Salvador"
+    },
+    {
+      "id": 43,
+      "adi": "Endonezya"
+    },
+    {
+      "id": 150,
+      "adi": "Eritre"
+    },
+    {
+      "id": 151,
+      "adi": "Ermenistan"
+    },
+    {
+      "id": 122,
+      "adi": "Estonya"
+    },
+    {
+      "id": 19,
+      "adi": "Etiyopya"
+    },
+    {
+      "id": 127,
+      "adi": "Fas"
+    },
+    {
+      "id": 152,
+      "adi": "Fiji"
+    },
+    {
+      "id": 86,
+      "adi": "Fildişi Sahili"
+    },
+    {
+      "id": 47,
+      "adi": "Filipinler"
+    },
+    {
+      "id": 99,
+      "adi": "Filistin"
+    },
+    {
+      "id": 21,
+      "adi": "Finlandiya"
+    },
+    {
+      "id": 20,
+      "adi": "Fransa"
+    },
+    {
+      "id": 207,
+      "adi": "Fransız Guyanası"
+    },
+    {
+      "id": 116,
+      "adi": "Gabon"
+    },
+    {
+      "id": 117,
+      "adi": "Gambiya"
+    },
+    {
+      "id": 24,
+      "adi": "Gana"
+    },
+    {
+      "id": 87,
+      "adi": "Gine"
+    },
+    {
+      "id": 206,
+      "adi": "Gine-Bissau"
+    },
+    {
+      "id": 153,
+      "adi": "Grenada"
+    },
+    {
+      "id": 154,
+      "adi": "Grönland"
+    },
+    {
+      "id": 155,
+      "adi": "Guadeloupe"
+    },
+    {
+      "id": 156,
+      "adi": "Guam"
+    },
+    {
+      "id": 157,
+      "adi": "Guatemala"
+    },
+    {
+      "id": 59,
+      "adi": "Güney Afrika"
+    },
+    {
+      "id": 109,
+      "adi": "Güney Kıbrıs Rum Yönetimi"
+    },
+    {
+      "id": 46,
+      "adi": "Güney Kore"
+    },
+    {
+      "id": 205,
+      "adi": "Güney Sudan"
+    },
+    {
+      "id": 23,
+      "adi": "Gürcistan"
+    },
+    {
+      "id": 158,
+      "adi": "Guyana"
+    },
+    {
+      "id": 159,
+      "adi": "Haiti"
+    },
+    {
+      "id": 97,
+      "adi": "Hindistan"
+    },
+    {
+      "id": 28,
+      "adi": "Hırvatistan"
+    },
+    {
+      "id": 40,
+      "adi": "Hollanda"
+    },
+    {
+      "id": 160,
+      "adi": "Hollanda Antilleri"
+    },
+    {
+      "id": 161,
+      "adi": "Honduras"
+    },
+    {
+      "id": 27,
+      "adi": "Hong Kong"
+    },
+    {
+      "id": 78,
+      "adi": "Irak"
+    },
+    {
+      "id": 111,
+      "adi": "İran"
+    },
+    {
+      "id": 209,
+      "adi": "İrlanda"
+    },
+    {
+      "id": 16,
+      "adi": "İspanya"
+    },
+    {
+      "id": 162,
+      "adi": "İsrail"
+    },
+    {
+      "id": 50,
+      "adi": "İsveç"
+    },
+    {
+      "id": 12,
+      "adi": "İsviçre"
+    },
+    {
+      "id": 29,
+      "adi": "İtalya"
+    },
+    {
+      "id": 121,
+      "adi": "İzlanda"
+    },
+    {
+      "id": 163,
+      "adi": "Jamaika"
+    },
+    {
+      "id": 30,
+      "adi": "Japonya"
+    },
+    {
+      "id": 31,
+      "adi": "K.K.T.C"
+    },
+    {
+      "id": 101,
+      "adi": "Kamboçya"
+    },
+    {
+      "id": 82,
+      "adi": "Kamerun"
+    },
+    {
+      "id": 11,
+      "adi": "Kanada"
+    },
+    {
+      "id": 37,
+      "adi": "Karadağ"
+    },
+    {
+      "id": 112,
+      "adi": "Katar"
+    },
+    {
+      "id": 60,
+      "adi": "Kazakistan"
+    },
+    {
+      "id": 17,
+      "adi": "Kenya"
+    },
+    {
+      "id": 32,
+      "adi": "Kırgızistan"
+    },
+    {
+      "id": 164,
+      "adi": "Kolombiya"
+    },
+    {
+      "id": 165,
+      "adi": "Komorlar"
+    },
+    {
+      "id": 88,
+      "adi": "Kongo Cumhuriyeti"
+    },
+    {
+      "id": 95,
+      "adi": "Kongo Demokratik Cumhuriyeti"
+    },
+    {
+      "id": 44,
+      "adi": "Kosova"
+    },
+    {
+      "id": 166,
+      "adi": "Kosta Rika"
+    },
+    {
+      "id": 167,
+      "adi": "Küba"
+    },
+    {
+      "id": 113,
+      "adi": "Kuveyt"
+    },
+    {
+      "id": 168,
+      "adi": "Kuzey Kore"
+    },
+    {
+      "id": 36,
+      "adi": "Kuzey Makedonya"
+    },
+    {
+      "id": 104,
+      "adi": "Laos"
+    },
+    {
+      "id": 169,
+      "adi": "Lesotho"
+    },
+    {
+      "id": 170,
+      "adi": "Letonya"
+    },
+    {
+      "id": 89,
+      "adi": "Liberya"
+    },
+    {
+      "id": 129,
+      "adi": "Libya"
+    },
+    {
+      "id": 22,
+      "adi": "Lihtenştayn"
+    },
+    {
+      "id": 171,
+      "adi": "Litvanya"
+    },
+    {
+      "id": 73,
+      "adi": "Lübnan"
+    },
+    {
+      "id": 61,
+      "adi": "Lüksemburg"
+    },
+    {
+      "id": 26,
+      "adi": "Macaristan"
+    },
+    {
+      "id": 172,
+      "adi": "Macau"
+    },
+    {
+      "id": 90,
+      "adi": "Madagaskar"
+    },
+    {
+      "id": 38,
+      "adi": "Malavi"
+    },
+    {
+      "id": 173,
+      "adi": "Maldivler"
+    },
+    {
+      "id": 62,
+      "adi": "Malezya"
+    },
+    {
+      "id": 91,
+      "adi": "Mali"
+    },
+    {
+      "id": 174,
+      "adi": "Malta"
+    },
+    {
+      "id": 175,
+      "adi": "Martinik"
+    },
+    {
+      "id": 176,
+      "adi": "Mauritius"
+    },
+    {
+      "id": 177,
+      "adi": "Mayotte"
+    },
+    {
+      "id": 178,
+      "adi": "Meksika"
+    },
+    {
+      "id": 179,
+      "adi": "Mikronezya"
+    },
+    {
+      "id": 74,
+      "adi": "Mısır"
+    },
+    {
+      "id": 63,
+      "adi": "Moğolistan"
+    },
+    {
+      "id": 35,
+      "adi": "Moldova"
+    },
+    {
+      "id": 180,
+      "adi": "Monako"
+    },
+    {
+      "id": 181,
+      "adi": "Montserrat"
+    },
+    {
+      "id": 92,
+      "adi": "Moritanya"
+    },
+    {
+      "id": 93,
+      "adi": "Mozambik"
+    },
+    {
+      "id": 103,
+      "adi": "Myanmar"
+    },
+    {
+      "id": 182,
+      "adi": "Namibya"
+    },
+    {
+      "id": 183,
+      "adi": "Nepal"
+    },
+    {
+      "id": 94,
+      "adi": "Nijer"
+    },
+    {
+      "id": 64,
+      "adi": "Nijerya"
+    },
+    {
+      "id": 184,
+      "adi": "Nikaragua"
+    },
+    {
+      "id": 185,
+      "adi": "Niue"
+    },
+    {
+      "id": 39,
+      "adi": "Norveç"
+    },
+    {
+      "id": 186,
+      "adi": "Orta Afrika Cumhuriyeti"
+    },
+    {
+      "id": 34,
+      "adi": "Özbekistan"
+    },
+    {
+      "id": 79,
+      "adi": "Pakistan"
+    },
+    {
+      "id": 187,
+      "adi": "Palau"
+    },
+    {
+      "id": 188,
+      "adi": "Panama "
+    },
+    {
+      "id": 105,
+      "adi": "Papua Yeni Gine"
+    },
+    {
+      "id": 133,
+      "adi": "Paraguay"
+    },
+    {
+      "id": 189,
+      "adi": "Peru"
+    },
+    {
+      "id": 190,
+      "adi": "Pitcairn"
+    },
+    {
+      "id": 42,
+      "adi": "Polonya"
+    },
+    {
+      "id": 123,
+      "adi": "Portekiz"
+    },
+    {
+      "id": 191,
+      "adi": "Porto Riko "
+    },
+    {
+      "id": 192,
+      "adi": "Réunion"
+    },
+    {
+      "id": 45,
+      "adi": "Romanya"
+    },
+    {
+      "id": 49,
+      "adi": "Ruanda"
+    },
+    {
+      "id": 48,
+      "adi": "Rusya"
+    },
+    {
+      "id": 193,
+      "adi": "Samoa"
+    },
+    {
+      "id": 68,
+      "adi": "Senegal"
+    },
+    {
+      "id": 194,
+      "adi": "Seyşeller"
+    },
+    {
+      "id": 65,
+      "adi": "Sierra Leone"
+    },
+    {
+      "id": 126,
+      "adi": "Şili"
+    },
+    {
+      "id": 51,
+      "adi": "Singapur"
+    },
+    {
+      "id": 55,
+      "adi": "Sırbistan"
+    },
+    {
+      "id": 52,
+      "adi": "Slovakya"
+    },
+    {
+      "id": 53,
+      "adi": "Slovenya"
+    },
+    {
+      "id": 54,
+      "adi": "Somali"
+    },
+    {
+      "id": 125,
+      "adi": "Sri Lanka"
+    },
+    {
+      "id": 75,
+      "adi": "Sudan"
+    },
+    {
+      "id": 108,
+      "adi": "Surinam"
+    },
+    {
+      "id": 195,
+      "adi": "Suriye"
+    },
+    {
+      "id": 33,
+      "adi": "Suudi Arabistan"
+    },
+    {
+      "id": 196,
+      "adi": "Svalbard"
+    },
+    {
+      "id": 197,
+      "adi": "Svaziland"
+    },
+    {
+      "id": 69,
+      "adi": "Tacikistan"
+    },
+    {
+      "id": 66,
+      "adi": "Tanzanya"
+    },
+    {
+      "id": 106,
+      "adi": "Tayland"
+    },
+    {
+      "id": 107,
+      "adi": "Tayvan"
+    },
+    {
+      "id": 119,
+      "adi": "Togo"
+    },
+    {
+      "id": 198,
+      "adi": "Tonga"
+    },
+    {
+      "id": 199,
+      "adi": "Trinidad ve Tobago"
+    },
+    {
+      "id": 76,
+      "adi": "Tunus"
+    },
+    {
+      "id": 70,
+      "adi": "Türkmenistan"
+    },
+    {
+      "id": 212,
+      "adi": "Turks ve Caicos Adaları"
+    },
+    {
+      "id": 211,
+      "adi": "Tuvalu"
+    },
+    {
+      "id": 67,
+      "adi": "Uganda"
+    },
+    {
+      "id": 56,
+      "adi": "Ukrayna"
+    },
+    {
+      "id": 115,
+      "adi": "Umman"
+    },
+    {
+      "id": 77,
+      "adi": "Ürdün"
+    },
+    {
+      "id": 200,
+      "adi": "Uruguay"
+    },
+    {
+      "id": 201,
+      "adi": "Vanuatu"
+    },
+    {
+      "id": 202,
+      "adi": "Vatikan"
+    },
+    {
+      "id": 131,
+      "adi": "Venezuela"
+    },
+    {
+      "id": 124,
+      "adi": "Vietnam"
+    },
+    {
+      "id": 114,
+      "adi": "Yemen"
+    },
+    {
+      "id": 203,
+      "adi": "Yeni Kaledonya"
+    },
+    {
+      "id": 41,
+      "adi": "Yeni Zelanda"
+    },
+    {
+      "id": 204,
+      "adi": "Yeşil Burun"
+    },
+    {
+      "id": 25,
+      "adi": "Yunanistan"
+    },
+    {
+      "id": 58,
+      "adi": "Zambiya"
+    },
+    {
+      "id": 118,
+      "adi": "Zimbabve"
+    }
+  ],
+  "sehirler": [
+    {
+      "id": 31,
+      "adi": "İstanbul"
+    },
+    {
+      "id": 79,
+      "adi": "Ankara"
+    },
+    {
+      "id": 32,
+      "adi": "İzmir"
+    },
+    {
+      "id": 72,
+      "adi": "Adana"
+    },
+    {
+      "id": 74,
+      "adi": "Adıyaman"
+    },
+    {
+      "id": 75,
+      "adi": "Afyon"
+    },
+    {
+      "id": 76,
+      "adi": "Ağrı"
+    },
+    {
+      "id": 77,
+      "adi": "Aksaray"
+    },
+    {
+      "id": 78,
+      "adi": "Amasya"
+    },
+    {
+      "id": 80,
+      "adi": "Antalya"
+    },
+    {
+      "id": 81,
+      "adi": "Ardahan"
+    },
+    {
+      "id": 1,
+      "adi": "Artvin"
+    },
+    {
+      "id": 2,
+      "adi": "Aydın"
+    },
+    {
+      "id": 3,
+      "adi": "Balıkesir"
+    },
+    {
+      "id": 4,
+      "adi": "Bartın"
+    },
+    {
+      "id": 5,
+      "adi": "Batman"
+    },
+    {
+      "id": 6,
+      "adi": "Bayburt"
+    },
+    {
+      "id": 7,
+      "adi": "Bilecik"
+    },
+    {
+      "id": 8,
+      "adi": "Bingöl"
+    },
+    {
+      "id": 9,
+      "adi": "Bitlis"
+    },
+    {
+      "id": 10,
+      "adi": "Bolu"
+    },
+    {
+      "id": 11,
+      "adi": "Burdur"
+    },
+    {
+      "id": 12,
+      "adi": "Bursa"
+    },
+    {
+      "id": 13,
+      "adi": "Çanakkale"
+    },
+    {
+      "id": 14,
+      "adi": "Çankırı"
+    },
+    {
+      "id": 15,
+      "adi": "Çorum"
+    },
+    {
+      "id": 16,
+      "adi": "Denizli"
+    },
+    {
+      "id": 17,
+      "adi": "Diyarbakır"
+    },
+    {
+      "id": 18,
+      "adi": "Düzce"
+    },
+    {
+      "id": 19,
+      "adi": "Edirne"
+    },
+    {
+      "id": 20,
+      "adi": "Elazığ"
+    },
+    {
+      "id": 21,
+      "adi": "Erzincan"
+    },
+    {
+      "id": 22,
+      "adi": "Erzurum"
+    },
+    {
+      "id": 23,
+      "adi": "Eskişehir"
+    },
+    {
+      "id": 24,
+      "adi": "Gaziantep"
+    },
+    {
+      "id": 25,
+      "adi": "Giresun"
+    },
+    {
+      "id": 26,
+      "adi": "Gümüşhane"
+    },
+    {
+      "id": 27,
+      "adi": "Hakkari"
+    },
+    {
+      "id": 28,
+      "adi": "Hatay"
+    },
+    {
+      "id": 29,
+      "adi": "Iğdır"
+    },
+    {
+      "id": 30,
+      "adi": "Isparta"
+    },
+    {
+      "id": 34,
+      "adi": "Kahramanmaraş"
+    },
+    {
+      "id": 35,
+      "adi": "Karabük"
+    },
+    {
+      "id": 36,
+      "adi": "Karaman"
+    },
+    {
+      "id": 37,
+      "adi": "Kars"
+    },
+    {
+      "id": 38,
+      "adi": "Kastamonu"
+    },
+    {
+      "id": 39,
+      "adi": "Kayseri"
+    },
+    {
+      "id": 43,
+      "adi": "Kilis"
+    },
+    {
+      "id": 40,
+      "adi": "Kırıkkale"
+    },
+    {
+      "id": 41,
+      "adi": "Kırklareli"
+    },
+    {
+      "id": 42,
+      "adi": "Kırşehir"
+    },
+    {
+      "id": 33,
+      "adi": "Kocaeli"
+    },
+    {
+      "id": 44,
+      "adi": "Konya"
+    },
+    {
+      "id": 45,
+      "adi": "Kütahya"
+    },
+    {
+      "id": 46,
+      "adi": "Malatya"
+    },
+    {
+      "id": 47,
+      "adi": "Manisa"
+    },
+    {
+      "id": 48,
+      "adi": "Mardin"
+    },
+    {
+      "id": 49,
+      "adi": "Mersin"
+    },
+    {
+      "id": 50,
+      "adi": "Muğla"
+    },
+    {
+      "id": 51,
+      "adi": "Muş"
+    },
+    {
+      "id": 52,
+      "adi": "Nevşehir"
+    },
+    {
+      "id": 53,
+      "adi": "Niğde"
+    },
+    {
+      "id": 54,
+      "adi": "Ordu"
+    },
+    {
+      "id": 55,
+      "adi": "Osmaniye"
+    },
+    {
+      "id": 56,
+      "adi": "Rize"
+    },
+    {
+      "id": 73,
+      "adi": "Sakarya"
+    },
+    {
+      "id": 57,
+      "adi": "Samsun"
+    },
+    {
+      "id": 61,
+      "adi": "Şanlıurfa"
+    },
+    {
+      "id": 58,
+      "adi": "Siirt"
+    },
+    {
+      "id": 59,
+      "adi": "Sinop"
+    },
+    {
+      "id": 62,
+      "adi": "Şırnak"
+    },
+    {
+      "id": 60,
+      "adi": "Sivas"
+    },
+    {
+      "id": 63,
+      "adi": "Tekirdağ"
+    },
+    {
+      "id": 64,
+      "adi": "Tokat"
+    },
+    {
+      "id": 65,
+      "adi": "Trabzon"
+    },
+    {
+      "id": 66,
+      "adi": "Tunceli"
+    },
+    {
+      "id": 67,
+      "adi": "Uşak"
+    },
+    {
+      "id": 68,
+      "adi": "Van"
+    },
+    {
+      "id": 69,
+      "adi": "Yalova"
+    },
+    {
+      "id": 70,
+      "adi": "Yozgat"
+    },
+    {
+      "id": 71,
+      "adi": "Zonguldak"
+    }
+  ],
+  "ilceler": [
+    {
+      "id": 2023,
+      "adi": "Alaçam"
+    },
+    {
+      "id": 2024,
+      "adi": "Asarcık"
+    },
+    {
+      "id": 2025,
+      "adi": "Atakum"
+    },
+    {
+      "id": 2026,
+      "adi": "Ayvacık"
+    },
+    {
+      "id": 2027,
+      "adi": "Bafra"
+    },
+    {
+      "id": 2040,
+      "adi": "Beşpınar"
+    },
+    {
+      "id": 2041,
+      "adi": "Boğazkaya"
+    },
+    {
+      "id": 2042,
+      "adi": "Çakıralan"
+    },
+    {
+      "id": 2028,
+      "adi": "Canik"
+    },
+    {
+      "id": 2029,
+      "adi": "Çarşamba"
+    },
+    {
+      "id": 2043,
+      "adi": "Çayırkent"
+    },
+    {
+      "id": 2044,
+      "adi": "Dikbıyık"
+    },
+    {
+      "id": 2030,
+      "adi": "Havza"
+    },
+    {
+      "id": 2031,
+      "adi": "İlkadım"
+    },
+    {
+      "id": 2032,
+      "adi": "Kavak"
+    },
+    {
+      "id": 2045,
+      "adi": "Kolay"
+    },
+    {
+      "id": 2046,
+      "adi": "Köprübaşı"
+    },
+    {
+      "id": 2033,
+      "adi": "Ladik"
+    },
+    {
+      "id": 2047,
+      "adi": "Mezrea"
+    },
+    {
+      "id": 2034,
+      "adi": "Ondokuzmayıs"
+    },
+    {
+      "id": 2035,
+      "adi": "Salıpazarı"
+    },
+    {
+      "id": 2048,
+      "adi": "Şeyhli"
+    },
+    {
+      "id": 2049,
+      "adi": "Taflan"
+    },
+    {
+      "id": 2036,
+      "adi": "Tekkeköy"
+    },
+    {
+      "id": 2037,
+      "adi": "Terme"
+    },
+    {
+      "id": 2038,
+      "adi": "Vezirköprü"
+    },
+    {
+      "id": 2039,
+      "adi": "Yakakent"
+    }
+  ]
+}

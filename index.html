@@ -1138,12 +1138,12 @@
           <div class="prayer-title-text">
             <h2>SAMSUN NAMAZ VAKİTLERİ</h2>
             <div class="prayer-source-row">
-              <a href="https://fazilettakvimi.com/namaz-vakitleri/" target="_blank" rel="noopener noreferrer" class="source-link-tag">
+              <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" target="_blank" rel="noopener noreferrer" class="source-link-tag">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 <span>Fazilet Takvimi</span>
               </a>
               <span class="source-separator">·</span>
-              <span class="source-temkin">Temkinli Şer'î Vakitler</span>
+              <span class="source-temkin" id="prayerLiveBadge"><i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun (57)</span>
             </div>
           </div>
         </div>
@@ -1173,13 +1173,13 @@
       <div class="fazilet-embed-drawer" id="faziletDrawer">
         <div class="fazilet-iframe-container">
           <iframe 
-            src="https://fazilettakvimi.com/gunluk/" 
-            title="Fazilet Takvimi Günlük Namaz Vakitleri Resmi Penceresi"
+            src="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" 
+            title="Fazilet Takvimi Samsun (57) Günlük Namaz Vakitleri Resmi Penceresi"
             loading="lazy">
           </iframe>
         </div>
         <p style="font-size: 0.78rem; color: var(--text-subtle); margin-top: 10px; text-align: right;">
-          Doğrudan bağlantı: <a href="https://fazilettakvimi.com/namaz-vakitleri/" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); font-weight: 700;">fazilettakvimi.com/namaz-vakitleri</a>
+          Doğrudan bağlantı: <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); font-weight: 700;">namaz-vakitleri.fazilettakvimi.com/samsun/57</a>
         </p>
       </div>
 
@@ -1306,7 +1306,7 @@
     <div class="footer-inner">
       <span><strong>Yeşilpelit Öğrenci Yurdu Duyuru Panosu</strong> — İlim, Maneviyat ve Medeniyet Şuuruyla</span>
       <span>•</span>
-      <span>Namaz Vakitleri: <a href="https://fazilettakvimi.com/namaz-vakitleri/" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); text-decoration: underline;">Fazilet Takvimi</a></span>
+      <span>Namaz Vakitleri: <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); text-decoration: underline;">Fazilet Takvimi (Samsun)</a></span>
     </div>
   </footer>
 
@@ -1314,40 +1314,130 @@
        JAVASCRIPT MANTIĞI (TAM ENTEGRE)
        ========================================== -->
   <script>
-    // 1. SAMSUN NAMAZ VAKİTLERİ
+    // 1. SAMSUN NAMAZ VAKİTLERİ (FAZİLET TAKVİMİ SAMSUN - 57)
+    // Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun/57
     const PRAYER_MODULE = (() => {
       let prayerTimes = {
         name: 'Samsun',
-        fajr: '04:54',
-        sunrise: '06:19',
-        dhuhr: '12:31',
-        asr: '15:53',
-        maghrib: '18:32',
-        isha: '19:52'
+        fajr: '04:45',
+        sunrise: '06:25',
+        dhuhr: '12:34',
+        asr: '15:50',
+        maghrib: '18:22',
+        isha: '19:50'
       };
+
+      function applyFaziletData(data) {
+        if (!data || !data.vakitler || !data.vakitler.length) return false;
+
+        const tz = data.bolge_saatdilimi || 'Europe/Istanbul';
+
+        const todayStr = new Intl.DateTimeFormat('en-CA', {
+          timeZone: tz,
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        }).format(new Date());
+
+        let dayRecord = data.vakitler.find(v => v.tarih === todayStr);
+        if (!dayRecord) {
+          dayRecord = data.vakitler[1] || data.vakitler[0];
+        }
+
+        const formatTimeStr = (iso) => {
+          if (!iso) return '';
+          const d = new Date(iso);
+          return new Intl.DateTimeFormat('tr-TR', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            timeZone: tz
+          }).format(d);
+        };
+
+        if (dayRecord) {
+          prayerTimes = {
+            name: data.bolge_adi || 'Samsun',
+            fajr: formatTimeStr(dayRecord.imsak?.[0]?.tarih) || prayerTimes.fajr,
+            sunrise: formatTimeStr(dayRecord.gunes?.[0]?.tarih) || prayerTimes.sunrise,
+            dhuhr: formatTimeStr(dayRecord.ogle?.[0]?.tarih) || prayerTimes.dhuhr,
+            asr: formatTimeStr(dayRecord.ikindi?.[0]?.tarih) || prayerTimes.asr,
+            maghrib: formatTimeStr(dayRecord.aksam?.[0]?.tarih) || prayerTimes.maghrib,
+            isha: formatTimeStr(dayRecord.yatsi?.[0]?.tarih) || prayerTimes.isha
+          };
+
+          if (data.takvimler && data.takvimler.length) {
+            const takvim = data.takvimler.find(t => t.tarih === todayStr) || data.takvimler[0];
+            if (takvim && takvim.hicri_tarih) {
+              const hijriEl = document.getElementById('digitalHijri');
+              if (hijriEl) {
+                hijriEl.textContent = takvim.hicri_tarih + ' (Fazilet Hicrî)';
+                hijriEl.dataset.fazilet = 'true';
+              }
+            }
+          }
+
+          const badge = document.getElementById('prayerLiveBadge');
+          if (badge) {
+            badge.innerHTML = '<i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun (57) Canlı';
+          }
+
+          try {
+            localStorage.setItem('fazilet_samsun_vakitleri', JSON.stringify({
+              date: todayStr,
+              times: prayerTimes,
+              bolge: data.bolge_adi || 'Samsun',
+              timestamp: Date.now()
+            }));
+          } catch (e) {}
+
+          renderPrayerCards();
+          return true;
+        }
+        return false;
+      }
 
       async function fetchLivePrayerTimes() {
         try {
-          const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Samsun&country=Turkey&method=13');
-          if (res.ok) {
-            const data = await res.json();
-            if (data?.data?.timings) {
-              const t = data.data.timings;
-              prayerTimes = {
-                name: 'Samsun',
-                fajr: t.Fajr.slice(0, 5),
-                sunrise: t.Sunrise.slice(0, 5),
-                dhuhr: t.Dhuhr.slice(0, 5),
-                asr: t.Asr.slice(0, 5),
-                maghrib: t.Maghrib.slice(0, 5),
-                isha: t.Isha.slice(0, 5)
-              };
+          const rawStored = localStorage.getItem('fazilet_samsun_vakitleri');
+          if (rawStored) {
+            const stored = JSON.parse(rawStored);
+            const todayStr = new Intl.DateTimeFormat('en-CA', {
+              timeZone: 'Europe/Istanbul',
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit'
+            }).format(new Date());
+
+            if (stored.date === todayStr && stored.times) {
+              prayerTimes = stored.times;
               renderPrayerCards();
             }
           }
-        } catch (e) {
-          console.log('Samsun yerel temkinli vakitleri devrede.');
+        } catch (e) {}
+
+        const endpoints = [
+          '/api/fazilet/samsun',
+          'http://localhost:3000/api/fazilet/samsun',
+          'assets/data/samsun_vakitler.json',
+          './assets/data/samsun_vakitler.json'
+        ];
+
+        for (const ep of endpoints) {
+          try {
+            const res = await fetch(ep, { cache: 'no-cache' });
+            if (res.ok) {
+              const data = await res.json();
+              if (applyFaziletData(data)) {
+                console.log('[Fazilet Takvimi] Samsun (57) vakitleri ' + ep + ' üzerinden güncellendi.');
+                return;
+              }
+            }
+          } catch (err) {}
         }
+
+
+        console.log('[Fazilet Takvimi] Samsun yerel temkinli vakitleri devrede.');
       }
 
       function getTimesArray() {
@@ -1503,7 +1593,7 @@
         }
 
         const hijriEl = document.getElementById('digitalHijri');
-        if (hijriEl) {
+        if (hijriEl && !hijriEl.dataset.fazilet) {
           try {
             const formatter = new Intl.DateTimeFormat('tr-TR-u-ca-islamic-umalqura', {
               day: 'numeric',
@@ -1515,6 +1605,7 @@
             hijriEl.textContent = '15 Rebîülevvel 1448 (Hicrî)';
           }
         }
+
 
         highlightCurrentTimelineItem(now);
       }
@@ -1651,9 +1742,120 @@
       return { init };
     })();
 
+    // 3. CANLI SENKRONİZASYON (Tüm bağlı TV ve ekranların anında güncellenmesi)
+    const SYNC_MODULE = (() => {
+      let currentVersion = null;
+      let isReloading = false;
+
+      function showReloadToast() {
+        if (isReloading) return;
+        isReloading = true;
+
+        let toast = document.getElementById('syncToast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'syncToast';
+          toast.style.cssText = [
+            'position: fixed',
+            'bottom: 24px',
+            'right: 24px',
+            'background: rgba(7, 42, 25, 0.95)',
+            'color: #fef08a',
+            'border: 2px solid #ca8a04',
+            'border-radius: 12px',
+            'padding: 14px 22px',
+            'font-family: inherit',
+            'font-size: 0.95rem',
+            'font-weight: 700',
+            'box-shadow: 0 10px 30px rgba(0,0,0,0.6)',
+            'z-index: 999999',
+            'display: flex',
+            'align-items: center',
+            'gap: 12px',
+            'transition: all 0.3s ease'
+          ].join(';');
+          document.body.appendChild(toast);
+        }
+        toast.innerHTML = '<i class="fa-solid fa-arrows-rotate fa-spin" style="font-size: 1.3rem; color: #facc15;"></i> <span>Pano Güncellendi! Ekran otomatik yenileniyor...</span>';
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      }
+
+      function initSSE() {
+        try {
+          const isHttp = window.location.protocol.startsWith('http');
+          const host = isHttp ? window.location.origin : 'http://localhost:3000';
+          const sseUrl = host + '/api/live-sync';
+
+          const source = new EventSource(sseUrl);
+
+          source.onmessage = (event) => {
+            try {
+              const data = JSON.parse(event.data);
+              if (data.action === 'connected') {
+                if (currentVersion === null) {
+                  currentVersion = data.version;
+                } else if (currentVersion !== data.version) {
+                  showReloadToast();
+                }
+              } else if (data.action === 'reload') {
+                showReloadToast();
+              }
+            } catch (e) {}
+          };
+
+          source.onerror = () => {
+            source.close();
+            startPolling();
+          };
+        } catch (e) {
+          startPolling();
+        }
+      }
+
+      let pollInterval = null;
+      function startPolling() {
+        if (pollInterval) return;
+        pollInterval = setInterval(async () => {
+          try {
+            const isHttp = window.location.protocol.startsWith('http');
+            const isGitHub = window.location.hostname.includes('github.io');
+
+            let url;
+            if (isGitHub) {
+              url = 'assets/data/version.json?_t=' + Date.now();
+            } else {
+              const host = isHttp ? window.location.origin : 'http://localhost:3000';
+              url = host + '/api/version?_t=' + Date.now();
+            }
+
+            const res = await fetch(url, { cache: 'no-store' });
+            if (res.ok) {
+              const data = await res.json();
+              const serverVer = data.version;
+              if (currentVersion === null) {
+                currentVersion = serverVer;
+              } else if (serverVer && currentVersion !== serverVer) {
+                showReloadToast();
+              }
+            }
+          } catch (e) {}
+        }, 12000);
+      }
+
+      function init() {
+        initSSE();
+      }
+
+      return { init };
+    })();
+
     document.addEventListener('DOMContentLoaded', () => {
       PRAYER_MODULE.init();
       APP_MODULE.init();
+      SYNC_MODULE.init();
     });
   </script>
 </body>

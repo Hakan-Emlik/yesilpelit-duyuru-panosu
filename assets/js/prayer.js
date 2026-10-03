@@ -4,40 +4,137 @@
  */
 
 const PRAYER_MODULE = (() => {
-  // Samsun İli Temkinli Namaz Vakitleri (Fazilet Takvimi standartları)
+  // Samsun İli Temkinli Namaz Vakitleri (Fazilet Takvimi Resmi Kaynağı)
+  // Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun/57
   let prayerTimes = {
     name: 'Samsun',
-    fajr: '04:54',
-    sunrise: '06:19',
-    dhuhr: '12:31',
-    asr: '15:53',
-    maghrib: '18:32',
-    isha: '19:52'
+    fajr: '04:45',
+    sunrise: '06:25',
+    dhuhr: '12:34',
+    asr: '15:50',
+    maghrib: '18:22',
+    isha: '19:50'
   };
 
-  // Canlı API'den Samsun için güncel vakitleri çeker
+  // Fazilet Takvimi API verisini parse edip kartlara uygular
+  function applyFaziletData(data) {
+    if (!data || !data.vakitler || !data.vakitler.length) return false;
+
+    const tz = data.bolge_saatdilimi || 'Europe/Istanbul';
+
+    // Bugünün tarihi (Europe/Istanbul saat diliminde YYYY-MM-DD)
+    const todayStr = new Intl.DateTimeFormat('en-CA', {
+      timeZone: tz,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(new Date());
+
+    // Bugünkü vakit kaydı
+    let dayRecord = data.vakitler.find(v => v.tarih === todayStr);
+    if (!dayRecord) {
+      dayRecord = data.vakitler[1] || data.vakitler[0];
+    }
+
+    const formatTimeStr = (iso) => {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return new Intl.DateTimeFormat('tr-TR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: tz
+      }).format(d);
+    };
+
+    if (dayRecord) {
+      prayerTimes = {
+        name: data.bolge_adi || 'Samsun',
+        fajr: formatTimeStr(dayRecord.imsak?.[0]?.tarih) || prayerTimes.fajr,
+        sunrise: formatTimeStr(dayRecord.gunes?.[0]?.tarih) || prayerTimes.sunrise,
+        dhuhr: formatTimeStr(dayRecord.ogle?.[0]?.tarih) || prayerTimes.dhuhr,
+        asr: formatTimeStr(dayRecord.ikindi?.[0]?.tarih) || prayerTimes.asr,
+        maghrib: formatTimeStr(dayRecord.aksam?.[0]?.tarih) || prayerTimes.maghrib,
+        isha: formatTimeStr(dayRecord.yatsi?.[0]?.tarih) || prayerTimes.isha
+      };
+
+      // Fazilet Takvimi Hicri Tarihini güncelle
+      if (data.takvimler && data.takvimler.length) {
+        const takvim = data.takvimler.find(t => t.tarih === todayStr) || data.takvimler[0];
+        if (takvim && takvim.hicri_tarih) {
+          const hijriEl = document.getElementById('digitalHijri');
+          if (hijriEl) {
+            hijriEl.textContent = `${takvim.hicri_tarih} (Fazilet Hicrî)`;
+          }
+        }
+      }
+
+      // Canlı senkronizasyon etiketini güncelle
+      const badge = document.getElementById('prayerLiveBadge');
+      if (badge) {
+        badge.innerHTML = '<i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun (57) Canlı';
+      }
+
+      try {
+        localStorage.setItem('fazilet_samsun_vakitleri', JSON.stringify({
+          date: todayStr,
+          times: prayerTimes,
+          bolge: data.bolge_adi || 'Samsun',
+          timestamp: Date.now()
+        }));
+      } catch (e) {}
+
+      renderPrayerCards();
+      return true;
+    }
+    return false;
+  }
+
+  // https://namaz-vakitleri.fazilettakvimi.com/samsun/57 kaynağından vakitleri çeker
   async function fetchLivePrayerTimes() {
+    // 1. Önce localStorage'da bugüne ait kayıt var mı kontrol et
     try {
-      const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=Samsun&country=Turkey&method=13`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data?.data?.timings) {
-          const t = data.data.timings;
-          prayerTimes = {
-            name: 'Samsun',
-            fajr: t.Fajr.slice(0, 5),
-            sunrise: t.Sunrise.slice(0, 5),
-            dhuhr: t.Dhuhr.slice(0, 5),
-            asr: t.Asr.slice(0, 5),
-            maghrib: t.Maghrib.slice(0, 5),
-            isha: t.Isha.slice(0, 5)
-          };
+      const rawStored = localStorage.getItem('fazilet_samsun_vakitleri');
+      if (rawStored) {
+        const stored = JSON.parse(rawStored);
+        const todayStr = new Intl.DateTimeFormat('en-CA', {
+          timeZone: 'Europe/Istanbul',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        }).format(new Date());
+
+        if (stored.date === todayStr && stored.times) {
+          prayerTimes = stored.times;
           renderPrayerCards();
         }
       }
-    } catch (e) {
-      console.log('Samsun yerel temkinli vakitleri devrede (Fazilet Takvimi).');
+    } catch (e) {}
+
+    // 2. Canlı Fazilet Takvimi API'sinden çekmeyi dene (server.js proxy veya yerel json)
+    const endpoints = [
+      '/api/fazilet/samsun',
+      'http://localhost:3000/api/fazilet/samsun',
+      'assets/data/samsun_vakitler.json',
+      './assets/data/samsun_vakitler.json'
+    ];
+
+    for (const ep of endpoints) {
+      try {
+        const res = await fetch(ep, { cache: 'no-cache' });
+        if (res.ok) {
+          const data = await res.json();
+          if (applyFaziletData(data)) {
+            console.log(`[Fazilet Takvimi] Samsun (57) vakitleri '${ep}' kaynağından başarıyla güncellendi.`);
+            return;
+          }
+        }
+      } catch (err) {
+        // Sonraki endpoint'i dene
+      }
     }
+
+    console.log('[Fazilet Takvimi] Samsun yerel temkinli vakitleri devrede.');
   }
 
   function getTimesArray() {
