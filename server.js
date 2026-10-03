@@ -35,7 +35,7 @@ function fetchFaziletData(callback) {
           lastFetchTime = Date.now();
           // Önbellek dosyasına da yaz
           fs.mkdir(path.dirname(CACHE_FILE), { recursive: true }, () => {
-            fs.writeFile(CACHE_FILE, JSON.stringify(parsed, null, 2), 'utf8', () => {});
+            fs.writeFile(CACHE_FILE, JSON.stringify(parsed, null, 2), 'utf8', () => { });
           });
           return callback(null, parsed);
         }
@@ -73,7 +73,7 @@ function handleFaziletApiRequest(req, res) {
         if (!readErr && fileData) {
           try {
             cachedFaziletData = JSON.parse(fileData);
-          } catch(e) {}
+          } catch (e) { }
           res.writeHead(200, {
             'Content-Type': 'application/json; charset=utf-8',
             'Access-Control-Allow-Origin': '*',
@@ -155,7 +155,7 @@ function updateVersionFile() {
       version: currentVersion,
       updatedAt: new Date().toISOString()
     }, null, 2), 'utf8');
-  } catch (e) {}
+  } catch (e) { }
 }
 
 function notifyClients() {
@@ -198,7 +198,7 @@ function watchForChanges() {
     if (fs.existsSync(target)) {
       try {
         fs.watch(target, { recursive: true }, (eventType, filename) => trigger(filename));
-      } catch(e) {}
+      } catch (e) { }
     }
   });
 }
