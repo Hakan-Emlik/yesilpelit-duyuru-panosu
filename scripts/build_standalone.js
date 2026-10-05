@@ -830,136 +830,46 @@ const htmlContent = `<!DOCTYPE html>
       line-height: 1.2;
     }
 
-    /* Sağ Kolon: İnteraktif Zaman Çizelgesi Akışı */
+    /* Sağ Kolon: Şu Anki Program + Özel Alan */
     .schedule-flow-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 12px;
       height: 100%;
-      justify-content: space-between;
     }
 
-    .schedule-header-card {
-      background: linear-gradient(135deg, var(--gold-50), var(--brand-50));
-      border: 1px solid var(--gold-300);
-      border-radius: 5px;
-      padding: 3px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    body.dark-mode .schedule-header-card {
-      background: linear-gradient(135deg, #1c1917, #0c1f16);
-      border-color: var(--gold-700);
-    }
-
-    .schedule-badge-title {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--gold-900);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    body.dark-mode .schedule-badge-title {
-      color: var(--gold-400);
-    }
-
-    .timeline-items-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 5px;
-      flex: 1;
-    }
-
-    @media (max-width: 1200px) {
-      .timeline-items-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .timeline-items-list {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .timeline-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 5px;
-      padding: 4px 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--transition);
-      position: relative;
-      min-height: 38px;
-    }
-
-    .timeline-card:hover {
-      border-color: var(--brand-500);
-      transform: translateX(1px);
-    }
-
-    .timeline-card.now-active {
-      background: linear-gradient(135deg, #f0fdf4, #fef3c7);
-      border: 1.5px solid var(--gold-500);
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
-    }
-
-    body.dark-mode .timeline-card.now-active {
-      background: linear-gradient(135deg, #093320, #291e0a);
-    }
-
-    .timeline-time-pill {
-      font-family: 'Outfit', monospace;
-      font-weight: 800;
-      font-size: 0.72rem;
-      color: var(--brand-900);
-      background: var(--brand-100);
-      border: 1px solid var(--brand-200);
-      padding: 1px 5px;
-      border-radius: 4px;
-      min-width: 44px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .timeline-card.now-active .timeline-time-pill {
-      background: var(--gold-500);
-      color: var(--slate-950);
-      border-color: var(--gold-600);
-    }
-
-    .timeline-info h4 {
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.15;
-      margin: 0;
-    }
-
-    .timeline-info p {
-      font-size: 0.62rem;
-      color: var(--text-subtle);
-      margin: 1px 0 0 0;
-      line-height: 1.1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Pazar Günleri Hatırlatma Kartı (Afiş Alt Alanı) */
-    .sunday-reminder-card {
-      background: linear-gradient(135deg, rgba(254, 243, 199, 0.7), rgba(240, 253, 244, 0.8));
+    /* Şu Anki Program Kartı (Hero Banner) */
+    .current-activity-card {
+      background: linear-gradient(135deg, #072a19 0%, #0e4428 50%, #15803d 100%);
       border: 1.5px solid var(--gold-400);
-      border-radius: 6px;
-      padding: 3px 10px;
-      margin-top: 3px;
-      box-shadow: 0 2px 6px rgba(217, 119, 6, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      color: white;
+      box-shadow: 0 4px 18px rgba(7, 42, 25, 0.25), 0 0 12px rgba(251, 191, 36, 0.15);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .current-activity-card::after {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    body.dark-mode .current-activity-card {
+      background: linear-gradient(135deg, #03140b 0%, #072a19 60%, #143825 100%);
+      border-color: var(--gold-500);
+    }
+
+    .current-activity-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -967,104 +877,215 @@ const htmlContent = `<!DOCTYPE html>
       gap: 6px;
     }
 
-    body.dark-mode .sunday-reminder-card {
-      background: linear-gradient(135deg, rgba(120, 53, 15, 0.25), rgba(7, 42, 25, 0.5));
-      border-color: var(--gold-600);
-    }
-
-    .reminder-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .reminder-badge {
-      background: var(--gold-500);
-      color: var(--brand-950);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      padding: 1px 6px;
-      border-radius: 999px;
+    .current-activity-live-badge {
       display: inline-flex;
       align-items: center;
-      gap: 3px;
-    }
-
-    .reminder-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--gold-900);
-      letter-spacing: 0.02em;
-      margin: 0;
-    }
-
-    body.dark-mode .reminder-title {
-      color: var(--gold-300);
-    }
-
-    .reminder-content-grid {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .reminder-item {
-      display: flex;
-      align-items: center;
       gap: 6px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--brand-300);
+      text-transform: uppercase;
     }
 
-    .reminder-icon {
-      width: 22px;
-      height: 22px;
+    .pulse-live-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #22c55e;
       border-radius: 50%;
-      background: var(--brand-100);
-      color: var(--brand-800);
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulseLive 1.5s infinite;
+    }
+
+    @keyframes pulseLive {
+      0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 4px #22c55e; }
+      50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px #4ade80; }
+      100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 4px #22c55e; }
+    }
+
+    .current-activity-period {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold-300);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .current-activity-main {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .current-activity-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(21, 128, 61, 0.4));
+      border: 1.5px solid var(--gold-400);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.68rem;
+      font-size: 1.45rem;
+      color: var(--gold-300);
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    body.dark-mode .reminder-icon {
-      background: var(--brand-900);
-      color: var(--brand-300);
+    .current-activity-details {
+      flex: 1;
+      min-width: 0;
     }
 
-    .reminder-details {
+    .current-activity-time-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Outfit', monospace;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--slate-950);
+      background: var(--gold-400);
+      padding: 1px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .current-activity-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .current-activity-desc {
+      font-size: 0.8rem;
+      color: var(--brand-100);
+      margin: 4px 0 0 0;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .current-activity-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.75rem;
+    }
+
+    .next-activity-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gold-200);
+    }
+
+    .next-activity-row strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .activity-countdown-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--gold-300);
+      font-weight: 700;
+      font-family: 'Outfit', monospace;
+      font-size: 0.78rem;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid rgba(251, 191, 36, 0.25);
+    }
+
+    /* Boşaltılan ve Gelecek İçerikler İçin Ayrılan Özel Alan */
+    .custom-board-area {
+      flex: 1;
       display: flex;
       flex-direction: column;
+      background: var(--bg-card);
+      border: 1.5px dashed rgba(21, 128, 61, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      min-height: 220px;
+      position: relative;
+      transition: var(--transition);
     }
 
-    .reminder-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: var(--text-subtle);
-      letter-spacing: 0.03em;
+    body.dark-mode .custom-board-area {
+      background: rgba(15, 23, 42, 0.4);
+      border-color: rgba(251, 191, 36, 0.25);
     }
 
-    .reminder-time {
-      font-family: 'Outfit', sans-serif;
+    .custom-area-placeholder {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      color: var(--text-muted);
+      padding: 20px;
+    }
+
+    .custom-area-placeholder i {
+      font-size: 2.2rem;
+      color: var(--gold-500);
+      margin-bottom: 4px;
+      opacity: 0.9;
+    }
+
+    .custom-area-placeholder h4 {
+      font-family: 'Cinzel', serif;
       font-size: 0.95rem;
-      font-weight: 900;
-      color: var(--brand-900);
-      line-height: 1;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0;
+      letter-spacing: 0.05em;
     }
 
-    body.dark-mode .reminder-time {
-      color: var(--gold-400);
+    .custom-area-placeholder p {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      max-width: 420px;
+      margin: 0;
+      line-height: 1.4;
     }
 
-    .reminder-divider {
-      width: 1px;
-      height: 20px;
-      background: var(--gold-300);
+    .custom-area-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--brand-100);
+      color: var(--brand-800);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--brand-200);
+      margin-top: 6px;
     }
 
-    body.dark-mode .reminder-divider {
-      background: var(--gold-700);
+    body.dark-mode .custom-area-badge {
+      background: rgba(21, 128, 61, 0.25);
+      color: var(--brand-200);
+      border-color: rgba(74, 222, 128, 0.3);
     }
 
     /* Modal Lightbox */
@@ -1339,25 +1360,56 @@ const htmlContent = `<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- Sağ Kolon: İnteraktif Canlı Zaman Akışı -->
+        <!-- Sağ Kolon: Şu Anki Program + Özel Ayrılmış Alan -->
         <div class="schedule-flow-wrapper">
           
-          <div class="schedule-header-card">
-            <div class="schedule-badge-title">
-              <i class="fa-solid fa-clipboard-list"></i>
-              <span id="timelineFlowTitle">GÜNLÜK ZAMAN ÇİZELGESİ AKIŞI</span>
+          <!-- 1. ŞU ANKİ ETKİNLİK KARTI (Canlı Vurgu) -->
+          <div class="current-activity-card" id="currentActivityCard">
+            <div class="current-activity-header">
+              <div class="current-activity-live-badge">
+                <span class="pulse-live-dot"></span>
+                <span>ŞU ANDA YURTTAKİ PROGRAM</span>
+              </div>
+              <div class="current-activity-period">
+                <i class="fa-solid fa-clock"></i>
+                <span id="currentPeriodLabel">Hafta İçi Akışı</span>
+              </div>
             </div>
-            <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-700);">
-              <i class="fa-solid fa-bell"></i> Canlı Saatle Senkronize
-            </span>
+
+            <div class="current-activity-main">
+              <div class="current-activity-icon-box">
+                <i id="currentActivityIcon" class="fa-solid fa-bell"></i>
+              </div>
+              <div class="current-activity-details">
+                <div class="current-activity-time-pill" id="currentActivityTime">--:--</div>
+                <h3 class="current-activity-title" id="currentActivityTitle">Program Belirleniyor...</h3>
+                <p class="current-activity-desc" id="currentActivityDesc">Lütfen bekleyiniz...</p>
+              </div>
+            </div>
+
+            <div class="current-activity-footer">
+              <div class="next-activity-row">
+                <i class="fa-solid fa-forward text-gold-400"></i>
+                <span>Sıradaki:</span>
+                <strong id="nextActivityText">Hesaplanıyor...</strong>
+              </div>
+              <div class="activity-countdown-box" id="activityCountdownBox" title="Sonraki programa kalan süre">
+                <i class="fa-regular fa-hourglass-half"></i>
+                <span id="activityCountdownTime">--:--:--</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Program Maddeleri (JS ile dinamik oluşturulur) -->
-          <div class="timeline-items-list" id="timelineList">
-          </div>
-
-          <!-- Alt Hatırlatma Kartı (Hafta İçi / Hafta Sonu için Dinamik) -->
-          <div class="sunday-reminder-card" id="programReminderCard">
+          <!-- 2. KULLANICININ YENİ İÇERİĞİ İÇİN AYRILAN ÖZEL ALAN -->
+          <div class="custom-board-area" id="customBoardArea">
+            <div class="custom-area-placeholder" id="customAreaPlaceholder">
+              <i class="fa-solid fa-layer-group"></i>
+              <h4>ÖZEL İÇERİK & DUYURU ALANI</h4>
+              <p>Bu alan yeni eklenecek içerik ve modülleriniz için ayrılmıştır. (Yemek Menüsü, Nöbetçi İdare, Hadis-i Şerif veya Özel Duyurular)</p>
+              <div class="custom-area-badge">
+                <i class="fa-solid fa-circle-check"></i> Kullanıma Hazır
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1816,13 +1868,8 @@ const htmlContent = `<!DOCTYPE html>
           downloadBtn.download = config.pdfName;
         }
 
-        // Alt Hatırlatma Kartı
-        const reminderCard = document.getElementById('programReminderCard');
-        if (reminderCard) reminderCard.innerHTML = config.reminderHtml;
-
-        // Çizelgeyi yeniden oluştur ve aktif zamanı işaretle
-        renderTimeline();
-        highlightCurrentTimelineItem(new Date());
+        // Şu anki etkinliği güncelle
+        updateCurrentActivity(new Date());
       }
 
       function updateLiveClock() {
@@ -1855,47 +1902,124 @@ const htmlContent = `<!DOCTYPE html>
           }
         }
 
-        highlightCurrentTimelineItem(now);
+        updateCurrentActivity(now);
       }
 
-      function renderTimeline() {
-        const container = document.getElementById('timelineList');
-        if (!container || !currentSelectedProgram) return;
-
-        const items = PROGRAM_CONFIG[currentSelectedProgram].timeline;
-        container.innerHTML = items.map((item, idx) => \`
-          <div class="timeline-card" id="timeline-item-\${idx}">
-            <div class="timeline-time-pill">\${item.time}</div>
-            <div class="timeline-info">
-              <h4>\${item.title}</h4>
-              <p>\${item.desc}</p>
-            </div>
-          </div>
-        \`).join('');
+      function parseTimeToMinutes(str) {
+        if (!str) return 0;
+        const [h, m] = str.trim().split(':').map(Number);
+        return h * 60 + (m || 0);
       }
 
-      function highlightCurrentTimelineItem(now) {
-        if (!currentSelectedProgram) return;
+      function updateCurrentActivity(now) {
+        if (!currentSelectedProgram || !PROGRAM_CONFIG[currentSelectedProgram]) return;
         const items = PROGRAM_CONFIG[currentSelectedProgram].timeline;
         const currentMins = now.getHours() * 60 + now.getMinutes();
-        let activeIdx = -1;
+        const currentSecs = now.getSeconds();
 
-        for (let i = 0; i < items.length; i++) {
-          const startStr = items[i].time.split(' ')[0];
-          const [h, m] = startStr.split(':').map(Number);
-          const itemMins = h * 60 + m;
-          if (currentMins >= itemMins) {
-            activeIdx = i;
+        // Her etkinliğin başlangıç ve bitiş dakikasını hesapla
+        const parsedItems = items.map((item, idx) => {
+          let startMins = 0;
+          let endMins = 0;
+
+          if (item.time.includes('–') || item.time.includes('-')) {
+            const parts = item.time.split(/[-–]/);
+            startMins = parseTimeToMinutes(parts[0]);
+            endMins = parseTimeToMinutes(parts[1]);
+          } else {
+            startMins = parseTimeToMinutes(item.time);
+            if (idx + 1 < items.length) {
+              const nextStartStr = items[idx + 1].time.split(/[-–]/)[0];
+              endMins = parseTimeToMinutes(nextStartStr);
+            } else {
+              endMins = 23 * 60;
+            }
+          }
+
+          return Object.assign({}, item, { startMins: startMins, endMins: endMins, idx: idx });
+        });
+
+        // Aktif etkinliği tespit et
+        let activeItem = null;
+        let nextItem = null;
+
+        // Gece İstirahat dönemi (23:00 - 05:30 arası)
+        if (currentMins >= 23 * 60 || currentMins < 5 * 60 + 30) {
+          activeItem = parsedItems.find(it => it.title.toLowerCase().includes('istirahat')) || {
+            time: '23:00 – 05:30',
+            title: 'Gece İstirahati',
+            desc: 'Yurt içi sessizlik ve dinlenme vakti — 23:00 da kapılar kilitlenir',
+            icon: 'fa-solid fa-bed'
+          };
+          nextItem = parsedItems[0]; // 05:30 Sabah Namazına Kalkış
+        } else {
+          // Gün içi etkinlikler
+          for (let i = 0; i < parsedItems.length; i++) {
+            const it = parsedItems[i];
+            if (currentMins >= it.startMins && currentMins < it.endMins) {
+              activeItem = it;
+              nextItem = (i + 1 < parsedItems.length) ? parsedItems[i + 1] : parsedItems[0];
+              break;
+            }
+          }
+
+          // Eğer aralık dışında kalırsa en son başlayan etkinliği al
+          if (!activeItem) {
+            for (let i = parsedItems.length - 1; i >= 0; i--) {
+              if (currentMins >= parsedItems[i].startMins) {
+                activeItem = parsedItems[i];
+                nextItem = (i + 1 < parsedItems.length) ? parsedItems[i + 1] : parsedItems[0];
+                break;
+              }
+            }
           }
         }
 
-        document.querySelectorAll('.timeline-card').forEach((card, idx) => {
-          if (idx === activeIdx) {
-            card.classList.add('now-active');
-          } else {
-            card.classList.remove('now-active');
+        if (!activeItem) {
+          activeItem = parsedItems[0];
+          nextItem = parsedItems[1] || parsedItems[0];
+        }
+
+        // DOM Elemanlarını Güncelle
+        const timeEl = document.getElementById('currentActivityTime');
+        const titleEl = document.getElementById('currentActivityTitle');
+        const descEl = document.getElementById('currentActivityDesc');
+        const iconEl = document.getElementById('currentActivityIcon');
+        const nextTextEl = document.getElementById('nextActivityText');
+        const countdownEl = document.getElementById('activityCountdownTime');
+        const periodLabelEl = document.getElementById('currentPeriodLabel');
+
+        if (timeEl) timeEl.textContent = activeItem.time;
+        if (titleEl) titleEl.textContent = activeItem.title;
+        if (descEl) descEl.textContent = activeItem.desc;
+        if (iconEl) iconEl.className = activeItem.icon || 'fa-solid fa-bell';
+        if (periodLabelEl) {
+          periodLabelEl.textContent = (currentSelectedProgram === 'haftaici' ? 'Hafta İçi Akışı' : 'Hafta Sonu Akışı');
+        }
+
+        // Sonraki etkinliğe kalan süre hesabı
+        if (nextItem) {
+          const nextStartLabel = nextItem.time.split(/[-–]/)[0].trim();
+          if (nextTextEl) {
+            nextTextEl.textContent = nextStartLabel + ' — ' + nextItem.title;
           }
-        });
+
+          if (countdownEl) {
+            let diffMins = 0;
+            if (nextItem.startMins >= currentMins) {
+              diffMins = nextItem.startMins - currentMins - 1;
+            } else {
+              diffMins = (24 * 60 - currentMins) + nextItem.startMins - 1;
+            }
+            if (diffMins < 0) diffMins = 0;
+            const diffSecs = 59 - currentSecs;
+            const h = Math.floor(diffMins / 60);
+            const m = diffMins % 60;
+            const s = (diffSecs < 10 ? '0' : '') + diffSecs;
+
+            countdownEl.textContent = (h > 0 ? h + ' sa ' : '') + m + ' dk ' + s + ' sn kaldı';
+          }
+        }
       }
 
       function setupLightbox() {

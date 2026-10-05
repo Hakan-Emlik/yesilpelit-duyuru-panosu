@@ -179,9 +179,8 @@ const APP_MODULE = (() => {
     const reminderCard = document.getElementById('programReminderCard');
     if (reminderCard) reminderCard.innerHTML = config.reminderHtml;
 
-    // Çizelgeyi yeniden oluştur ve aktif zamanı işaretle
-    renderTimeline();
-    highlightCurrentTimelineItem(new Date());
+    // Yalnızca o anki aktif etkinliği göster ve güncelle
+    updateCurrentActivity(new Date());
   }
 
   // Canlı Saat & Tarih Yönetimi
@@ -210,9 +209,8 @@ const APP_MODULE = (() => {
       hijriEl.textContent = getHijriDate(now);
     }
 
-
-    // Zaman çizelgesindeki anlık aktif etkinliği işaretle
-    highlightCurrentTimelineItem(now);
+    // O anki yurt programını ve kalan süreyi canlı güncelle
+    updateCurrentActivity(now);
   }
 
   function getHijriDate(date) {
@@ -228,46 +226,126 @@ const APP_MODULE = (() => {
     }
   }
 
-  // Zaman çizelgesini DOM'a render et
-  function renderTimeline() {
-    const container = document.getElementById('timelineList');
-    if (!container || !currentSelectedProgram) return;
-
-    const items = PROGRAM_CONFIG[currentSelectedProgram].timeline;
-    container.innerHTML = items.map((item, idx) => `
-      <div class="timeline-card" id="timeline-item-${idx}">
-        <div class="timeline-time-pill">${item.time}</div>
-        <div class="timeline-info">
-          <h4>${item.title}</h4>
-          <p>${item.desc}</p>
-        </div>
-      </div>
-    `).join('');
+  // Saat metnini dakikaya çevirir ("08:00" -> 480)
+  function parseTimeToMinutes(timeStr) {
+    if (!timeStr) return 0;
+    const clean = timeStr.trim();
+    const parts = clean.split(':').map(Number);
+    return (parts[0] || 0) * 60 + (parts[1] || 0);
   }
 
-  function highlightCurrentTimelineItem(now) {
-    if (!currentSelectedProgram) return;
+  // O an yurtta hangi program yapılıyorsa yalnızca onu gösterir
+  function updateCurrentActivity(now) {
+    if (!currentSelectedProgram || !PROGRAM_CONFIG[currentSelectedProgram]) return;
     const items = PROGRAM_CONFIG[currentSelectedProgram].timeline;
+    if (!items || items.length === 0) return;
+
     const currentMins = now.getHours() * 60 + now.getMinutes();
+    const currentSecs = now.getSeconds();
 
-    let activeIdx = -1;
-    for (let i = 0; i < items.length; i++) {
-      const startStr = items[i].time.split(' ')[0];
-      const [h, m] = startStr.split(':').map(Number);
-      const itemMins = h * 60 + m;
+    // Her etkinliğin başlangıç ve bitiş dakikasını hesapla
+    const parsedItems = items.map((item, idx) => {
+      let startMins = 0;
+      let endMins = 0;
 
-      if (currentMins >= itemMins) {
-        activeIdx = i;
+      if (item.time.includes('–') || item.time.includes('-')) {
+        const parts = item.time.split(/[-–]/);
+        startMins = parseTimeToMinutes(parts[0]);
+        endMins = parseTimeToMinutes(parts[1]);
+      } else {
+        startMins = parseTimeToMinutes(item.time);
+        if (idx + 1 < items.length) {
+          const nextStartStr = items[idx + 1].time.split(/[-–]/)[0];
+          endMins = parseTimeToMinutes(nextStartStr);
+        } else {
+          endMins = 23 * 60;
+        }
+      }
+
+      return Object.assign({}, item, { startMins: startMins, endMins: endMins, idx: idx });
+    });
+
+    // Aktif etkinliği tespit et
+    let activeItem = null;
+    let nextItem = null;
+
+    // Gece İstirahat dönemi (23:00 - 05:30 arası)
+    if (currentMins >= 23 * 60 || currentMins < 5 * 60 + 30) {
+      activeItem = parsedItems.find(it => it.title.toLowerCase().includes('istirahat')) || {
+        time: '23:00 – 05:30',
+        title: 'Gece İstirahati',
+        desc: 'Yurt içi sessizlik ve dinlenme vakti — 23:00 da kapılar kilitlenir',
+        icon: 'fa-solid fa-bed'
+      };
+      nextItem = parsedItems[0]; // 05:30 Sabah Namazına Kalkış
+    } else {
+      // Gün içi etkinlikler
+      for (let i = 0; i < parsedItems.length; i++) {
+        const it = parsedItems[i];
+        if (currentMins >= it.startMins && currentMins < it.endMins) {
+          activeItem = it;
+          nextItem = (i + 1 < parsedItems.length) ? parsedItems[i + 1] : parsedItems[0];
+          break;
+        }
+      }
+
+      // Eğer aralık dışında kalırsa en son başlayan etkinliği al
+      if (!activeItem) {
+        for (let i = parsedItems.length - 1; i >= 0; i--) {
+          if (currentMins >= parsedItems[i].startMins) {
+            activeItem = parsedItems[i];
+            nextItem = (i + 1 < parsedItems.length) ? parsedItems[i + 1] : parsedItems[0];
+            break;
+          }
+        }
       }
     }
 
-    document.querySelectorAll('.timeline-card').forEach((card, idx) => {
-      if (idx === activeIdx) {
-        card.classList.add('now-active');
-      } else {
-        card.classList.remove('now-active');
+    if (!activeItem) {
+      activeItem = parsedItems[0];
+      nextItem = parsedItems[1] || parsedItems[0];
+    }
+
+    // DOM Elemanlarını Güncelle
+    const timeEl = document.getElementById('currentActivityTime');
+    const titleEl = document.getElementById('currentActivityTitle');
+    const descEl = document.getElementById('currentActivityDesc');
+    const iconEl = document.getElementById('currentActivityIcon');
+    const nextTextEl = document.getElementById('nextActivityText');
+    const countdownEl = document.getElementById('activityCountdownTime');
+    const periodLabelEl = document.getElementById('currentPeriodLabel');
+
+    if (timeEl) timeEl.textContent = activeItem.time;
+    if (titleEl) titleEl.textContent = activeItem.title;
+    if (descEl) descEl.textContent = activeItem.desc;
+    if (iconEl) iconEl.className = activeItem.icon || 'fa-solid fa-bell';
+    if (periodLabelEl) {
+      periodLabelEl.textContent = (currentSelectedProgram === 'haftaici' ? 'Hafta İçi Akışı' : 'Hafta Sonu Akışı');
+    }
+
+    // Sonraki etkinliğe kalan süre hesabı
+    if (nextItem) {
+      const nextStartLabel = nextItem.time.split(/[-–]/)[0].trim();
+      if (nextTextEl) {
+        nextTextEl.textContent = nextStartLabel + ' — ' + nextItem.title;
       }
-    });
+
+      if (countdownEl) {
+        let diffMins = 0;
+        if (nextItem.startMins >= currentMins) {
+          diffMins = nextItem.startMins - currentMins - 1;
+        } else {
+          diffMins = (24 * 60 - currentMins) + nextItem.startMins - 1;
+        }
+        if (diffMins < 0) diffMins = 0;
+        const diffSecs = 59 - currentSecs;
+        const h = Math.floor(diffMins / 60);
+        const m = diffMins % 60;
+        const s = (diffSecs < 10 ? '0' : '') + diffSecs;
+
+        countdownEl.textContent = (h > 0 ? h + ' sa ' : '') + m + ' dk ' + s + ' sn kaldı';
+      }
+    }
   }
 
   // Lightbox Modal Yönetimi (2. Fotoğraf Afiş Büyütme)
