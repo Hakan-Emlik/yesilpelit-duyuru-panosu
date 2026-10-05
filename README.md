@@ -18,11 +18,12 @@
 ### 2. 📜 1. Fotoğraf: Kurumsal Logo
 - Yeşilpelit Öğrenci Yurdu'nun resmi logosu (`assets/images/logo.png`) sitenin ana başlığında ve duyuru bandında altın çerçeveyle yer alır.
 
-### 3. 📅 2. Fotoğraf & PDF: Haftasonu Programı ("Bir Haftasonu Daha Nasıl Güzel Geçirilir?")
-- **Afiş Vitrini:** Ahşap çerçeveli özel tasarım poster önizlemesi ve tıklandığında açılan tam ekran büyütme (lightbox) modu (`assets/images/haftasonu-programi.jpg`).
-- **PDF İndir:** A4 formatında hazırlanmış yüksek kaliteli program belgesi tek tıkla indirilebilir (`assets/docs/haftasonu-programi.pdf`).
-- **A4 Yazdır:** Fiziksel panolara asılmak üzere tek tıkla A4 baskı formatında çıktısı alınabilir.
-- **İnteraktif Zaman Akışı:** Afişteki 15 saatlik program (05:00 Sabah Namazından 20:10 Yatsı Namazına kadar) canlı saatle senkronize biçimde gösterilir.
+### 3. 📅 Program Vitrini (Hafta İçi & Hafta Sonu Akıllı Geçiş Sistemi)
+- **Akıllı Gün Algılama:** Sistem haftanın gününü otomatik kontrol eder. Pazartesi – Cuma günleri **Hafta İçi Programı** afişi ve akışı, Cumartesi – Pazar günleri ise **Hafta Sonu Programı** ("Bir Haftasonu Daha Nasıl Güzel Geçirilir?") afişi ve akışı otomatik olarak panoya yansıtılır.
+- **Manuel Geçiş Sekmeleri:** Kullanıcılar diledikleri zaman üst bardaki `[Hafta İçi Programı]` ve `[Hafta Sonu Programı]` sekmelerine tıklayarak diğer programı da anında inceleyebilir. Hangi programın bugüne ait olduğu "Bugün" rozetiyle belirtilir.
+- **Afiş Vitrini:** Ahşap çerçeveli poster önizlemesi ve tıklandığında açılan tam ekran büyütme (lightbox) modu (`assets/images/haftaici-programi.jpg` & `assets/images/haftasonu-programi.jpg`).
+- **PDF İndir & A4 Yazdır:** Aktif olan programa göre A4 formatında yüksek kaliteli PDF belgesi indirilebilir (`assets/docs/haftaici-programi.pdf` & `assets/docs/haftasonu-programi.pdf`) ve tek tıkla yazdırılabilir.
+- **İnteraktif Zaman Akışı:** Canlı saatle senkronize çalışan, içinde bulunulan etkinliği yeşil-altın tonlarıyla vurgulayan dinamik zaman çizelgesi.
 
 ### 4. 📢 Dijital Pano & Yurt Yaşamı
 - **Kayan Bilgi Bandı:** Günün hadis-i şerifi, nöbetçi öğretmen, yemekhane ve etkinlik duyuruları.

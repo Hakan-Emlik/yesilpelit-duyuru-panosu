@@ -2,14 +2,14 @@ const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 const path = require('path');
 
-async function createProgramPDF() {
+async function createProgramPDF(imageFileName, outputFileName, title, subject) {
   const pdfDoc = await PDFDocument.create();
   
   // A4 size: 595.28 x 841.89 points
   const page = pdfDoc.addPage([595.28, 841.89]);
   const { width, height } = page.getSize();
 
-  const imagePath = path.join(__dirname, '../assets/images/haftasonu-programi.jpg');
+  const imagePath = path.join(__dirname, '../assets/images', imageFileName);
   const imageBytes = fs.readFileSync(imagePath);
   const image = await pdfDoc.embedJpg(imageBytes);
 
@@ -30,15 +30,38 @@ async function createProgramPDF() {
     height: imgDims.height,
   });
 
-  pdfDoc.setTitle('Yeşilpelit Öğrenci Yurdu - Haftasonu Zaman Çizelgesi');
+  pdfDoc.setTitle(title);
   pdfDoc.setAuthor('Yeşilpelit Öğrenci Yurdu');
-  pdfDoc.setSubject('Haftasonu Programı ve Zaman Çizelgesi');
+  pdfDoc.setSubject(subject);
 
   const pdfBytes = await pdfDoc.save();
-  const outputPath = path.join(__dirname, '../assets/docs/haftasonu-programi.pdf');
+  const outputPath = path.join(__dirname, '../assets/docs', outputFileName);
   fs.writeFileSync(outputPath, pdfBytes);
 
   console.log(`PDF başarıyla oluşturuldu: ${outputPath} (${pdfBytes.length} bayt)`);
 }
 
-createProgramPDF().catch(console.error);
+async function main() {
+  // 1. Haftasonu Programı
+  if (fs.existsSync(path.join(__dirname, '../assets/images/haftasonu-programi.jpg'))) {
+    await createProgramPDF(
+      'haftasonu-programi.jpg',
+      'haftasonu-programi.pdf',
+      'Yeşilpelit Öğrenci Yurdu - Haftasonu Zaman Çizelgesi',
+      'Haftasonu Programı ve Zaman Çizelgesi'
+    );
+  }
+
+  // 2. Hafta İçi Programı
+  if (fs.existsSync(path.join(__dirname, '../assets/images/haftaici-programi.jpg'))) {
+    await createProgramPDF(
+      'haftaici-programi.jpg',
+      'haftaici-programi.pdf',
+      'Yeşilpelit Öğrenci Yurdu - Hafta İçi Zaman Çizelgesi',
+      'Hafta İçi Programı ve Zaman Çizelgesi'
+    );
+  }
+}
+
+main().catch(console.error);
+

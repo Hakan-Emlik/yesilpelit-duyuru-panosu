@@ -2,21 +2,34 @@ const fs = require('fs');
 const path = require('path');
 
 const logoPath = path.join(__dirname, '../assets/images/logo.png');
-const posterPath = path.join(__dirname, '../assets/images/haftasonu-programi.jpg');
-const pdfPath = path.join(__dirname, '../assets/docs/haftasonu-programi.pdf');
+const posterWeekendPath = path.join(__dirname, '../assets/images/haftasonu-programi.jpg');
+const posterWeekdayPath = path.join(__dirname, '../assets/images/haftaici-programi.jpg');
+const pdfWeekendPath = path.join(__dirname, '../assets/docs/haftasonu-programi.pdf');
+const pdfWeekdayPath = path.join(__dirname, '../assets/docs/haftaici-programi.pdf');
 
 const logoBytes = fs.readFileSync(logoPath);
 const logoB64 = 'data:image/png;base64,' + logoBytes.toString('base64');
 
-const posterBytes = fs.readFileSync(posterPath);
-const posterB64 = 'data:image/jpeg;base64,' + posterBytes.toString('base64');
+const posterWeekendBytes = fs.readFileSync(posterWeekendPath);
+const posterWeekendB64 = 'data:image/jpeg;base64,' + posterWeekendBytes.toString('base64');
 
-let pdfB64 = '';
+const posterWeekdayBytes = fs.readFileSync(posterWeekdayPath);
+const posterWeekdayB64 = 'data:image/jpeg;base64,' + posterWeekdayBytes.toString('base64');
+
+let pdfWeekendB64 = '';
 try {
-  const pdfBytes = fs.readFileSync(pdfPath);
-  pdfB64 = 'data:application/pdf;base64,' + pdfBytes.toString('base64');
+  const pdfBytes = fs.readFileSync(pdfWeekendPath);
+  pdfWeekendB64 = 'data:application/pdf;base64,' + pdfBytes.toString('base64');
 } catch (e) {
-  console.log('PDF not found, skipping base64 pdf');
+  console.log('Weekend PDF not found, skipping base64 pdf');
+}
+
+let pdfWeekdayB64 = '';
+try {
+  const pdfBytes = fs.readFileSync(pdfWeekdayPath);
+  pdfWeekdayB64 = 'data:application/pdf;base64,' + pdfBytes.toString('base64');
+} catch (e) {
+  console.log('Weekday PDF not found, skipping base64 pdf');
 }
 
 const htmlContent = `<!DOCTYPE html>
@@ -630,6 +643,61 @@ const htmlContent = `<!DOCTYPE html>
       margin: 0;
     }
 
+    /* Program Seçici Sekmeler (Hafta İçi / Hafta Sonu) */
+    .program-tab-switch {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 2px;
+      border-radius: 6px;
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      gap: 3px;
+    }
+
+    .btn-program-tab {
+      background: transparent;
+      border: none;
+      color: var(--gold-200);
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-program-tab:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .btn-program-tab.active {
+      background: linear-gradient(135deg, var(--gold-600), var(--gold-500));
+      color: var(--slate-950);
+      box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
+      font-weight: 800;
+    }
+
+    .tab-today-badge {
+      background: var(--brand-700);
+      color: white;
+      font-size: 0.58rem;
+      padding: 1px 5px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .btn-program-tab.active .tab-today-badge {
+      background: var(--brand-950);
+      color: var(--gold-300);
+    }
+
     .pdf-action-buttons {
       display: flex;
       align-items: center;
@@ -1206,34 +1274,48 @@ const htmlContent = `<!DOCTYPE html>
 
     </section>
 
-    <!-- 2. BÖLÜM: HAFTASONU PROGRAMI & ZAMAN ÇİZELGESİ (2. FOTOĞRAF & PDF) -->
-    <section class="weekend-program-section" id="haftasonu-programi" aria-label="Haftasonu Programı ve Zaman Çizelgesi">
+    <!-- 2. BÖLÜM: GÜNLÜK VE HAFTASONU PROGRAMI & ZAMAN ÇİZELGESİ -->
+    <section class="weekend-program-section" id="haftasonu-programi" aria-label="Günlük Program ve Zaman Çizelgesi">
       
-      <!-- Bölüm Üst Başlığı ve PDF Aksiyonları -->
+      <!-- Bölüm Üst Başlığı, Sekme Değiştirici ve PDF Aksiyonları -->
       <div class="section-top-header">
-        <div>
+        <div class="header-titles-group">
           <h2>
-            <i class="fa-solid fa-tree text-gold-400"></i>
-            <span>BİR HAFTASONU DAHA NASIL GÜZEL GEÇİRİLİR?</span>
+            <i id="programHeaderIcon" class="fa-solid fa-calendar-week text-gold-400"></i>
+            <span id="programHeaderTitle">HAFTAİÇİ PROGRAMIMIZ</span>
           </h2>
-          <p>Manevi Sohbetler & Dahili Ders — Cumartesi Zaman Çizelgesi</p>
+          <p id="programHeaderSubtitle">Düzenli Gün, Verimli Yarınlar — Günlük Zaman Çizelgesi</p>
+        </div>
+
+        <!-- Program Seçici Sekmeler (Hafta İçi / Hafta Sonu) -->
+        <div class="program-tab-switch" role="tablist" aria-label="Program Dönemi">
+          <button class="btn-program-tab" id="btnTabHaftaici" role="tab" aria-selected="false" onclick="APP_MODULE.selectProgram('haftaici')">
+            <i class="fa-solid fa-calendar-day"></i>
+            <span>Hafta İçi Programı</span>
+            <span class="tab-today-badge" id="todayBadgeHaftaici" style="display: none;">Bugün</span>
+          </button>
+          <button class="btn-program-tab" id="btnTabHaftasonu" role="tab" aria-selected="false" onclick="APP_MODULE.selectProgram('haftasonu')">
+            <i class="fa-solid fa-tree"></i>
+            <span>Hafta Sonu Programı</span>
+            <span class="tab-today-badge" id="todayBadgeHaftasonu" style="display: none;">Bugün</span>
+          </button>
         </div>
 
         <div class="pdf-action-buttons">
-          <!-- PDF İndir Butonu -->
-          <a href="${pdfB64 || 'assets/docs/haftasonu-programi.pdf'}" download="Yesilpelit-Haftasonu-Programi.pdf" class="btn-pdf-download" id="downloadPdfBtn">
+          <!-- PDF İndir Butonu (Dinamik) -->
+          <a href="#" download="Yesilpelit-Program.pdf" class="btn-pdf-download" id="downloadPdfBtn" title="A4 Formatında PDF İndir">
             <i class="fa-solid fa-file-pdf"></i>
-            <span>PDF Programını İndir</span>
+            <span id="downloadPdfLabel">PDF İndir</span>
           </a>
 
           <!-- Yazdır Butonu -->
-          <button class="btn-secondary-action" id="btnPrintSchedule">
+          <button class="btn-secondary-action" id="btnPrintSchedule" title="A4 Sayfa Olarak Yazdır">
             <i class="fa-solid fa-print"></i>
             <span>A4 Yazdır</span>
           </button>
 
           <!-- Afişi Büyüt -->
-          <button class="btn-secondary-action" onclick="document.getElementById('posterTrigger').click()">
+          <button class="btn-secondary-action" onclick="document.getElementById('posterTrigger').click()" title="Afişi Tam Boyut İncele">
             <i class="fa-solid fa-magnifying-glass-plus"></i>
             <span>Afişi Büyüt</span>
           </button>
@@ -1243,61 +1325,39 @@ const htmlContent = `<!DOCTYPE html>
       <!-- Çift Görünüm Düzeni: Sol Afiş Çerçevesi + Sağ İnteraktif Zaman Çizelgesi -->
       <div class="program-layout-grid">
         
-        <!-- Sol Kolon: 2. Fotoğraf Afiş Vitrini -->
+        <!-- Sol Kolon: Afiş Vitrini -->
         <div class="poster-frame-wrapper">
           <div class="poster-wood-border" id="posterTrigger" title="Büyütmek için tıklayın">
-            <img src="${posterB64}" alt="Yeşilpelit Haftasonu Manevi Sohbetler ve Dahili Ders Zaman Çizelgesi Afişi">
+            <img id="activePosterImg" src="" alt="Yeşilpelit Program Afişi">
             <div class="poster-overlay-hint">
               <i class="fa-solid fa-expand"></i>
               <span>Afişi İncelemek İçin Tıklayın</span>
             </div>
           </div>
-          <div class="poster-footer-caption">
-            <p><i class="fa-solid fa-circle-info text-gold-600"></i> Yeşilpelit Öğrenci Yurdu Resmi Haftasonu Oryantasyon ve İntibak Programıdır.</p>
+          <div class="poster-footer-caption" id="posterCaption">
+            <p><i class="fa-solid fa-circle-info text-gold-600"></i> <span id="captionText">Yeşilpelit Öğrenci Yurdu Resmi Programıdır.</span></p>
           </div>
         </div>
 
-        <!-- Sağ Kolon: İnteraktif Canlı Zaman Akışı (15 Madde) -->
+        <!-- Sağ Kolon: İnteraktif Canlı Zaman Akışı -->
         <div class="schedule-flow-wrapper">
           
           <div class="schedule-header-card">
             <div class="schedule-badge-title">
               <i class="fa-solid fa-clipboard-list"></i>
-              <span>CUMARTESİ GÜNLÜK ZAMAN ÇİZELGESİ AKIŞI</span>
+              <span id="timelineFlowTitle">GÜNLÜK ZAMAN ÇİZELGESİ AKIŞI</span>
             </div>
             <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-700);">
               <i class="fa-solid fa-bell"></i> Canlı Saatle Senkronize
             </span>
           </div>
 
-          <!-- 15 Program Maddesi -->
+          <!-- Program Maddeleri (JS ile dinamik oluşturulur) -->
           <div class="timeline-items-list" id="timelineList">
-            <!-- JS ile doldurulur -->
           </div>
 
-          <!-- Pazar Günleri Hatırlatma Kartı (Afiş Alt Bölümü) -->
-          <div class="sunday-reminder-card">
-            <div class="reminder-header">
-              <span class="reminder-badge"><i class="fa-solid fa-bell"></i> HATIRLATMA</span>
-              <h4 class="reminder-title">PAZAR GÜNLERİ</h4>
-            </div>
-            <div class="reminder-content-grid">
-              <div class="reminder-item">
-                <div class="reminder-icon"><i class="fa-solid fa-mug-hot"></i></div>
-                <div class="reminder-details">
-                  <span class="reminder-label">KAHVALTI</span>
-                  <span class="reminder-time">11:00</span>
-                </div>
-              </div>
-              <div class="reminder-divider"></div>
-              <div class="reminder-item">
-                <div class="reminder-icon"><i class="fa-solid fa-utensils"></i></div>
-                <div class="reminder-details">
-                  <span class="reminder-label">AKŞAM YEMEĞİ</span>
-                  <span class="reminder-time">18:00</span>
-                </div>
-              </div>
-            </div>
+          <!-- Alt Hatırlatma Kartı (Hafta İçi / Hafta Sonu için Dinamik) -->
+          <div class="sunday-reminder-card" id="programReminderCard">
           </div>
 
         </div>
@@ -1316,7 +1376,7 @@ const htmlContent = `<!DOCTYPE html>
       <button class="modal-close-btn" id="closePosterModal" aria-label="Kapat">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <img src="${posterB64}" alt="Yeşilpelit Haftasonu Programı Büyük Boy Afiş">
+      <img id="modalPosterImg" src="" alt="Yeşilpelit Büyük Boy Afiş">
     </div>
   </div>
 
@@ -1577,8 +1637,30 @@ const htmlContent = `<!DOCTYPE html>
     })();
 
     // 2. ANA UYGULAMA (ZAMAN ÇİZELGESİ, SAAT, TEMA, TV MODU)
+    // 2. ANA UYGULAMA (ZAMAN ÇİZELGESİ, DİNAMİK PROGRAM, SAAT, TEMA, TV MODU)
     const APP_MODULE = (() => {
-      // Yeni Afişteki Resmi Zaman Çizelgesi Maddeleri
+      const POSTER_WEEKEND_B64 = "${posterWeekendB64}";
+      const POSTER_WEEKDAY_B64 = "${posterWeekdayB64}";
+      const PDF_WEEKEND_B64 = "${pdfWeekendB64 || 'assets/docs/haftasonu-programi.pdf'}";
+      const PDF_WEEKDAY_B64 = "${pdfWeekdayB64 || 'assets/docs/haftaici-programi.pdf'}";
+
+      // Hafta İçi Resmi Zaman Çizelgesi Maddeleri (Afişteki Günlük Program)
+      const WEEKDAY_TIMELINE = [
+        { time: '05:30', title: 'Sabah Namazına Kalkış', desc: 'Günün başlangıcı, abdest ve mescide hazırlık', icon: 'fa-solid fa-bell' },
+        { time: '06:00', title: 'Sabah Namazı - Hatim ve Vazifeler', desc: 'Mescidde cemaatle sabah namazı, hatim ve günlük ders vazifeleri', icon: 'fa-solid fa-mosque' },
+        { time: '07:00 – 08:00', title: 'Kahvaltı', desc: 'Yemekhanede toplu sabah kahvaltısı', icon: 'fa-solid fa-mug-hot' },
+        { time: '08:00', title: 'Okula Çıkış', desc: 'Öğrencilerin okul dersleri için yurttan hareketi', icon: 'fa-solid fa-graduation-cap' },
+        { time: '11:30 – 13:00', title: 'Öğle Yemeği', desc: 'Yemekhanede sıcak öğle tabldotu servisi', icon: 'fa-solid fa-utensils' },
+        { time: '13:00', title: 'Öğle Namazı', desc: 'Mescidde cemaatle öğle namazı', icon: 'fa-solid fa-mosque' },
+        { time: '16:00', title: 'İkindi Namazı', desc: 'Mescidde cemaatle ikindi namazı ve tesbihat', icon: 'fa-solid fa-mosque' },
+        { time: '17:30 – 18:15', title: 'Akşam Yemeği', desc: 'Yemekhanede akşam tabldotu servisi', icon: 'fa-solid fa-utensils' },
+        { time: '18:15 – 20:00', title: 'Dahili Ders', desc: 'Etüt salonlarında dahili dersler ve ders çalışma', icon: 'fa-solid fa-book-open' },
+        { time: '18:27', title: 'Akşam Namazı (Gruplarda)', desc: 'Gruplar halinde mescidde akşam namazı', icon: 'fa-solid fa-mosque' },
+        { time: '20:00', title: 'Yatsı Namazı', desc: 'Mescidde cemaatle yatsı namazı ve tesbihat', icon: 'fa-solid fa-moon' },
+        { time: '23:00', title: 'İstirahat (Kapılar Kilitlenecek)', desc: 'Yurt içi sessizlik ve istirahat — 23:00 da kapılar kilitlenecektir', icon: 'fa-solid fa-bed' }
+      ];
+
+      // Hafta Sonu Resmi Zaman Çizelgesi Maddeleri (Cumartesi)
       const SATURDAY_TIMELINE = [
         { time: '05:30', title: 'Kalkış', desc: 'Günün başlangıcı ve sabah hazırlığı', icon: 'fa-solid fa-bell' },
         { time: '06:00', title: 'Sabah Namazı - Hatim', desc: 'Mescidde cemaatle sabah namazı ve Kuran tilaveti', icon: 'fa-solid fa-mosque' },
@@ -1596,6 +1678,152 @@ const htmlContent = `<!DOCTYPE html>
         { time: '20:00', title: 'Yatsı', desc: 'Yatsı namazı ve tesbihat', icon: 'fa-solid fa-moon' },
         { time: '23:00', title: 'İstirahat', desc: 'Yurt içi sessizlik ve gece istirahati', icon: 'fa-solid fa-bed' }
       ];
+
+      const PROGRAM_CONFIG = {
+        haftaici: {
+          icon: 'fa-solid fa-calendar-week text-gold-400',
+          title: 'HAFTAİÇİ PROGRAMIMIZ',
+          subtitle: 'Düzenli Gün, Verimli Yarınlar — Günlük Zaman Çizelgesi Akışı',
+          flowTitle: 'HAFTAİÇİ GÜNLÜK ZAMAN ÇİZELGESİ AKIŞI',
+          caption: 'Yeşilpelit Öğrenci Yurdu Resmi Hafta İçi Düzenli Gün Programıdır.',
+          posterSrc: POSTER_WEEKDAY_B64,
+          posterAlt: 'Yeşilpelit Hafta İçi Günlük Program Afişi',
+          pdfUrl: PDF_WEEKDAY_B64,
+          pdfName: 'Yesilpelit-Haftaici-Programi.pdf',
+          timeline: WEEKDAY_TIMELINE,
+          reminderHtml: \`
+            <div class="reminder-header">
+              <span class="reminder-badge"><i class="fa-solid fa-shield-halved"></i> YURT DÜZENİ</span>
+              <h4 class="reminder-title">HAFTA İÇİ ETÜT VE İSTİRAHAT</h4>
+            </div>
+            <div class="reminder-content-grid">
+              <div class="reminder-item">
+                <div class="reminder-icon"><i class="fa-solid fa-book-open"></i></div>
+                <div class="reminder-details">
+                  <span class="reminder-label">DAHİLİ DERS</span>
+                  <span class="reminder-time">18:15 – 20:00</span>
+                </div>
+              </div>
+              <div class="reminder-divider"></div>
+              <div class="reminder-item">
+                <div class="reminder-icon" style="color: #ef4444;"><i class="fa-solid fa-lock"></i></div>
+                <div class="reminder-details">
+                  <span class="reminder-label" style="color: #ef4444;">KAPILAR KİLİTLENİR</span>
+                  <span class="reminder-time" style="color: #ef4444;">23:00</span>
+                </div>
+              </div>
+            </div>
+          \`
+        },
+        haftasonu: {
+          icon: 'fa-solid fa-tree text-gold-400',
+          title: 'BİR HAFTASONU DAHA NASIL GÜZEL GEÇİRİLİR?',
+          subtitle: 'Manevi Sohbetler & Dahili Ders — Haftasonu Zaman Çizelgesi',
+          flowTitle: 'CUMARTESİ GÜNLÜK ZAMAN ÇİZELGESİ AKIŞI',
+          caption: 'Yeşilpelit Öğrenci Yurdu Resmi Haftasonu Oryantasyon ve İntibak Programıdır.',
+          posterSrc: POSTER_WEEKEND_B64,
+          posterAlt: 'Yeşilpelit Haftasonu Manevi Sohbetler ve Dahili Ders Zaman Çizelgesi Afişi',
+          pdfUrl: PDF_WEEKEND_B64,
+          pdfName: 'Yesilpelit-Haftasonu-Programi.pdf',
+          timeline: SATURDAY_TIMELINE,
+          reminderHtml: \`
+            <div class="reminder-header">
+              <span class="reminder-badge"><i class="fa-solid fa-bell"></i> HATIRLATMA</span>
+              <h4 class="reminder-title">PAZAR GÜNLERİ</h4>
+            </div>
+            <div class="reminder-content-grid">
+              <div class="reminder-item">
+                <div class="reminder-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                <div class="reminder-details">
+                  <span class="reminder-label">KAHVALTI</span>
+                  <span class="reminder-time">11:00</span>
+                </div>
+              </div>
+              <div class="reminder-divider"></div>
+              <div class="reminder-item">
+                <div class="reminder-icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="reminder-details">
+                  <span class="reminder-label">AKŞAM YEMEĞİ</span>
+                  <span class="reminder-time">18:00</span>
+                </div>
+              </div>
+            </div>
+          \`
+        }
+      };
+
+      let currentSelectedProgram = 'haftaici';
+
+      function getTodayScheduleType() {
+        const day = new Date().getDay(); // 0 = Pazar, 1-5 = Hafta İçi, 6 = Cumartesi
+        return (day >= 1 && day <= 5) ? 'haftaici' : 'haftasonu';
+      }
+
+      function selectProgram(type) {
+        if (!PROGRAM_CONFIG[type]) return;
+        currentSelectedProgram = type;
+        const config = PROGRAM_CONFIG[type];
+
+        // Sekme butonlarını güncelle
+        const btnHaftaici = document.getElementById('btnTabHaftaici');
+        const btnHaftasonu = document.getElementById('btnTabHaftasonu');
+        if (btnHaftaici && btnHaftasonu) {
+          if (type === 'haftaici') {
+            btnHaftaici.classList.add('active');
+            btnHaftaici.setAttribute('aria-selected', 'true');
+            btnHaftasonu.classList.remove('active');
+            btnHaftasonu.setAttribute('aria-selected', 'false');
+          } else {
+            btnHaftasonu.classList.add('active');
+            btnHaftasonu.setAttribute('aria-selected', 'true');
+            btnHaftaici.classList.remove('active');
+            btnHaftaici.setAttribute('aria-selected', 'false');
+          }
+        }
+
+        // Başlık ve İkon
+        const iconEl = document.getElementById('programHeaderIcon');
+        const titleEl = document.getElementById('programHeaderTitle');
+        const subTitleEl = document.getElementById('programHeaderSubtitle');
+        if (iconEl) iconEl.className = config.icon;
+        if (titleEl) titleEl.textContent = config.title;
+        if (subTitleEl) subTitleEl.textContent = config.subtitle;
+
+        // Afiş Görselleri
+        const posterImg = document.getElementById('activePosterImg');
+        const modalImg = document.getElementById('modalPosterImg');
+        if (posterImg) {
+          posterImg.src = config.posterSrc;
+          posterImg.alt = config.posterAlt;
+        }
+        if (modalImg) {
+          modalImg.src = config.posterSrc;
+          modalImg.alt = config.posterAlt;
+        }
+
+        // Afiş Alt Açıklama
+        const captionText = document.getElementById('captionText');
+        if (captionText) captionText.textContent = config.caption;
+
+        // Akış Başlığı
+        const flowTitleEl = document.getElementById('timelineFlowTitle');
+        if (flowTitleEl) flowTitleEl.textContent = config.flowTitle;
+
+        // PDF İndir Butonu
+        const downloadBtn = document.getElementById('downloadPdfBtn');
+        if (downloadBtn) {
+          downloadBtn.href = config.pdfUrl;
+          downloadBtn.download = config.pdfName;
+        }
+
+        // Alt Hatırlatma Kartı
+        const reminderCard = document.getElementById('programReminderCard');
+        if (reminderCard) reminderCard.innerHTML = config.reminderHtml;
+
+        // Çizelgeyi yeniden oluştur ve aktif zamanı işaretle
+        renderTimeline();
+        highlightCurrentTimelineItem(new Date());
+      }
 
       function updateLiveClock() {
         const now = new Date();
@@ -1627,15 +1855,15 @@ const htmlContent = `<!DOCTYPE html>
           }
         }
 
-
         highlightCurrentTimelineItem(now);
       }
 
       function renderTimeline() {
         const container = document.getElementById('timelineList');
-        if (!container) return;
+        if (!container || !currentSelectedProgram) return;
 
-        container.innerHTML = SATURDAY_TIMELINE.map((item, idx) => \`
+        const items = PROGRAM_CONFIG[currentSelectedProgram].timeline;
+        container.innerHTML = items.map((item, idx) => \`
           <div class="timeline-card" id="timeline-item-\${idx}">
             <div class="timeline-time-pill">\${item.time}</div>
             <div class="timeline-info">
@@ -1647,10 +1875,13 @@ const htmlContent = `<!DOCTYPE html>
       }
 
       function highlightCurrentTimelineItem(now) {
+        if (!currentSelectedProgram) return;
+        const items = PROGRAM_CONFIG[currentSelectedProgram].timeline;
         const currentMins = now.getHours() * 60 + now.getMinutes();
         let activeIdx = -1;
-        for (let i = 0; i < SATURDAY_TIMELINE.length; i++) {
-          const startStr = SATURDAY_TIMELINE[i].time.split(' ')[0];
+
+        for (let i = 0; i < items.length; i++) {
+          const startStr = items[i].time.split(' ')[0];
           const [h, m] = startStr.split(':').map(Number);
           const itemMins = h * 60 + m;
           if (currentMins >= itemMins) {
@@ -1751,7 +1982,21 @@ const htmlContent = `<!DOCTYPE html>
       }
 
       function init() {
-        renderTimeline();
+        // Bugünün gününe göre varsayılan programı belirle
+        const todayType = getTodayScheduleType();
+
+        // "Bugün" rozetini ilgili sekmede göster
+        const badgeHaftaici = document.getElementById('todayBadgeHaftaici');
+        const badgeHaftasonu = document.getElementById('todayBadgeHaftasonu');
+        if (todayType === 'haftaici') {
+          if (badgeHaftaici) badgeHaftaici.style.display = 'inline-block';
+        } else {
+          if (badgeHaftasonu) badgeHaftasonu.style.display = 'inline-block';
+        }
+
+        // Programı otomatik seç
+        selectProgram(todayType);
+
         updateLiveClock();
         setInterval(updateLiveClock, 1000);
         setupLightbox();
@@ -1760,7 +2005,7 @@ const htmlContent = `<!DOCTYPE html>
         setupPrintAction();
       }
 
-      return { init };
+      return { init, selectProgram };
     })();
 
     // 3. CANLI SENKRONİZASYON (Tüm bağlı TV ve ekranların anında güncellenmesi)

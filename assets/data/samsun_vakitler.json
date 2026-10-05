@@ -9,55 +9,39 @@
   },
   "ayin_safhalari": [
     {
-      "tarih": "2026-10-02",
-      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/21.png"
-    },
-    {
-      "tarih": "2026-10-03",
-      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/22.png"
-    },
-    {
       "tarih": "2026-10-04",
       "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/23.png"
+    },
+    {
+      "tarih": "2026-10-05",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/24.png"
+    },
+    {
+      "tarih": "2026-10-06",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/25.png"
     }
   ],
   "istatistikler": [
-    {
-      "tarih": "2026-10-02",
-      "kacinci_gun": 275,
-      "kacinci_hafta": 40,
-      "kacinci_ay": 10
-    },
-    {
-      "tarih": "2026-10-03",
-      "kacinci_gun": 276,
-      "kacinci_hafta": 40,
-      "kacinci_ay": 10
-    },
     {
       "tarih": "2026-10-04",
       "kacinci_gun": 277,
       "kacinci_hafta": 40,
       "kacinci_ay": 10
+    },
+    {
+      "tarih": "2026-10-05",
+      "kacinci_gun": 278,
+      "kacinci_hafta": 41,
+      "kacinci_ay": 10
+    },
+    {
+      "tarih": "2026-10-06",
+      "kacinci_gun": 279,
+      "kacinci_hafta": 41,
+      "kacinci_ay": 10
     }
   ],
   "kronolojiler": [
-    {
-      "tarih": "2026-10-02",
-      "kronoloji": [
-        "Azîz Mahmûd Hüdâî Hazretlerinin vefâtı (1628)",
-        "İşgalci Fransız ve İngilizlerin İstanbul'dan çekilmesi (1923)",
-        "Selahaddin Eyyûbî'nin Kudüs'ü fethi (1187)"
-      ]
-    },
-    {
-      "tarih": "2026-10-03",
-      "kronoloji": [
-        "Doğu ve Batı Almanya'nın birleşmesi (1990)",
-        "Türkiye Cumhuriyet Merkez Bankası'nın Kuruluşu (1931)",
-        "Dünya Mimarlık ve Konut Günü (Ekim’in İlk Pazartesi )"
-      ]
-    },
     {
       "tarih": "2026-10-04",
       "kronoloji": [
@@ -65,118 +49,41 @@
         "Fırtına",
         "Uzay Haftası (4-10 Ekim)"
       ]
+    },
+    {
+      "tarih": "2026-10-05",
+      "kronoloji": [
+        "Bosna-Hersek'in kaybı (1908)",
+        "Koç katımı fırtınası"
+      ]
+    },
+    {
+      "tarih": "2026-10-06",
+      "kronoloji": [
+        "Estergon Kalesi'nin ikinci defa fethi (1605)",
+        "Kâtip Çelebi'nin vefâtı (1658)",
+        "İstanbul'un kurtuluşu (1923)"
+      ]
     }
   ],
   "takvimler": [
     {
-      "tarih": "2026-10-02",
-      "hicri_tarih": "21 Rebîulâhir 1448",
-      "rumi_tarih": "19 Eylül 1442"
-    },
-    {
-      "tarih": "2026-10-03",
-      "hicri_tarih": "22 Rebîulâhir 1448",
-      "rumi_tarih": "20 Eylül 1442"
-    },
-    {
       "tarih": "2026-10-04",
       "hicri_tarih": "23 Rebîulâhir 1448",
       "rumi_tarih": "21 Eylül 1442"
+    },
+    {
+      "tarih": "2026-10-05",
+      "hicri_tarih": "24 Rebîulâhir 1448",
+      "rumi_tarih": "22 Eylül 1442"
+    },
+    {
+      "tarih": "2026-10-06",
+      "hicri_tarih": "25 Rebîulâhir 1448",
+      "rumi_tarih": "23 Eylül 1442"
     }
   ],
   "vakitler": [
-    {
-      "tarih": "2026-10-02",
-      "imsak": [
-        {
-          "tarih": "2026-10-02T01:44:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "israk": [],
-      "sabah": [
-        {
-          "tarih": "2026-10-02T02:04:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "gunes": [
-        {
-          "tarih": "2026-10-02T03:24:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "ogle": [
-        {
-          "tarih": "2026-10-02T09:34:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "ikindi": [
-        {
-          "tarih": "2026-10-02T12:51:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "aksam": [
-        {
-          "tarih": "2026-10-02T15:24:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "yatsi": [
-        {
-          "tarih": "2026-10-02T16:52:00Z",
-          "is_takdiri": false
-        }
-      ]
-    },
-    {
-      "tarih": "2026-10-03",
-      "imsak": [
-        {
-          "tarih": "2026-10-03T01:45:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "israk": [],
-      "sabah": [
-        {
-          "tarih": "2026-10-03T02:05:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "gunes": [
-        {
-          "tarih": "2026-10-03T03:25:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "ogle": [
-        {
-          "tarih": "2026-10-03T09:34:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "ikindi": [
-        {
-          "tarih": "2026-10-03T12:50:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "aksam": [
-        {
-          "tarih": "2026-10-03T15:22:00Z",
-          "is_takdiri": false
-        }
-      ],
-      "yatsi": [
-        {
-          "tarih": "2026-10-03T16:50:00Z",
-          "is_takdiri": false
-        }
-      ]
-    },
     {
       "tarih": "2026-10-04",
       "imsak": [
@@ -219,6 +126,98 @@
       "yatsi": [
         {
           "tarih": "2026-10-04T16:49:00Z",
+          "is_takdiri": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-05",
+      "imsak": [
+        {
+          "tarih": "2026-10-05T01:47:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "israk": [],
+      "sabah": [
+        {
+          "tarih": "2026-10-05T02:07:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "gunes": [
+        {
+          "tarih": "2026-10-05T03:27:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ogle": [
+        {
+          "tarih": "2026-10-05T09:33:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ikindi": [
+        {
+          "tarih": "2026-10-05T12:47:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "aksam": [
+        {
+          "tarih": "2026-10-05T15:19:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "yatsi": [
+        {
+          "tarih": "2026-10-05T16:47:00Z",
+          "is_takdiri": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-06",
+      "imsak": [
+        {
+          "tarih": "2026-10-06T01:49:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "israk": [],
+      "sabah": [
+        {
+          "tarih": "2026-10-06T02:09:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "gunes": [
+        {
+          "tarih": "2026-10-06T03:28:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ogle": [
+        {
+          "tarih": "2026-10-06T09:33:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "ikindi": [
+        {
+          "tarih": "2026-10-06T12:46:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "aksam": [
+        {
+          "tarih": "2026-10-06T15:17:00Z",
+          "is_takdiri": false
+        }
+      ],
+      "yatsi": [
+        {
+          "tarih": "2026-10-06T16:45:00Z",
           "is_takdiri": false
         }
       ]
