@@ -11,8 +11,7 @@
 
   <!-- Google Yazı Tipleri -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -979,79 +978,428 @@
       border: 1px solid rgba(251, 191, 36, 0.25);
     }
 
-    /* Boşaltılan ve Gelecek İçerikler İçin Ayrılan Özel Alan */
-    .custom-board-area {
+    /* ==========================================================================
+       GÜNÜN HİKMET KÖŞESİ (ÂYET-İ KERÎME VE HADÎS-İ ŞERÎF)
+       ========================================================================== */
+    .hikmet-card {
       flex: 1;
       display: flex;
       flex-direction: column;
       background: var(--bg-card);
-      border: 1.5px dashed rgba(21, 128, 61, 0.35);
+      border: 1.5px solid rgba(202, 138, 4, 0.35);
       border-radius: var(--radius-sm);
-      padding: 20px;
-      min-height: 220px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.4);
       position: relative;
+      overflow: hidden;
+      min-height: 240px;
       transition: var(--transition);
     }
 
-    body.dark-mode .custom-board-area {
-      background: rgba(15, 23, 42, 0.4);
-      border-color: rgba(251, 191, 36, 0.25);
+    body.dark-mode .hikmet-card {
+      background: linear-gradient(135deg, rgba(7, 42, 25, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border-color: rgba(251, 191, 36, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
-    .custom-area-placeholder {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 8px;
-      color: var(--text-muted);
-      padding: 20px;
-    }
-
-    .custom-area-placeholder i {
-      font-size: 2.2rem;
+    /* Arka Plan Zarif Hat Dekoru */
+    .hikmet-card::before {
+      content: '﷽';
+      position: absolute;
+      top: 4px;
+      right: 14px;
+      font-family: 'Amiri', serif;
+      font-size: 3.5rem;
       color: var(--gold-500);
-      margin-bottom: 4px;
-      opacity: 0.9;
+      opacity: 0.06;
+      pointer-events: none;
+      line-height: 1;
     }
 
-    .custom-area-placeholder h4 {
+    body.dark-mode .hikmet-card::before {
+      opacity: 0.12;
+      color: var(--gold-400);
+    }
+
+    /* Üst Başlık & Sekmeler */
+    .hikmet-header {
+      padding: 8px 14px;
+      background: linear-gradient(to right, rgba(7, 42, 25, 0.06), rgba(202, 138, 4, 0.08));
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    body.dark-mode .hikmet-header {
+      background: rgba(0, 0, 0, 0.25);
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .hikmet-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hikmet-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--brand-900), var(--brand-800));
+      color: var(--gold-300);
+      padding: 3px 10px;
+      border-radius: 999px;
       font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      color: var(--text-main);
-      margin: 0;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    .custom-area-placeholder p {
-      font-size: 0.75rem;
-      color: var(--text-subtle);
-      max-width: 420px;
-      margin: 0;
-      line-height: 1.4;
+    .hikmet-badge i {
+      color: var(--gold-400);
+      font-size: 0.8rem;
     }
 
-    .custom-area-badge {
+    .hikmet-date-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* Sekme Butonları */
+    .hikmet-tabs-nav {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 2px;
+      border-radius: 6px;
+      gap: 2px;
+      border: 1px solid var(--border-light);
+    }
+
+    body.dark-mode .hikmet-tabs-nav {
+      background: rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hikmet-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      background: var(--brand-100);
-      color: var(--brand-800);
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--brand-200);
-      margin-top: 6px;
+      transition: all 0.2s ease;
     }
 
-    body.dark-mode .custom-area-badge {
-      background: rgba(21, 128, 61, 0.25);
-      color: var(--brand-200);
-      border-color: rgba(74, 222, 128, 0.3);
+    .hikmet-tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    body.dark-mode .hikmet-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hikmet-tab-btn.active {
+      background: var(--brand-800);
+      color: #ffffff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+
+    body.dark-mode .hikmet-tab-btn.active {
+      background: linear-gradient(135deg, var(--gold-600), var(--gold-500));
+      color: var(--slate-950);
+      font-weight: 800;
+    }
+
+    /* İçerik Gövdesi */
+    .hikmet-body {
+      flex: 1;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      min-height: 160px;
+    }
+
+    .hikmet-single-view {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      animation: hikmetFadeIn 0.35s ease-out;
+    }
+
+    @keyframes hikmetFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hikmet-type-indicator {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--gold-600);
+      margin-bottom: 2px;
+    }
+
+    body.dark-mode .hikmet-type-indicator {
+      color: var(--gold-400);
+    }
+
+    .hikmet-arabic-wrap {
+      position: relative;
+      padding: 4px 10px;
+    }
+
+    .hikmet-arabic-text {
+      font-family: 'Amiri', 'Traditional Arabic', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.7;
+      color: #064e3b;
+      direction: rtl;
+      text-align: center;
+      letter-spacing: 0.01em;
+      word-spacing: 2px;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+
+    body.dark-mode .hikmet-arabic-text {
+      color: var(--gold-300);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+
+    .hikmet-turkish-wrap {
+      position: relative;
+      padding: 0 14px;
+    }
+
+    .hikmet-turkish-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--text-main);
+      font-style: italic;
+      position: relative;
+    }
+
+    .hikmet-turkish-text::before {
+      content: '“';
+      font-size: 1.4rem;
+      color: var(--gold-500);
+      font-family: serif;
+      margin-right: 3px;
+      line-height: 0;
+      vertical-align: -3px;
+    }
+
+    .hikmet-turkish-text::after {
+      content: '”';
+      font-size: 1.4rem;
+      color: var(--gold-500);
+      font-family: serif;
+      margin-left: 3px;
+      line-height: 0;
+      vertical-align: -3px;
+    }
+
+    .hikmet-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .hikmet-source-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--brand-700);
+      background: rgba(21, 128, 61, 0.1);
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(21, 128, 61, 0.2);
+    }
+
+    body.dark-mode .hikmet-source-tag {
+      color: var(--gold-300);
+      background: rgba(251, 191, 36, 0.1);
+      border-color: rgba(251, 191, 36, 0.25);
+    }
+
+    .hikmet-reflection-box {
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 3px solid var(--gold-500);
+      padding: 5px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    body.dark-mode .hikmet-reflection-box {
+      background: rgba(245, 158, 11, 0.06);
+      color: #cbd5e1;
+    }
+
+    .hikmet-reflection-box strong {
+      color: var(--gold-600);
+    }
+
+    body.dark-mode .hikmet-reflection-box strong {
+      color: var(--gold-400);
+    }
+
+    /* İkisi Bir Arada (Dual View) Düzeni */
+    .hikmet-dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+      animation: hikmetFadeIn 0.35s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hikmet-dual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hikmet-mini-card {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+    }
+
+    body.dark-mode .hikmet-mini-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .hikmet-mini-card .hikmet-arabic-text {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .hikmet-mini-card .hikmet-turkish-text {
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    /* Alt Çubuk & Butonlar */
+    .hikmet-footer {
+      padding: 6px 14px;
+      background: rgba(0, 0, 0, 0.03);
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+    }
+
+    body.dark-mode .hikmet-footer {
+      background: rgba(0, 0, 0, 0.2);
+      border-top-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .hikmet-counter {
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hikmet-actions {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hikmet-nav-btn {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hikmet-nav-btn:hover {
+      background: var(--brand-700);
+      color: white;
+      border-color: var(--brand-600);
+    }
+
+    body.dark-mode .hikmet-nav-btn:hover {
+      background: var(--gold-500);
+      color: var(--slate-950);
+      border-color: var(--gold-400);
+    }
+
+    .hikmet-nav-btn.copy-btn:hover {
+      background: #0284c7;
+      border-color: #0369a1;
+      color: white;
+    }
+
+    /* Canlı İlerleme Çubuğu (Kiosk Auto-cycle) */
+    .hikmet-progress-bar {
+      height: 2px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.06);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    body.dark-mode .hikmet-progress-bar {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hikmet-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, var(--brand-500), var(--gold-400));
+      transition: width 0.1s linear;
     }
 
     /* Modal Lightbox */
@@ -1366,15 +1714,62 @@
             </div>
           </div>
 
-          <!-- 2. KULLANICININ YENİ İÇERİĞİ İÇİN AYRILAN ÖZEL ALAN -->
-          <div class="custom-board-area" id="customBoardArea">
-            <div class="custom-area-placeholder" id="customAreaPlaceholder">
-              <i class="fa-solid fa-layer-group"></i>
-              <h4>ÖZEL İÇERİK & DUYURU ALANI</h4>
-              <p>Bu alan yeni eklenecek içerik ve modülleriniz için ayrılmıştır. (Yemek Menüsü, Nöbetçi İdare, Hadis-i Şerif veya Özel Duyurular)</p>
-              <div class="custom-area-badge">
-                <i class="fa-solid fa-circle-check"></i> Kullanıma Hazır
+          <!-- 2. GÜNÜN HİKMET KÖŞESİ (ÂYET-İ KERÎME VE HADÎS-İ ŞERÎF) -->
+          <div class="hikmet-card" id="hikmetCard">
+            <!-- Üst Başlık & Sekmeler -->
+            <div class="hikmet-header">
+              <div class="hikmet-title-group">
+                <div class="hikmet-badge">
+                  <i class="fa-solid fa-book-quran"></i>
+                  <span>GÜNÜN HİKMETİ</span>
+                </div>
+                <span class="hikmet-date-tag" id="hikmetDateTag">Günün Öğüdü</span>
               </div>
+
+              <!-- Sekme Butonları -->
+              <div class="hikmet-tabs-nav" role="tablist">
+                <button class="hikmet-tab-btn active" id="tabAyetBtn" role="tab" aria-selected="true" onclick="APP_MODULE.switchHikmetTab('ayet')">
+                  <i class="fa-solid fa-book-open"></i> Âyet-i Kerîme
+                </button>
+                <button class="hikmet-tab-btn" id="tabHadisBtn" role="tab" aria-selected="false" onclick="APP_MODULE.switchHikmetTab('hadis')">
+                  <i class="fa-solid fa-feather-pointed"></i> Hadîs-i Şerîf
+                </button>
+                <button class="hikmet-tab-btn" id="tabDualBtn" role="tab" aria-selected="false" onclick="APP_MODULE.switchHikmetTab('dual')">
+                  <i class="fa-solid fa-table-columns"></i> İkisi Bir Arada
+                </button>
+              </div>
+            </div>
+
+            <!-- İçerik Alanı -->
+            <div class="hikmet-body" id="hikmetBody">
+              <!-- Dinamik olarak JS tarafından doldurulacaktır -->
+            </div>
+
+            <!-- Alt Bilgi & Gezinme Çubuğu -->
+            <div class="hikmet-footer">
+              <div class="hikmet-counter" id="hikmetCounter">
+                <i class="fa-regular fa-compass"></i> Hikmet 1 / 10
+              </div>
+              
+              <div class="hikmet-actions">
+                <button class="hikmet-nav-btn" onclick="APP_MODULE.prevHikmet()" title="Önceki Hikmet">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="hikmet-nav-btn" onclick="APP_MODULE.randomHikmet()" title="Farklı Bir Hikmet Getir">
+                  <i class="fa-solid fa-shuffle"></i>
+                </button>
+                <button class="hikmet-nav-btn" onclick="APP_MODULE.nextHikmet()" title="Sonraki Hikmet">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <button class="hikmet-nav-btn copy-btn" id="btnCopyHikmet" onclick="APP_MODULE.copyHikmetText()" title="Metni Kopyala">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Kiosk / TV için Canlı İlerleme Çubuğu -->
+            <div class="hikmet-progress-bar" id="hikmetProgressBar">
+              <div class="hikmet-progress-fill" id="hikmetProgressFill"></div>
             </div>
           </div>
 
@@ -2033,7 +2428,7 @@
           if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen().catch(() => {});
             btn.innerHTML = '<i class="fa-solid fa-compress"></i>';
-            btn.title = 'Tam Ekrandan Çık';
+            btn.title = 'Tam Ekrandan ��k';
           } else {
             if (document.exitFullscreen) {
               document.exitFullscreen().catch(() => {});
@@ -2071,6 +2466,360 @@
         }
       }
 
+      // ==========================================
+      // GÜNÜN HİKMET KÖŞESİ (ÂYET-İ KERÎME VE HADÎS-İ ŞERÎF)
+      // ==========================================
+      const HIKMET_COLLECTION = [
+      {
+            "topic": "İlim ve İrfan",
+            "reflection": "İlim tahsil etmek, kula iki cihanda da izzet ve yüksek mertebe kazandırır.",
+            "ayet": {
+                  "arabic": "يَرْفَعِ اللّٰهُ الَّذ۪ينَ اٰمَنُوا مِنْكُمْ وَالَّذ۪ينَ اُو۫تُوا الْعِلْمَ دَرَجَاتٍۜ",
+                  "turkish": "Allah, içinizden îmân edenlerin ve kendilerine ilim verilenlerin derecelerini yükseltir.",
+                  "source": "Mücâdele Sûresi, 11. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "مَنْ سَلَكَ طَرِيقاً يَلْتَمِسُ فِيهِ عِلْماً سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقاً إِلَى الْجَنَّةِ",
+                  "turkish": "Kim ilim tahsil etmek için bir yola çıkarsa, Allah Teâlâ ona cennetin yolunu kolaylaştırır.",
+                  "source": "Sahîh-i Müslim, Zikir, 39; Ebû Dâvûd, İlim, 1"
+            }
+      },
+      {
+            "topic": "Sabır ve Namaz",
+            "reflection": "Karşılaşılan her zorlukta müminin sığınağı namaz, kalkanı ise sabırdır.",
+            "ayet": {
+                  "arabic": "يَٓا اَيُّهَا الَّذ۪ينَ اٰمَنُوا اسْتَع۪ينُوا بِالصَّبْرِ وَالصَّلٰوةِۜ اِنَّ اللّٰهَ مَعَ الصَّابِر۪ينَ",
+                  "turkish": "Ey îmân edenler! Sabır ve namaz ile Allah'tan yardım isteyin. Muhakkak ki Allah sabredenlerle beraberdir.",
+                  "source": "Bakara Sûresi, 153. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "الصَّلاَةُ عِمَادُ الدِّينِ، فَمَنْ أَقَامَهَا فَقَدْ أَقَامَ الدِّينَ",
+                  "turkish": "Namaz dinin direğidir; kim onu dosdoğru kılarsa dinini ikame etmiş (ayakta tutmuş) olur.",
+                  "source": "Beyhakî, Şuabü'l-Îmân, III, 39; Aclûnî, Keşfü'l-Hafâ, II, 31"
+            }
+      },
+      {
+            "topic": "İhlas ve Niyet",
+            "reflection": "İhlas ile yapılan küçük bir amel, riyasız niyetle dağlar gibi sevaba vesile olur.",
+            "ayet": {
+                  "arabic": "وَمَٓا اُمِرُٓوا اِلَّا لِيَعْبُdُوا اللّٰهَ مُخْلِص۪ينَ لَهُ الدّ۪ينَ حُنَفَٓاءَ",
+                  "turkish": "Halbuki onlara, ancak dini yalnız O'na has kılarak, dosdoğru bir şekilde Allah'a ibadet etmeleri emrolunmuştu.",
+                  "source": "Beyyine Sûresi, 5. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+                  "turkish": "Ameller ancak niyetlere göredir ve herkesin niyet ettiği ne ise eline geçecek olan odur.",
+                  "source": "Sahîh-i Buhârî, Bed'ü'l-Vahy, 1; Sahîh-i Müslim, İmâre, 155"
+            }
+      },
+      {
+            "topic": "Kardeşlik ve Muhabbet",
+            "reflection": "Yurt hayatının bereketi, kardeşlik hukukuna ve hürmete riayet etmekle artar.",
+            "ayet": {
+                  "arabic": "اِنَّمَا الْمُؤْمِنُونَ اِخْوَةٌ فَاَصْلِحُوا بَيْنَ اَخَوَيْكُمْ وَاتَّقُوا اللّٰهَ لَعَلَّكُمْ تُرْحَمُونَ",
+                  "turkish": "Müminler ancak kardeştirler. Öyleyse kardeşlerinizin arasını düzeltin ve Allah'a karşı gelmekten sakının ki merhamete nail olasınız.",
+                  "source": "Hucurât Sûresi, 10. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "الْمُسْلِمُ أَخُو الْمُسْلِمِ لاَ يَظْلِمُهُ وَلاَ يُسْلِمُهُ",
+                  "turkish": "Müslüman Müslümanın kardeşidir; ona zulmetmez ve onu asla yalnız başına tehlikeye terk etmez.",
+                  "source": "Sahîh-i Buhârî, Mezâlim, 3; Sahîh-i Müslim, Birr, 58"
+            }
+      },
+      {
+            "topic": "Kur'ân-ı Kerîm ve Tilavet",
+            "reflection": "Mescidde okunan hatimler ve vazifeler, ömrün en bereketli ve nurlu dakikalarıdır.",
+            "ayet": {
+                  "arabic": "اَلَّذ۪ينَ اٰتَيْنَاهُمُ الْكِتَابَ يَتْلُونَهُ حَقَّ تِلاَوَتِه۪ۜ اُو۫لٰٓئِكَ يُؤْمِنُونَ بِه۪ۜ",
+                  "turkish": "Kendilerine kitap verdiğimiz kimseler, onu hakkını vererek okurlar. İşte onlar ona hakikaten îmân edenlerdir.",
+                  "source": "Bakara Sûresi, 121. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+                  "turkish": "Sizin en hayırlınız, Kur'ân-ı Kerîm'i öğrenen ve onu başkalarına öğreteninizdir.",
+                  "source": "Sahîh-i Buhârî, Fezâilü'l-Kur'ân, 21; Tirmizî, Sevâb, 15"
+            }
+      },
+      {
+            "topic": "Zamanın Kıymeti",
+            "reflection": "Müminin lügatinde boş vakit yoktur; bir hayrı tamamlayınca diğer hayra koşmak vardır.",
+            "ayet": {
+                  "arabic": "فَاِذَا فَرَغْتَ فَانْصَبْۙ وَاِلٰى رَبِّكَ فَارْغَبْ",
+                  "turkish": "Öyleyse, bir işi bitirince hemen diğerine koyul ve yalnız Rabbine yönelip O'na rağbet et.",
+                  "source": "İnşirâh Sûresi, 7-8. Âyet-i Kerîmeler"
+            },
+            "hadis": {
+                  "arabic": "نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ: الصِّحَّةُ وَالْفَرَاغُ",
+                  "turkish": "İki büyük nimet vardır ki, insanların çoğu bunların kıymetini bilmeyip aldanmıştır: Sağlık ve boş vakit.",
+                  "source": "Sahîh-i Buhârî, Rikâk, 1; Sünen-i Tirmizî, Zühd, 1"
+            }
+      },
+      {
+            "topic": "Güzel Ahlak ve Edep",
+            "reflection": "İlim edeple taçlanmadıkça sahibine ağırlık olur; güzellik ancak güzel ahlaktadır.",
+            "ayet": {
+                  "arabic": "وَلَا تَسْتَوِي الْحَسَنَةُ وَلَا السَّيِّئَةُۜ اِدْفَعْ بِالَّت۪ي هِيَ اَحْسَنُ",
+                  "turkish": "İyilikle kötülük bir olmaz. Sen kötülüğü en güzel olanla sav; bir de bakarsın ki aranızda düşmanlık bulunan kimse sımsıcak bir dost oluvermiştir.",
+                  "source": "Fussilet Sûresi, 34. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "إِنَّ مِنْ أَحَبِّكُمْ إِلَيَّ وَأَقْرَبِكُمْ مِنِّي مَجْلِساً يَوْمَ الْقِيَامَةِ أَحَاسِنَكُمْ أَخْلاَقاً",
+                  "turkish": "Kıyamet gününde bana en sevimli olanınız ve makamı bana en yakın bulunanınız, ahlakı en güzel olanınızdır.",
+                  "source": "Sünen-i Tirmizî, Birr ve Sıla, 71"
+            }
+      },
+      {
+            "topic": "Tebessüm ve İyilik",
+            "reflection": "Sabah mescide veya derse girerken kardeşine bir tebessüm, gönülleri muhabbetle fetheder.",
+            "ayet": {
+                  "arabic": "وَقُولُوا لِلنَّاسِ حُسْنًا وَاَق۪يمُوا الصَّلٰوةَ",
+                  "turkish": "İnsanlara güzel ve tatlı söz söyleyin, namazı dosdoğru kılın.",
+                  "source": "Bakara Sûresi, 83. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ",
+                  "turkish": "Kardeşinin yüzüne tebessüm etmen senin için bir sadakadır.",
+                  "source": "Sünen-i Tirmizî, Birr ve Sıla, 36"
+            }
+      },
+      {
+            "topic": "İnsanlara Faydalı Olmak",
+            "reflection": "Yurt arkadaşının dersine yardım etmek ve yükünü hafifletmek en kıymetli amellerdendir.",
+            "ayet": {
+                  "arabic": "وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوٰىۖ وَلَا تَعَاوَنُوا عَلَى الْاِثْمِ وَالْعُدْوَانِ",
+                  "turkish": "İyilik ve takva (Allah'a saygı) üzerinde yardımlaşın; günah ve düşmanlık üzerine yardımlaşmayın.",
+                  "source": "Mâide Sûresi, 2. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ",
+                  "turkish": "İnsanların en hayırlısı, insanlara en çok faydası ve iyiliği dokunandır.",
+                  "source": "Taberânî, el-Mu'cemü'l-Evsat, VI, 58; Beyhakî"
+            }
+      },
+      {
+            "topic": "İstikamet ve Doğruluk",
+            "reflection": "En büyük keramet ve muvaffakiyet, her şartta istikamet üzere dosdoğru olabilmektir.",
+            "ayet": {
+                  "arabic": "فَاسْتَقِمْ كَمَٓا اُمِرْتَ وَمَنْ تَابَ مَعَكَ",
+                  "turkish": "Emrolunduğun gibi dosdoğru ol! Seninle beraber tövbe edenler de öyle olsunlar.",
+                  "source": "Hûd Sûresi, 112. Âyet-i Kerîme"
+            },
+            "hadis": {
+                  "arabic": "قُلْ آمَنْتُ بِاللَّهِ ثُمَّ اسْتَقِمْ",
+                  "turkish": "De ki: Allah'a inandım; sonra da her işinde dosdoğru ve istikamet üzere ol!",
+                  "source": "Sahîh-i Müslim, Îmân, 62; Sünen-i Tirmizî, Zühd, 61"
+            }
+      }
+];
+
+      let activeHikmetIndex = 0;
+      let activeHikmetTab = 'ayet'; // 'ayet', 'hadis', 'dual'
+      let hikmetProgressTimer = null;
+      let hikmetProgressPercent = 0;
+      const HIKMET_CYCLE_DURATION = 15000;
+
+      function getTodayHikmetIndex() {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+        const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+        return dayOfYear % HIKMET_COLLECTION.length;
+      }
+
+      function initHikmetSection() {
+        activeHikmetIndex = getTodayHikmetIndex();
+        renderHikmet();
+        startHikmetAutoCycle();
+
+        const card = document.getElementById('hikmetCard');
+        if (card) {
+          card.addEventListener('mouseenter', pauseHikmetAutoCycle);
+          card.addEventListener('mouseleave', startHikmetAutoCycle);
+          card.addEventListener('touchstart', pauseHikmetAutoCycle, { passive: true });
+        }
+      }
+
+      function renderHikmet() {
+        const item = HIKMET_COLLECTION[activeHikmetIndex];
+        if (!item) return;
+
+        const counterEl = document.getElementById('hikmetCounter');
+        const dateTagEl = document.getElementById('hikmetDateTag');
+        if (counterEl) {
+          counterEl.innerHTML = '<i class="fa-regular fa-compass"></i> Hikmet ' + (activeHikmetIndex + 1) + ' / ' + HIKMET_COLLECTION.length;
+        }
+        if (dateTagEl) {
+          dateTagEl.textContent = item.topic;
+        }
+
+        const tabAyet = document.getElementById('tabAyetBtn');
+        const tabHadis = document.getElementById('tabHadisBtn');
+        const tabDual = document.getElementById('tabDualBtn');
+        [tabAyet, tabHadis, tabDual].forEach(b => { if (b) b.classList.remove('active'); });
+
+        if (activeHikmetTab === 'ayet' && tabAyet) tabAyet.classList.add('active');
+        else if (activeHikmetTab === 'hadis' && tabHadis) tabHadis.classList.add('active');
+        else if (activeHikmetTab === 'dual' && tabDual) tabDual.classList.add('active');
+
+        const bodyEl = document.getElementById('hikmetBody');
+        if (!bodyEl) return;
+
+        if (activeHikmetTab === 'ayet') {
+          bodyEl.innerHTML = 
+            '<div class="hikmet-single-view">' +
+              '<div class="hikmet-type-indicator">' +
+                '<i class="fa-solid fa-book-open"></i> GÜNÜN ÂYET-İ KERÎMESİ' +
+              '</div>' +
+              '<div class="hikmet-arabic-wrap">' +
+                '<div class="hikmet-arabic-text" dir="rtl">' + item.ayet.arabic + '</div>' +
+              '</div>' +
+              '<div class="hikmet-turkish-wrap">' +
+                '<div class="hikmet-turkish-text">' + item.ayet.turkish + '</div>' +
+              '</div>' +
+              '<div class="hikmet-meta-row">' +
+                '<div class="hikmet-source-tag">' +
+                  '<i class="fa-solid fa-bookmark text-gold-400"></i> ' + item.ayet.source +
+                '</div>' +
+              '</div>' +
+              '<div class="hikmet-reflection-box">' +
+                '<i class="fa-solid fa-lightbulb text-gold-400"></i>' +
+                '<span><strong>Tefekkür:</strong> ' + item.reflection + '</span>' +
+              '</div>' +
+            '</div>';
+        } else if (activeHikmetTab === 'hadis') {
+          bodyEl.innerHTML = 
+            '<div class="hikmet-single-view">' +
+              '<div class="hikmet-type-indicator">' +
+                '<i class="fa-solid fa-feather-pointed"></i> GÜNÜN HADÎS-İ ŞERÎFİ' +
+              '</div>' +
+              '<div class="hikmet-arabic-wrap">' +
+                '<div class="hikmet-arabic-text" dir="rtl">' + item.hadis.arabic + '</div>' +
+              '</div>' +
+              '<div class="hikmet-turkish-wrap">' +
+                '<div class="hikmet-turkish-text">' + item.hadis.turkish + '</div>' +
+              '</div>' +
+              '<div class="hikmet-meta-row">' +
+                '<div class="hikmet-source-tag">' +
+                  '<i class="fa-solid fa-bookmark text-gold-400"></i> ' + item.hadis.source +
+                '</div>' +
+              '</div>' +
+              '<div class="hikmet-reflection-box">' +
+                '<i class="fa-solid fa-lightbulb text-gold-400"></i>' +
+                '<span><strong>Tefekkür:</strong> ' + item.reflection + '</span>' +
+              '</div>' +
+            '</div>';
+        } else {
+          bodyEl.innerHTML = 
+            '<div class="hikmet-dual-grid">' +
+              '<div class="hikmet-mini-card">' +
+                '<div class="hikmet-type-indicator">' +
+                  '<i class="fa-solid fa-book-open"></i> ÂYET-İ KERÎME' +
+                '</div>' +
+                '<div class="hikmet-arabic-text" dir="rtl">' + item.ayet.arabic + '</div>' +
+                '<div class="hikmet-turkish-text">' + item.ayet.turkish + '</div>' +
+                '<div class="hikmet-source-tag" style="margin: 0 auto;">' +
+                  '<i class="fa-solid fa-bookmark text-gold-400"></i> ' + item.ayet.source +
+                '</div>' +
+              '</div>' +
+              '<div class="hikmet-mini-card">' +
+                '<div class="hikmet-type-indicator">' +
+                  '<i class="fa-solid fa-feather-pointed"></i> HADÎS-İ ŞERÎF' +
+                '</div>' +
+                '<div class="hikmet-arabic-text" dir="rtl">' + item.hadis.arabic + '</div>' +
+                '<div class="hikmet-turkish-text">' + item.hadis.turkish + '</div>' +
+                '<div class="hikmet-source-tag" style="margin: 0 auto;">' +
+                  '<i class="fa-solid fa-bookmark text-gold-400"></i> ' + item.hadis.source +
+                '</div>' +
+              '</div>' +
+            '</div>';
+        }
+      }
+
+      function switchHikmetTab(tab) {
+        activeHikmetTab = tab;
+        renderHikmet();
+        resetHikmetProgress();
+      }
+
+      function nextHikmet() {
+        activeHikmetIndex = (activeHikmetIndex + 1) % HIKMET_COLLECTION.length;
+        renderHikmet();
+        resetHikmetProgress();
+      }
+
+      function prevHikmet() {
+        activeHikmetIndex = (activeHikmetIndex - 1 + HIKMET_COLLECTION.length) % HIKMET_COLLECTION.length;
+        renderHikmet();
+        resetHikmetProgress();
+      }
+
+      function randomHikmet() {
+        let nextIdx = activeHikmetIndex;
+        while (nextIdx === activeHikmetIndex && HIKMET_COLLECTION.length > 1) {
+          nextIdx = Math.floor(Math.random() * HIKMET_COLLECTION.length);
+        }
+        activeHikmetIndex = nextIdx;
+        renderHikmet();
+        resetHikmetProgress();
+      }
+
+      function copyHikmetText() {
+        const item = HIKMET_COLLECTION[activeHikmetIndex];
+        if (!item) return;
+
+        let text = '';
+        if (activeHikmetTab === 'ayet') {
+          text = '📖 Âyet-i Kerîme:\n' + item.ayet.arabic + '\n\n"' + item.ayet.turkish + '"\n(' + item.ayet.source + ')\n\n💡 Tefekkür: ' + item.reflection + '\n— Yeşilpelit Öğrenci Yurdu';
+        } else if (activeHikmetTab === 'hadis') {
+          text = '🕊️ Hadîs-i Şerîf:\n' + item.hadis.arabic + '\n\n"' + item.hadis.turkish + '"\n(' + item.hadis.source + ')\n\n💡 Tefekkür: ' + item.reflection + '\n— Yeşilpelit Öğrenci Yurdu';
+        } else {
+          text = '📖 Âyet-i Kerîme: "' + item.ayet.turkish + '" (' + item.ayet.source + ')\n\n🕊️ Hadîs-i Şerîf: "' + item.hadis.turkish + '" (' + item.hadis.source + ')\n\n💡 Tefekkür: ' + item.reflection + '\n— Yeşilpelit Öğrenci Yurdu';
+        }
+
+        navigator.clipboard.writeText(text).then(() => {
+          const btn = document.getElementById('btnCopyHikmet');
+          if (btn) {
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check" style="color: #22c55e;"></i>';
+            setTimeout(() => { btn.innerHTML = orig; }, 1500);
+          }
+        }).catch(() => {});
+      }
+
+      function startHikmetAutoCycle() {
+        pauseHikmetAutoCycle();
+        hikmetProgressPercent = 0;
+        const progressEl = document.getElementById('hikmetProgressFill');
+
+        hikmetProgressTimer = setInterval(() => {
+          hikmetProgressPercent += (100 / (HIKMET_CYCLE_DURATION / 100));
+          if (progressEl) progressEl.style.width = Math.min(hikmetProgressPercent, 100) + '%';
+          if (hikmetProgressPercent >= 100) {
+            hikmetProgressPercent = 0;
+            if (activeHikmetTab === 'ayet') {
+              activeHikmetTab = 'hadis';
+            } else if (activeHikmetTab === 'hadis') {
+              activeHikmetTab = 'ayet';
+              activeHikmetIndex = (activeHikmetIndex + 1) % HIKMET_COLLECTION.length;
+            }
+            renderHikmet();
+          }
+        }, 100);
+      }
+
+      function pauseHikmetAutoCycle() {
+        if (hikmetProgressTimer) {
+          clearInterval(hikmetProgressTimer);
+          hikmetProgressTimer = null;
+        }
+      }
+
+      function resetHikmetProgress() {
+        hikmetProgressPercent = 0;
+        const progressEl = document.getElementById('hikmetProgressFill');
+        if (progressEl) progressEl.style.width = '0%';
+      }
+
       function init() {
         // Bugünün gününe göre varsayılan programı belirle
         const todayType = getTodayScheduleType();
@@ -2093,9 +2842,18 @@
         setupKioskMode();
         setupThemeToggle();
         setupPrintAction();
+        initHikmetSection();
       }
 
-      return { init, selectProgram };
+      return { 
+        init, 
+        selectProgram,
+        switchHikmetTab,
+        nextHikmet,
+        prevHikmet,
+        randomHikmet,
+        copyHikmetText
+      };
     })();
 
     // 3. CANLI SENKRONİZASYON (Tüm bağlı TV ve ekranların anında güncellenmesi)

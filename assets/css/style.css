@@ -1055,79 +1055,428 @@ body.dark-mode .current-activity-card {
   border: 1px solid rgba(251, 191, 36, 0.25);
 }
 
-/* Boşaltılan ve Gelecek İçerikler İçin Ayrılan Özel Alan */
-.custom-board-area {
+/* ==========================================================================
+   GÜNÜN HİKMET KÖŞESİ (ÂYET-İ KERÎME VE HADÎS-İ ŞERÎF)
+   ========================================================================== */
+.hikmet-card {
   flex: 1;
   display: flex;
   flex-direction: column;
   background: var(--bg-card);
-  border: 1.5px dashed rgba(21, 128, 61, 0.35);
+  border: 1.5px solid rgba(202, 138, 4, 0.35);
   border-radius: var(--radius-sm);
-  padding: 20px;
-  min-height: 220px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   position: relative;
+  overflow: hidden;
+  min-height: 240px;
   transition: var(--transition);
 }
 
-body.dark-mode .custom-board-area {
-  background: rgba(15, 23, 42, 0.4);
-  border-color: rgba(251, 191, 36, 0.25);
+body.dark-mode .hikmet-card {
+  background: linear-gradient(135deg, rgba(7, 42, 25, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.custom-area-placeholder {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 8px;
-  color: var(--text-muted);
-  padding: 20px;
-}
-
-.custom-area-placeholder i {
-  font-size: 2.2rem;
+/* Arka Plan Zarif Hat Dekoru */
+.hikmet-card::before {
+  content: '﷽';
+  position: absolute;
+  top: 4px;
+  right: 14px;
+  font-family: 'Amiri', serif;
+  font-size: 3.5rem;
   color: var(--gold-500);
-  margin-bottom: 4px;
-  opacity: 0.9;
+  opacity: 0.06;
+  pointer-events: none;
+  line-height: 1;
 }
 
-.custom-area-placeholder h4 {
+body.dark-mode .hikmet-card::before {
+  opacity: 0.12;
+  color: var(--gold-400);
+}
+
+/* Üst Başlık & Sekmeler */
+.hikmet-header {
+  padding: 8px 14px;
+  background: linear-gradient(to right, rgba(7, 42, 25, 0.06), rgba(202, 138, 4, 0.08));
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+body.dark-mode .hikmet-header {
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.hikmet-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hikmet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--brand-900), var(--brand-800));
+  color: var(--gold-300);
+  padding: 3px 10px;
+  border-radius: 999px;
   font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--text-main);
-  margin: 0;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.custom-area-placeholder p {
-  font-size: 0.75rem;
-  color: var(--text-subtle);
-  max-width: 420px;
-  margin: 0;
-  line-height: 1.4;
+.hikmet-badge i {
+  color: var(--gold-400);
+  font-size: 0.8rem;
 }
 
-.custom-area-badge {
+.hikmet-date-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Sekme Butonları */
+.hikmet-tabs-nav {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px;
+  border-radius: 6px;
+  gap: 2px;
+  border: 1px solid var(--border-light);
+}
+
+body.dark-mode .hikmet-tabs-nav {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.hikmet-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: var(--brand-100);
-  color: var(--brand-800);
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--brand-200);
-  margin-top: 6px;
+  transition: all 0.2s ease;
 }
 
-body.dark-mode .custom-area-badge {
-  background: rgba(21, 128, 61, 0.25);
-  color: var(--brand-200);
-  border-color: rgba(74, 222, 128, 0.3);
+.hikmet-tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .hikmet-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hikmet-tab-btn.active {
+  background: var(--brand-800);
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .hikmet-tab-btn.active {
+  background: linear-gradient(135deg, var(--gold-600), var(--gold-500));
+  color: var(--slate-950);
+  font-weight: 800;
+}
+
+/* İçerik Gövdesi */
+.hikmet-body {
+  flex: 1;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  min-height: 160px;
+}
+
+.hikmet-single-view {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  animation: hikmetFadeIn 0.35s ease-out;
+}
+
+@keyframes hikmetFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hikmet-type-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--gold-600);
+  margin-bottom: 2px;
+}
+
+body.dark-mode .hikmet-type-indicator {
+  color: var(--gold-400);
+}
+
+.hikmet-arabic-wrap {
+  position: relative;
+  padding: 4px 10px;
+}
+
+.hikmet-arabic-text {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #064e3b;
+  direction: rtl;
+  text-align: center;
+  letter-spacing: 0.01em;
+  word-spacing: 2px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+body.dark-mode .hikmet-arabic-text {
+  color: var(--gold-300);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.hikmet-turkish-wrap {
+  position: relative;
+  padding: 0 14px;
+}
+
+.hikmet-turkish-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-main);
+  font-style: italic;
+  position: relative;
+}
+
+.hikmet-turkish-text::before {
+  content: '“';
+  font-size: 1.4rem;
+  color: var(--gold-500);
+  font-family: serif;
+  margin-right: 3px;
+  line-height: 0;
+  vertical-align: -3px;
+}
+
+.hikmet-turkish-text::after {
+  content: '”';
+  font-size: 1.4rem;
+  color: var(--gold-500);
+  font-family: serif;
+  margin-left: 3px;
+  line-height: 0;
+  vertical-align: -3px;
+}
+
+.hikmet-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.hikmet-source-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-700);
+  background: rgba(21, 128, 61, 0.1);
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(21, 128, 61, 0.2);
+}
+
+body.dark-mode .hikmet-source-tag {
+  color: var(--gold-300);
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+.hikmet-reflection-box {
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid var(--gold-500);
+  padding: 5px 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+body.dark-mode .hikmet-reflection-box {
+  background: rgba(245, 158, 11, 0.06);
+  color: #cbd5e1;
+}
+
+.hikmet-reflection-box strong {
+  color: var(--gold-600);
+}
+
+body.dark-mode .hikmet-reflection-box strong {
+  color: var(--gold-400);
+}
+
+/* İkisi Bir Arada (Dual View) Düzeni */
+.hikmet-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: stretch;
+  animation: hikmetFadeIn 0.35s ease-out;
+}
+
+@media (max-width: 768px) {
+  .hikmet-dual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hikmet-mini-card {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+body.dark-mode .hikmet-mini-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.hikmet-mini-card .hikmet-arabic-text {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.hikmet-mini-card .hikmet-turkish-text {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+/* Alt Çubuk & Butonlar */
+.hikmet-footer {
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+}
+
+body.dark-mode .hikmet-footer {
+  background: rgba(0, 0, 0, 0.2);
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.hikmet-counter {
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hikmet-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hikmet-nav-btn {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hikmet-nav-btn:hover {
+  background: var(--brand-700);
+  color: white;
+  border-color: var(--brand-600);
+}
+
+body.dark-mode .hikmet-nav-btn:hover {
+  background: var(--gold-500);
+  color: var(--slate-950);
+  border-color: var(--gold-400);
+}
+
+.hikmet-nav-btn.copy-btn:hover {
+  background: #0284c7;
+  border-color: #0369a1;
+  color: white;
+}
+
+/* Canlı İlerleme Çubuğu (Kiosk Auto-cycle) */
+.hikmet-progress-bar {
+  height: 2px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.06);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+body.dark-mode .hikmet-progress-bar {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hikmet-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, var(--brand-500), var(--gold-400));
+  transition: width 0.1s linear;
 }
 
 /* DİĞER DUYURU & YURT YAŞAM KARTLARI */

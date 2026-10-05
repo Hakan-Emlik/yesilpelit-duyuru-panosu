@@ -1,0 +1,142 @@
+[
+  {
+    "topic": "İlim ve İrfan",
+    "reflection": "İlim tahsil etmek, kula iki cihanda da izzet ve yüksek mertebe kazandırır.",
+    "ayet": {
+      "arabic": "يَرْفَعِ اللّٰهُ الَّذ۪ينَ اٰمَنُوا مِنْكُمْ وَالَّذ۪ينَ اُو۫تُوا الْعِلْمَ دَرَجَاتٍۜ",
+      "turkish": "Allah, içinizden îmân edenlerin ve kendilerine ilim verilenlerin derecelerini yükseltir.",
+      "source": "Mücâdele Sûresi, 11. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "مَنْ سَلَكَ طَرِيقاً يَلْتَمِسُ فِيهِ عِلْماً سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقاً إِلَى الْجَنَّةِ",
+      "turkish": "Kim ilim tahsil etmek için bir yola çıkarsa, Allah Teâlâ ona cennetin yolunu kolaylaştırır.",
+      "source": "Sahîh-i Müslim, Zikir, 39; Ebû Dâvûd, İlim, 1"
+    }
+  },
+  {
+    "topic": "Sabır ve Namaz",
+    "reflection": "Karşılaşılan her zorlukta müminin sığınağı namaz, kalkanı ise sabırdır.",
+    "ayet": {
+      "arabic": "يَٓا اَيُّهَا الَّذ۪ينَ اٰمَنُوا اسْتَع۪ينُوا بِالصَّبْرِ وَالصَّلٰوةِۜ اِنَّ اللّٰهَ مَعَ الصَّابِر۪ينَ",
+      "turkish": "Ey îmân edenler! Sabır ve namaz ile Allah'tan yardım isteyin. Muhakkak ki Allah sabredenlerle beraberdir.",
+      "source": "Bakara Sûresi, 153. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "الصَّلاَةُ عِمَادُ الدِّينِ، فَمَنْ أَقَامَهَا فَقَدْ أَقَامَ الدِّينَ",
+      "turkish": "Namaz dinin direğidir; kim onu dosdoğru kılarsa dinini ikame etmiş (ayakta tutmuş) olur.",
+      "source": "Beyhakî, Şuabü'l-Îmân, III, 39; Aclûnî, Keşfü'l-Hafâ, II, 31"
+    }
+  },
+  {
+    "topic": "İhlas ve Niyet",
+    "reflection": "İhlas ile yapılan küçük bir amel, riyasız niyetle dağlar gibi sevaba vesile olur.",
+    "ayet": {
+      "arabic": "وَمَٓا اُمِرُٓوا اِلَّا لِيَعْبُdُوا اللّٰهَ مُخْلِص۪ينَ لَهُ الدّ۪ينَ حُنَفَٓاءَ",
+      "turkish": "Halbuki onlara, ancak dini yalnız O'na has kılarak, dosdoğru bir şekilde Allah'a ibadet etmeleri emrolunmuştu.",
+      "source": "Beyyine Sûresi, 5. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+      "turkish": "Ameller ancak niyetlere göredir ve herkesin niyet ettiği ne ise eline geçecek olan odur.",
+      "source": "Sahîh-i Buhârî, Bed'ü'l-Vahy, 1; Sahîh-i Müslim, İmâre, 155"
+    }
+  },
+  {
+    "topic": "Kardeşlik ve Muhabbet",
+    "reflection": "Yurt hayatının bereketi, kardeşlik hukukuna ve hürmete riayet etmekle artar.",
+    "ayet": {
+      "arabic": "اِنَّمَا الْمُؤْمِنُونَ اِخْوَةٌ فَاَصْلِحُوا بَيْنَ اَخَوَيْكُمْ وَاتَّقُوا اللّٰهَ لَعَلَّكُمْ تُرْحَمُونَ",
+      "turkish": "Müminler ancak kardeştirler. Öyleyse kardeşlerinizin arasını düzeltin ve Allah'a karşı gelmekten sakının ki merhamete nail olasınız.",
+      "source": "Hucurât Sûresi, 10. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "الْمُسْلِمُ أَخُو الْمُسْلِمِ لاَ يَظْلِمُهُ وَلاَ يُسْلِمُهُ",
+      "turkish": "Müslüman Müslümanın kardeşidir; ona zulmetmez ve onu asla yalnız başına tehlikeye terk etmez.",
+      "source": "Sahîh-i Buhârî, Mezâlim, 3; Sahîh-i Müslim, Birr, 58"
+    }
+  },
+  {
+    "topic": "Kur'ân-ı Kerîm ve Tilavet",
+    "reflection": "Mescidde okunan hatimler ve vazifeler, ömrün en bereketli ve nurlu dakikalarıdır.",
+    "ayet": {
+      "arabic": "اَلَّذ۪ينَ اٰتَيْنَاهُمُ الْكِتَابَ يَتْلُونَهُ حَقَّ تِلاَوَتِه۪ۜ اُو۫لٰٓئِكَ يُؤْمِنُونَ بِه۪ۜ",
+      "turkish": "Kendilerine kitap verdiğimiz kimseler, onu hakkını vererek okurlar. İşte onlar ona hakikaten îmân edenlerdir.",
+      "source": "Bakara Sûresi, 121. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+      "turkish": "Sizin en hayırlınız, Kur'ân-ı Kerîm'i öğrenen ve onu başkalarına öğreteninizdir.",
+      "source": "Sahîh-i Buhârî, Fezâilü'l-Kur'ân, 21; Tirmizî, Sevâb, 15"
+    }
+  },
+  {
+    "topic": "Zamanın Kıymeti",
+    "reflection": "Müminin lügatinde boş vakit yoktur; bir hayrı tamamlayınca diğer hayra koşmak vardır.",
+    "ayet": {
+      "arabic": "فَاِذَا فَرَغْتَ فَانْصَبْۙ وَاِلٰى رَبِّكَ فَارْغَبْ",
+      "turkish": "Öyleyse, bir işi bitirince hemen diğerine koyul ve yalnız Rabbine yönelip O'na rağbet et.",
+      "source": "İnşirâh Sûresi, 7-8. Âyet-i Kerîmeler"
+    },
+    "hadis": {
+      "arabic": "نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ: الصِّحَّةُ وَالْفَرَاغُ",
+      "turkish": "İki büyük nimet vardır ki, insanların çoğu bunların kıymetini bilmeyip aldanmıştır: Sağlık ve boş vakit.",
+      "source": "Sahîh-i Buhârî, Rikâk, 1; Sünen-i Tirmizî, Zühd, 1"
+    }
+  },
+  {
+    "topic": "Güzel Ahlak ve Edep",
+    "reflection": "İlim edeple taçlanmadıkça sahibine ağırlık olur; güzellik ancak güzel ahlaktadır.",
+    "ayet": {
+      "arabic": "وَلَا تَسْتَوِي الْحَسَنَةُ وَلَا السَّيِّئَةُۜ اِدْفَعْ بِالَّت۪ي هِيَ اَحْسَنُ",
+      "turkish": "İyilikle kötülük bir olmaz. Sen kötülüğü en güzel olanla sav; bir de bakarsın ki aranızda düşmanlık bulunan kimse sımsıcak bir dost oluvermiştir.",
+      "source": "Fussilet Sûresi, 34. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "إِنَّ مِنْ أَحَبِّكُمْ إِلَيَّ وَأَقْرَبِكُمْ مِنِّي مَجْلِساً يَوْمَ الْقِيَامَةِ أَحَاسِنَكُمْ أَخْلاَقاً",
+      "turkish": "Kıyamet gününde bana en sevimli olanınız ve makamı bana en yakın bulunanınız, ahlakı en güzel olanınızdır.",
+      "source": "Sünen-i Tirmizî, Birr ve Sıla, 71"
+    }
+  },
+  {
+    "topic": "Tebessüm ve İyilik",
+    "reflection": "Sabah mescide veya derse girerken kardeşine bir tebessüm, gönülleri muhabbetle fetheder.",
+    "ayet": {
+      "arabic": "وَقُولُوا لِلنَّاسِ حُسْنًا وَاَق۪يمُوا الصَّلٰوةَ",
+      "turkish": "İnsanlara güzel ve tatlı söz söyleyin, namazı dosdoğru kılın.",
+      "source": "Bakara Sûresi, 83. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ",
+      "turkish": "Kardeşinin yüzüne tebessüm etmen senin için bir sadakadır.",
+      "source": "Sünen-i Tirmizî, Birr ve Sıla, 36"
+    }
+  },
+  {
+    "topic": "İnsanlara Faydalı Olmak",
+    "reflection": "Yurt arkadaşının dersine yardım etmek ve yükünü hafifletmek en kıymetli amellerdendir.",
+    "ayet": {
+      "arabic": "وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوٰىۖ وَلَا تَعَاوَنُوا عَلَى الْاِثْمِ وَالْعُدْوَانِ",
+      "turkish": "İyilik ve takva (Allah'a saygı) üzerinde yardımlaşın; günah ve düşmanlık üzerine yardımlaşmayın.",
+      "source": "Mâide Sûresi, 2. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ",
+      "turkish": "İnsanların en hayırlısı, insanlara en çok faydası ve iyiliği dokunandır.",
+      "source": "Taberânî, el-Mu'cemü'l-Evsat, VI, 58; Beyhakî"
+    }
+  },
+  {
+    "topic": "İstikamet ve Doğruluk",
+    "reflection": "En büyük keramet ve muvaffakiyet, her şartta istikamet üzere dosdoğru olabilmektir.",
+    "ayet": {
+      "arabic": "فَاسْتَقِمْ كَمَٓا اُمِرْتَ وَمَنْ تَابَ مَعَكَ",
+      "turkish": "Emrolunduğun gibi dosdoğru ol! Seninle beraber tövbe edenler de öyle olsunlar.",
+      "source": "Hûd Sûresi, 112. Âyet-i Kerîme"
+    },
+    "hadis": {
+      "arabic": "قُلْ آمَنْتُ بِاللَّهِ ثُمَّ اسْتَقِمْ",
+      "turkish": "De ki: Allah'a inandım; sonra da her işinde dosdoğru ve istikamet üzere ol!",
+      "source": "Sahîh-i Müslim, Îmân, 62; Sünen-i Tirmizî, Zühd, 61"
+    }
+  }
+]
