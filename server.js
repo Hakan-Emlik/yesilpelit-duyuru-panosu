@@ -7,19 +7,21 @@ const { exec } = require('child_process');
 
 let PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-// Fazilet Takvimi Samsun (57) API
-const FAZILET_SAMSUN_URL = 'https://backend.fazilettakvimi.com/content/public/daily?districtId=57&lang=tr';
+// Fazilet Takvimi Samsun Atakum (2025) API
+// Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025
+const FAZILET_ATAKUM_URL = 'https://backend.fazilettakvimi.com/content/public/daily?districtId=2025&lang=tr';
 const CACHE_FILE = path.join(__dirname, 'assets', 'data', 'samsun_vakitler.json');
+const ATAKUM_CACHE_FILE = path.join(__dirname, 'assets', 'data', 'atakum_vakitler.json');
 
 let cachedFaziletData = null;
 let lastFetchTime = 0;
 
 function fetchFaziletData(callback) {
-  https.get(FAZILET_SAMSUN_URL, {
+  https.get(FAZILET_ATAKUM_URL, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       'Accept': 'application/json, text/plain, */*',
-      'Referer': 'https://namaz-vakitleri.fazilettakvimi.com/samsun/57'
+      'Referer': 'https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025'
     }
   }, (res) => {
     if (res.statusCode !== 200) {
@@ -33,9 +35,11 @@ function fetchFaziletData(callback) {
         if (parsed && parsed.success) {
           cachedFaziletData = parsed;
           lastFetchTime = Date.now();
-          // Önbellek dosyasına da yaz
+          // Önbellek dosyalarına da yaz
+          const jsonStr = JSON.stringify(parsed, null, 2);
           fs.mkdir(path.dirname(CACHE_FILE), { recursive: true }, () => {
-            fs.writeFile(CACHE_FILE, JSON.stringify(parsed, null, 2), 'utf8', () => { });
+            fs.writeFile(CACHE_FILE, jsonStr, 'utf8', () => { });
+            fs.writeFile(ATAKUM_CACHE_FILE, jsonStr, 'utf8', () => { });
           });
           return callback(null, parsed);
         }
@@ -185,7 +189,7 @@ function watchForChanges() {
   ];
 
   const trigger = (filename) => {
-    if (filename && (filename.includes('samsun_vakitler.json') || filename.includes('version.json'))) {
+    if (filename && (filename.includes('vakitler.json') || filename.includes('version.json'))) {
       return;
     }
     if (watchDebounce) clearTimeout(watchDebounce);
@@ -207,8 +211,13 @@ function startServer(portToTry) {
   const server = http.createServer((req, res) => {
     let reqPath = decodeURI(req.url.split('?')[0]);
 
-    // Fazilet Takvimi Samsun (57) API rotası
-    if (reqPath === '/api/fazilet/samsun' || reqPath === '/api/prayer/samsun') {
+    // Fazilet Takvimi Samsun Atakum (2025) API rotası
+    if (
+      reqPath === '/api/fazilet/atakum' ||
+      reqPath === '/api/fazilet/samsun' ||
+      reqPath === '/api/prayer/atakum' ||
+      reqPath === '/api/prayer/samsun'
+    ) {
       handleFaziletApiRequest(req, res);
       return;
     }
@@ -308,10 +317,10 @@ function startServer(portToTry) {
     console.log(`   (Sayfa zaten açıksa F5 / Yenile yapınız)`);
     console.log(`======================================================`);
 
-    // Fazilet Takvimi Samsun namaz vakitlerini başlangıçta senkronize et
+    // Fazilet Takvimi Samsun Atakum namaz vakitlerini başlangıçta senkronize et
     fetchFaziletData((err, data) => {
       if (!err && data && data.success) {
-        console.log(`🕌 [Fazilet Takvimi] Samsun (57) namaz vakitleri başarıyla senkronize edildi.`);
+        console.log(`🕌 [Fazilet Takvimi] Samsun Atakum (2025) namaz vakitleri başarıyla senkronize edildi.`);
       } else {
         console.log(`⚠️ [Fazilet Takvimi] Canlı bağlantı bekleniyor, yerel önbellek devrede.`);
       }
@@ -320,7 +329,7 @@ function startServer(portToTry) {
     // Her 30 dakikada bir arka planda vakitleri tazele
     setInterval(() => {
       fetchFaziletData((err) => {
-        if (!err) console.log(`🕌 [Fazilet Takvimi] Samsun (57) vakitleri periyodik olarak güncellendi.`);
+        if (!err) console.log(`🕌 [Fazilet Takvimi] Samsun Atakum (2025) vakitleri periyodik olarak güncellendi.`);
       });
     }, 30 * 60 * 1000);
 

@@ -3,6 +3,13 @@ const path = require('path');
 
 const hikmetPath = path.join(__dirname, '../assets/data/hikmet.json');
 const hikmetData = JSON.parse(fs.readFileSync(hikmetPath, 'utf8'));
+const faziletPath = path.join(__dirname, '../assets/data/samsun_vakitler.json');
+let faziletData = null;
+try {
+  faziletData = JSON.parse(fs.readFileSync(faziletPath, 'utf8'));
+} catch (e) {
+  console.log('Fazilet data file not found, skipping embedded data');
+}
 const logoPath = path.join(__dirname, '../assets/images/logo.png');
 const posterWeekendPath = path.join(__dirname, '../assets/images/haftasonu-programi.jpg');
 const posterWeekdayPath = path.join(__dirname, '../assets/images/haftaici-programi.jpg');
@@ -1596,14 +1603,14 @@ const htmlContent = `<!DOCTYPE html>
             <i class="fa-solid fa-mosque"></i>
           </div>
           <div class="prayer-title-text">
-            <h2>SAMSUN NAMAZ VAKİTLERİ</h2>
+            <h2>SAMSUN ATAKUM NAMAZ VAKİTLERİ</h2>
             <div class="prayer-source-row">
-              <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" target="_blank" rel="noopener noreferrer" class="source-link-tag">
+              <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025" target="_blank" rel="noopener noreferrer" class="source-link-tag">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 <span>Fazilet Takvimi</span>
               </a>
               <span class="source-separator">·</span>
-              <span class="source-temkin" id="prayerLiveBadge"><i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun (57)</span>
+              <span class="source-temkin" id="prayerLiveBadge"><i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun Atakum Canlı</span>
             </div>
           </div>
         </div>
@@ -1633,13 +1640,13 @@ const htmlContent = `<!DOCTYPE html>
       <div class="fazilet-embed-drawer" id="faziletDrawer">
         <div class="fazilet-iframe-container">
           <iframe 
-            src="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" 
-            title="Fazilet Takvimi Samsun (57) Günlük Namaz Vakitleri Resmi Penceresi"
+            src="https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025" 
+            title="Fazilet Takvimi Samsun Atakum (2025) Günlük Namaz Vakitleri Resmi Penceresi"
             loading="lazy">
           </iframe>
         </div>
         <p style="font-size: 0.78rem; color: var(--text-subtle); margin-top: 10px; text-align: right;">
-          Doğrudan bağlantı: <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); font-weight: 700;">namaz-vakitleri.fazilettakvimi.com/samsun/57</a>
+          Doğrudan bağlantı: <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); font-weight: 700;">namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025</a>
         </p>
       </div>
 
@@ -1836,7 +1843,7 @@ const htmlContent = `<!DOCTYPE html>
     <div class="footer-inner">
       <span><strong>Yeşilpelit Öğrenci Yurdu Duyuru Panosu</strong> — İlim, Maneviyat ve Medeniyet Şuuruyla</span>
       <span>•</span>
-      <span>Namaz Vakitleri: <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun/57" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); text-decoration: underline;">Fazilet Takvimi (Samsun)</a></span>
+      <span>Namaz Vakitleri: <a href="https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025" target="_blank" rel="noopener noreferrer" style="color: var(--gold-600); text-decoration: underline;">Fazilet Takvimi (Samsun Atakum)</a></span>
     </div>
   </footer>
 
@@ -1844,17 +1851,19 @@ const htmlContent = `<!DOCTYPE html>
        JAVASCRIPT MANTIĞI (TAM ENTEGRE)
        ========================================== -->
   <script>
-    // 1. SAMSUN NAMAZ VAKİTLERİ (FAZİLET TAKVİMİ SAMSUN - 57)
-    // Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun/57
+    // 1. SAMSUN ATAKUM NAMAZ VAKİTLERİ (FAZİLET TAKVİMİ SAMSUN ATAKUM - 2025)
+    // Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025
+    const EMBEDDED_FAZILET_DATA = ${faziletData ? JSON.stringify(faziletData) : 'null'};
+
     const PRAYER_MODULE = (() => {
       let prayerTimes = {
-        name: 'Samsun',
-        fajr: '04:45',
-        sunrise: '06:25',
-        dhuhr: '12:34',
-        asr: '15:50',
-        maghrib: '18:22',
-        isha: '19:50'
+        name: 'Samsun Atakum',
+        fajr: '04:58',
+        sunrise: '06:37',
+        dhuhr: '12:31',
+        asr: '15:37',
+        maghrib: '18:04',
+        isha: '19:33'
       };
 
       function applyFaziletData(data) {
@@ -1880,14 +1889,15 @@ const htmlContent = `<!DOCTYPE html>
           return new Intl.DateTimeFormat('tr-TR', {
             hour: '2-digit',
             minute: '2-digit',
-            hour12: false,
+            hourCycle: 'h23',
             timeZone: tz
           }).format(d);
         };
 
         if (dayRecord) {
+          const bolge = data.bolge_adi ? (data.bolge_adi.toLowerCase().includes('atakum') ? 'Samsun Atakum' : \`Samsun / \${data.bolge_adi}\`) : 'Samsun Atakum';
           prayerTimes = {
-            name: data.bolge_adi || 'Samsun',
+            name: bolge,
             fajr: formatTimeStr(dayRecord.imsak?.[0]?.tarih) || prayerTimes.fajr,
             sunrise: formatTimeStr(dayRecord.gunes?.[0]?.tarih) || prayerTimes.sunrise,
             dhuhr: formatTimeStr(dayRecord.ogle?.[0]?.tarih) || prayerTimes.dhuhr,
@@ -1909,14 +1919,15 @@ const htmlContent = `<!DOCTYPE html>
 
           const badge = document.getElementById('prayerLiveBadge');
           if (badge) {
-            badge.innerHTML = '<i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun (57) Canlı';
+            badge.innerHTML = '<i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun Atakum Canlı';
           }
 
           try {
-            localStorage.setItem('fazilet_samsun_vakitleri', JSON.stringify({
+            localStorage.setItem('fazilet_atakum_vakitleri', JSON.stringify({
               date: todayStr,
               times: prayerTimes,
-              bolge: data.bolge_adi || 'Samsun',
+              districtId: 2025,
+              bolge: bolge,
               timestamp: Date.now()
             }));
           } catch (e) {}
@@ -1929,7 +1940,7 @@ const htmlContent = `<!DOCTYPE html>
 
       async function fetchLivePrayerTimes() {
         try {
-          const rawStored = localStorage.getItem('fazilet_samsun_vakitleri');
+          const rawStored = localStorage.getItem('fazilet_atakum_vakitleri');
           if (rawStored) {
             const stored = JSON.parse(rawStored);
             const todayStr = new Intl.DateTimeFormat('en-CA', {
@@ -1947,9 +1958,13 @@ const htmlContent = `<!DOCTYPE html>
         } catch (e) {}
 
         const endpoints = [
+          '/api/fazilet/atakum',
           '/api/fazilet/samsun',
+          'http://localhost:3000/api/fazilet/atakum',
           'http://localhost:3000/api/fazilet/samsun',
+          'assets/data/atakum_vakitler.json',
           'assets/data/samsun_vakitler.json',
+          './assets/data/atakum_vakitler.json',
           './assets/data/samsun_vakitler.json'
         ];
 
@@ -1959,15 +1974,14 @@ const htmlContent = `<!DOCTYPE html>
             if (res.ok) {
               const data = await res.json();
               if (applyFaziletData(data)) {
-                console.log('[Fazilet Takvimi] Samsun (57) vakitleri ' + ep + ' üzerinden güncellendi.');
+                console.log('[Fazilet Takvimi] Samsun Atakum (2025) vakitleri ' + ep + ' üzerinden güncellendi.');
                 return;
               }
             }
           } catch (err) {}
         }
 
-
-        console.log('[Fazilet Takvimi] Samsun yerel temkinli vakitleri devrede.');
+        console.log('[Fazilet Takvimi] Samsun Atakum yerel temkinli vakitleri devrede.');
       }
 
       function getTimesArray() {
@@ -2062,6 +2076,9 @@ const htmlContent = `<!DOCTYPE html>
 
       function init() {
         setupDrawer();
+        if (typeof EMBEDDED_FAZILET_DATA !== 'undefined' && EMBEDDED_FAZILET_DATA) {
+          applyFaziletData(EMBEDDED_FAZILET_DATA);
+        }
         renderPrayerCards();
         fetchLivePrayerTimes();
 

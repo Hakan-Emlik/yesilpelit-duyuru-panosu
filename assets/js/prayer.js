@@ -1,19 +1,19 @@
 /**
- * YEŞİLPELİT ÖĞRENCİ YURDU - SAMSUN NAMAZ VAKİTLERİ VE FAZİLET TAKVİMİ MODÜLÜ
- * Kaynak: https://fazilettakvimi.com/namaz-vakitleri/
+ * YEŞİLPELİT ÖĞRENCİ YURDU - SAMSUN ATAKUM NAMAZ VAKİTLERİ VE FAZİLET TAKVİMİ MODÜLÜ
+ * Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025
  */
 
 const PRAYER_MODULE = (() => {
-  // Samsun İli Temkinli Namaz Vakitleri (Fazilet Takvimi Resmi Kaynağı)
-  // Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun/57
+  // Samsun Atakum İlçesi Temkinli Namaz Vakitleri (Fazilet Takvimi Resmi Kaynağı)
+  // Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025
   let prayerTimes = {
-    name: 'Samsun',
-    fajr: '04:45',
-    sunrise: '06:25',
-    dhuhr: '12:34',
-    asr: '15:50',
-    maghrib: '18:22',
-    isha: '19:50'
+    name: 'Samsun Atakum',
+    fajr: '04:58',
+    sunrise: '06:37',
+    dhuhr: '12:31',
+    asr: '15:37',
+    maghrib: '18:04',
+    isha: '19:33'
   };
 
   // Fazilet Takvimi API verisini parse edip kartlara uygular
@@ -42,14 +42,15 @@ const PRAYER_MODULE = (() => {
       return new Intl.DateTimeFormat('tr-TR', {
         hour: '2-digit',
         minute: '2-digit',
-        hour12: false,
+        hourCycle: 'h23',
         timeZone: tz
       }).format(d);
     };
 
     if (dayRecord) {
+      const bolge = data.bolge_adi ? (data.bolge_adi.toLowerCase().includes('atakum') ? 'Samsun Atakum' : `Samsun / ${data.bolge_adi}`) : 'Samsun Atakum';
       prayerTimes = {
-        name: data.bolge_adi || 'Samsun',
+        name: bolge,
         fajr: formatTimeStr(dayRecord.imsak?.[0]?.tarih) || prayerTimes.fajr,
         sunrise: formatTimeStr(dayRecord.gunes?.[0]?.tarih) || prayerTimes.sunrise,
         dhuhr: formatTimeStr(dayRecord.ogle?.[0]?.tarih) || prayerTimes.dhuhr,
@@ -72,14 +73,15 @@ const PRAYER_MODULE = (() => {
       // Canlı senkronizasyon etiketini güncelle
       const badge = document.getElementById('prayerLiveBadge');
       if (badge) {
-        badge.innerHTML = '<i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun (57) Canlı';
+        badge.innerHTML = '<i class="fa-solid fa-circle-check text-gold-400"></i> Fazilet Takvimi Samsun Atakum Canlı';
       }
 
       try {
-        localStorage.setItem('fazilet_samsun_vakitleri', JSON.stringify({
+        localStorage.setItem('fazilet_atakum_vakitleri', JSON.stringify({
           date: todayStr,
           times: prayerTimes,
-          bolge: data.bolge_adi || 'Samsun',
+          districtId: 2025,
+          bolge: bolge,
           timestamp: Date.now()
         }));
       } catch (e) {}
@@ -90,11 +92,11 @@ const PRAYER_MODULE = (() => {
     return false;
   }
 
-  // https://namaz-vakitleri.fazilettakvimi.com/samsun/57 kaynağından vakitleri çeker
+  // https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025 kaynağından vakitleri çeker
   async function fetchLivePrayerTimes() {
     // 1. Önce localStorage'da bugüne ait kayıt var mı kontrol et
     try {
-      const rawStored = localStorage.getItem('fazilet_samsun_vakitleri');
+      const rawStored = localStorage.getItem('fazilet_atakum_vakitleri');
       if (rawStored) {
         const stored = JSON.parse(rawStored);
         const todayStr = new Intl.DateTimeFormat('en-CA', {
@@ -113,9 +115,13 @@ const PRAYER_MODULE = (() => {
 
     // 2. Canlı Fazilet Takvimi API'sinden çekmeyi dene (server.js proxy veya yerel json)
     const endpoints = [
+      '/api/fazilet/atakum',
       '/api/fazilet/samsun',
+      'http://localhost:3000/api/fazilet/atakum',
       'http://localhost:3000/api/fazilet/samsun',
+      'assets/data/atakum_vakitler.json',
       'assets/data/samsun_vakitler.json',
+      './assets/data/atakum_vakitler.json',
       './assets/data/samsun_vakitler.json'
     ];
 
@@ -125,7 +131,7 @@ const PRAYER_MODULE = (() => {
         if (res.ok) {
           const data = await res.json();
           if (applyFaziletData(data)) {
-            console.log(`[Fazilet Takvimi] Samsun (57) vakitleri '${ep}' kaynağından başarıyla güncellendi.`);
+            console.log(`[Fazilet Takvimi] Samsun Atakum (2025) vakitleri '${ep}' kaynağından başarıyla güncellendi.`);
             return;
           }
         }
@@ -134,7 +140,7 @@ const PRAYER_MODULE = (() => {
       }
     }
 
-    console.log('[Fazilet Takvimi] Samsun yerel temkinli vakitleri devrede.');
+    console.log('[Fazilet Takvimi] Samsun Atakum yerel temkinli vakitleri devrede.');
   }
 
   function getTimesArray() {
@@ -236,6 +242,9 @@ const PRAYER_MODULE = (() => {
 
   function init() {
     setupDrawer();
+    if (typeof EMBEDDED_FAZILET_DATA !== 'undefined' && EMBEDDED_FAZILET_DATA) {
+      applyFaziletData(EMBEDDED_FAZILET_DATA);
+    }
     renderPrayerCards();
     fetchLivePrayerTimes();
 

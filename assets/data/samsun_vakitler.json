@@ -1,223 +1,221 @@
 {
   "success": true,
-  "bolge_adi": "Samsun",
+  "bolge_adi": "Atakum",
   "bolge_saatdilimi": "Europe/Istanbul",
   "form": {
     "ulke_id": 1,
     "sehir_id": 57,
-    "ilce_id": null
+    "ilce_id": 2025
   },
   "ayin_safhalari": [
     {
-      "tarih": "2026-10-04",
-      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/23.png"
+      "tarih": "2026-10-13",
+      "resim": "https://cmspanel.internal.fazilettakvimi.com/public/resimler/aylar/29/02.png"
     },
     {
-      "tarih": "2026-10-05",
-      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/24.png"
+      "tarih": "2026-10-14",
+      "resim": "https://cmspanel.internal.fazilettakvimi.com/public/resimler/aylar/29/03.png"
     },
     {
-      "tarih": "2026-10-06",
-      "resim": "https://files.camlicabasim.com/ft/moon_imgs/30/25.png"
+      "tarih": "2026-10-15",
+      "resim": "https://cmspanel.internal.fazilettakvimi.com/public/resimler/aylar/29/04.png"
     }
   ],
   "istatistikler": [
     {
-      "tarih": "2026-10-04",
-      "kacinci_gun": 277,
-      "kacinci_hafta": 40,
+      "tarih": "2026-10-13",
+      "kacinci_gun": 286,
+      "kacinci_hafta": 42,
       "kacinci_ay": 10
     },
     {
-      "tarih": "2026-10-05",
-      "kacinci_gun": 278,
-      "kacinci_hafta": 41,
+      "tarih": "2026-10-14",
+      "kacinci_gun": 287,
+      "kacinci_hafta": 42,
       "kacinci_ay": 10
     },
     {
-      "tarih": "2026-10-06",
-      "kacinci_gun": 279,
-      "kacinci_hafta": 41,
+      "tarih": "2026-10-15",
+      "kacinci_gun": 288,
+      "kacinci_hafta": 42,
       "kacinci_ay": 10
     }
   ],
   "kronolojiler": [
     {
-      "tarih": "2026-10-04",
+      "tarih": "2026-10-13",
       "kronoloji": [
-        "Dünya Hayvanları Koruma Günü",
-        "Fırtına",
-        "Uzay Haftası (4-10 Ekim)"
+        "Ankara'nın başşehir olması (1923)"
       ]
     },
     {
-      "tarih": "2026-10-05",
+      "tarih": "2026-10-14",
       "kronoloji": [
-        "Bosna-Hersek'in kaybı (1908)",
-        "Koç katımı fırtınası"
+        "Nizâmü'l-mülk'ün şehâdeti (1092)",
+        "(Tarsus) Lokman Hekim'i Anma Günü",
+        "Dünya Standartlar Günü"
       ]
     },
     {
-      "tarih": "2026-10-06",
+      "tarih": "2026-10-15",
       "kronoloji": [
-        "Estergon Kalesi'nin ikinci defa fethi (1605)",
-        "Kâtip Çelebi'nin vefâtı (1658)",
-        "İstanbul'un kurtuluşu (1923)"
+        "Avrupa'da (halen kullanılan) Gregoryan Takvimi'nin kabulü (1582)",
+        "Fırtına"
       ]
     }
   ],
   "takvimler": [
     {
-      "tarih": "2026-10-04",
-      "hicri_tarih": "23 Rebîulâhir 1448",
-      "rumi_tarih": "21 Eylül 1442"
+      "tarih": "2026-10-13",
+      "hicri_tarih": "02 Cemâziyelevvel 1448",
+      "rumi_tarih": "30 Eylül 1442"
     },
     {
-      "tarih": "2026-10-05",
-      "hicri_tarih": "24 Rebîulâhir 1448",
-      "rumi_tarih": "22 Eylül 1442"
+      "tarih": "2026-10-14",
+      "hicri_tarih": "03 Cemâziyelevvel 1448",
+      "rumi_tarih": "1 Teşrin-i Evvel 1442"
     },
     {
-      "tarih": "2026-10-06",
-      "hicri_tarih": "25 Rebîulâhir 1448",
-      "rumi_tarih": "23 Eylül 1442"
+      "tarih": "2026-10-15",
+      "hicri_tarih": "04 Cemâziyelevvel 1448",
+      "rumi_tarih": "2 Teşrin-i Evvel 1442"
     }
   ],
   "vakitler": [
     {
-      "tarih": "2026-10-04",
+      "tarih": "2026-10-13",
       "imsak": [
         {
-          "tarih": "2026-10-04T01:46:00Z",
+          "tarih": "2026-10-13T01:56:00Z",
           "is_takdiri": false
         }
       ],
       "israk": [],
       "sabah": [
         {
-          "tarih": "2026-10-04T02:06:00Z",
+          "tarih": "2026-10-13T02:16:00Z",
           "is_takdiri": false
         }
       ],
       "gunes": [
         {
-          "tarih": "2026-10-04T03:26:00Z",
+          "tarih": "2026-10-13T03:36:00Z",
           "is_takdiri": false
         }
       ],
       "ogle": [
         {
-          "tarih": "2026-10-04T09:33:00Z",
+          "tarih": "2026-10-13T09:31:00Z",
           "is_takdiri": false
         }
       ],
       "ikindi": [
         {
-          "tarih": "2026-10-04T12:48:00Z",
+          "tarih": "2026-10-13T12:38:00Z",
           "is_takdiri": false
         }
       ],
       "aksam": [
         {
-          "tarih": "2026-10-04T15:20:00Z",
+          "tarih": "2026-10-13T15:06:00Z",
           "is_takdiri": false
         }
       ],
       "yatsi": [
         {
-          "tarih": "2026-10-04T16:49:00Z",
+          "tarih": "2026-10-13T16:34:00Z",
           "is_takdiri": false
         }
       ]
     },
     {
-      "tarih": "2026-10-05",
+      "tarih": "2026-10-14",
       "imsak": [
         {
-          "tarih": "2026-10-05T01:47:00Z",
+          "tarih": "2026-10-14T01:58:00Z",
           "is_takdiri": false
         }
       ],
       "israk": [],
       "sabah": [
         {
-          "tarih": "2026-10-05T02:07:00Z",
+          "tarih": "2026-10-14T02:18:00Z",
           "is_takdiri": false
         }
       ],
       "gunes": [
         {
-          "tarih": "2026-10-05T03:27:00Z",
+          "tarih": "2026-10-14T03:37:00Z",
           "is_takdiri": false
         }
       ],
       "ogle": [
         {
-          "tarih": "2026-10-05T09:33:00Z",
+          "tarih": "2026-10-14T09:31:00Z",
           "is_takdiri": false
         }
       ],
       "ikindi": [
         {
-          "tarih": "2026-10-05T12:47:00Z",
+          "tarih": "2026-10-14T12:37:00Z",
           "is_takdiri": false
         }
       ],
       "aksam": [
         {
-          "tarih": "2026-10-05T15:19:00Z",
+          "tarih": "2026-10-14T15:04:00Z",
           "is_takdiri": false
         }
       ],
       "yatsi": [
         {
-          "tarih": "2026-10-05T16:47:00Z",
+          "tarih": "2026-10-14T16:33:00Z",
           "is_takdiri": false
         }
       ]
     },
     {
-      "tarih": "2026-10-06",
+      "tarih": "2026-10-15",
       "imsak": [
         {
-          "tarih": "2026-10-06T01:49:00Z",
+          "tarih": "2026-10-15T01:59:00Z",
           "is_takdiri": false
         }
       ],
       "israk": [],
       "sabah": [
         {
-          "tarih": "2026-10-06T02:09:00Z",
+          "tarih": "2026-10-15T02:19:00Z",
           "is_takdiri": false
         }
       ],
       "gunes": [
         {
-          "tarih": "2026-10-06T03:28:00Z",
+          "tarih": "2026-10-15T03:38:00Z",
           "is_takdiri": false
         }
       ],
       "ogle": [
         {
-          "tarih": "2026-10-06T09:33:00Z",
+          "tarih": "2026-10-15T09:31:00Z",
           "is_takdiri": false
         }
       ],
       "ikindi": [
         {
-          "tarih": "2026-10-06T12:46:00Z",
+          "tarih": "2026-10-15T12:35:00Z",
           "is_takdiri": false
         }
       ],
       "aksam": [
         {
-          "tarih": "2026-10-06T15:17:00Z",
+          "tarih": "2026-10-15T15:03:00Z",
           "is_takdiri": false
         }
       ],
       "yatsi": [
         {
-          "tarih": "2026-10-06T16:45:00Z",
+          "tarih": "2026-10-15T16:31:00Z",
           "is_takdiri": false
         }
       ]
