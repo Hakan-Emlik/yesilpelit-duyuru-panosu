@@ -1,0 +1,62 @@
+{
+  "_aciklama": "Program akışları. 'saat' tek saat (\"06:00\") veya aralık (\"07:00 – 08:00\") olabilir. 'vakit' alanı verilen maddeler (imsak, gunes, ogle, ikindi, aksam, yatsi) saatini o günün namaz vaktinden alır; 'saat' yalnızca vakit verisi yoksa kullanılır. 'sure' (dakika) tek saatli maddenin ne kadar süreceğini belirtir. 'pazar' boş (null) bırakılırsa Pazar günü Cumartesi akışı gösterilir.",
+
+  "haftaici": {
+    "sekme": "Hafta İçi Programı",
+    "akisEtiketi": "Hafta İçi Akışı",
+    "ikon": "fa-solid fa-calendar-week text-gold-400",
+    "baslik": "HAFTAİÇİ PROGRAMIMIZ",
+    "altBaslik": "Düzenli Gün, Verimli Yarınlar — Günlük Zaman Çizelgesi Akışı",
+    "afisAciklama": "Yeşilpelit Öğrenci Yurdu Resmi Hafta İçi Düzenli Gün Programıdır.",
+    "afis": "assets/images/haftaici-programi.jpg",
+    "afisAlt": "Yeşilpelit Hafta İçi Günlük Program Afişi",
+    "pdf": "assets/docs/haftaici-programi.pdf",
+    "pdfAdi": "Yesilpelit-Haftaici-Programi.pdf",
+    "akis": [
+      { "saat": "05:30", "baslik": "Sabah Namazına Kalkış", "aciklama": "Günün başlangıcı, abdest ve mescide hazırlık", "ikon": "fa-solid fa-bell" },
+      { "saat": "06:00", "baslik": "Sabah Namazı - Hatim ve Vazifeler", "aciklama": "Mescidde cemaatle sabah namazı, hatim ve günlük ders vazifeleri", "ikon": "fa-solid fa-mosque" },
+      { "saat": "07:00 – 08:00", "baslik": "Kahvaltı", "aciklama": "Yemekhanede toplu sabah kahvaltısı", "ikon": "fa-solid fa-mug-hot" },
+      { "saat": "08:00", "baslik": "Okula Çıkış", "aciklama": "Öğrencilerin okul dersleri için yurttan hareketi", "ikon": "fa-solid fa-graduation-cap" },
+      { "saat": "11:30 – 13:00", "baslik": "Öğle Yemeği", "aciklama": "Yemekhanede sıcak öğle tabldotu servisi", "ikon": "fa-solid fa-utensils" },
+      { "saat": "13:00", "baslik": "Öğle Namazı", "aciklama": "Mescidde cemaatle öğle namazı", "ikon": "fa-solid fa-mosque" },
+      { "saat": "16:00", "baslik": "İkindi Namazı", "aciklama": "Mescidde cemaatle ikindi namazı ve tesbihat", "ikon": "fa-solid fa-mosque" },
+      { "saat": "17:30 – 18:15", "baslik": "Akşam Yemeği", "aciklama": "Yemekhanede akşam tabldotu servisi", "ikon": "fa-solid fa-utensils" },
+      { "saat": "18:15 – 20:00", "baslik": "Dahili Ders", "aciklama": "Etüt salonlarında dahili dersler ve ders çalışma", "ikon": "fa-solid fa-book-open" },
+      { "saat": "18:27", "vakit": "aksam", "sure": 20, "baslik": "Akşam Namazı (Gruplarda)", "aciklama": "Gruplar halinde mescidde akşam namazı", "ikon": "fa-solid fa-mosque" },
+      { "saat": "20:00", "baslik": "Yatsı Namazı", "aciklama": "Mescidde cemaatle yatsı namazı ve tesbihat", "ikon": "fa-solid fa-moon" },
+      { "saat": "23:00", "baslik": "İstirahat (Kapılar Kilitlenecek)", "aciklama": "Yurt içi sessizlik ve istirahat — 23:00'te kapılar kilitlenecektir", "ikon": "fa-solid fa-bed" }
+    ]
+  },
+
+  "cumartesi": {
+    "sekme": "Hafta Sonu Programı",
+    "akisEtiketi": "Hafta Sonu Akışı",
+    "ikon": "fa-solid fa-tree text-gold-400",
+    "baslik": "BİR HAFTASONU DAHA NASIL GÜZEL GEÇİRİLİR?",
+    "altBaslik": "Manevi Sohbetler & Dahili Ders — Haftasonu Zaman Çizelgesi",
+    "afisAciklama": "Yeşilpelit Öğrenci Yurdu Resmi Haftasonu Oryantasyon ve İntibak Programıdır.",
+    "afis": "assets/images/haftasonu-programi.jpg",
+    "afisAlt": "Yeşilpelit Haftasonu Manevi Sohbetler ve Dahili Ders Zaman Çizelgesi Afişi",
+    "pdf": "assets/docs/haftasonu-programi.pdf",
+    "pdfAdi": "Yesilpelit-Haftasonu-Programi.pdf",
+    "akis": [
+      { "saat": "05:30", "baslik": "Kalkış", "aciklama": "Günün başlangıcı ve sabah hazırlığı", "ikon": "fa-solid fa-bell" },
+      { "saat": "06:00", "baslik": "Sabah Namazı - Hatim", "aciklama": "Mescidde cemaatle sabah namazı ve Kur'an tilaveti", "ikon": "fa-solid fa-mosque" },
+      { "saat": "09:00", "baslik": "Kahvaltı", "aciklama": "Yemekhanede toplu açık büfe kahvaltı", "ikon": "fa-solid fa-mug-hot" },
+      { "saat": "09:30", "baslik": "Duha", "aciklama": "Kuşluk vakti nafile namazı", "ikon": "fa-solid fa-sun" },
+      { "saat": "09:45", "baslik": "1. Ders", "aciklama": "Medrese müfredatı ve ihtisas dersi", "ikon": "fa-solid fa-graduation-cap" },
+      { "saat": "11:30", "baslik": "Evrad Şerif", "aciklama": "Günün bereketi için toplu tilavet ve dualar", "ikon": "fa-solid fa-book-quran" },
+      { "saat": "12:00", "baslik": "Sohbet", "aciklama": "Manevi rehberlik ve ahlak hasbihali", "ikon": "fa-solid fa-users" },
+      { "saat": "12:30", "baslik": "Öğle Namazı", "aciklama": "Mescidde cemaatle öğle namazı", "ikon": "fa-solid fa-mosque" },
+      { "saat": "12:45", "baslik": "Öğle Yemeği", "aciklama": "Yemekhanede öğle tabldotu", "ikon": "fa-solid fa-utensils" },
+      { "saat": "13:15", "baslik": "Temizlik", "aciklama": "Oda, koridor ve etüt alanları düzeni", "ikon": "fa-solid fa-broom" },
+      { "saat": "16:00", "baslik": "İkindi Namazı", "aciklama": "Cemaatle ikindi namazı ve tesbihat", "ikon": "fa-solid fa-mosque" },
+      { "saat": "18:00", "baslik": "Akşam Yemeği", "aciklama": "Yemekhanede akşam menüsü", "ikon": "fa-solid fa-utensils" },
+      { "saat": "18:30", "vakit": "aksam", "sure": 20, "baslik": "Akşam Namazı", "aciklama": "Cemaatle akşam namazı", "ikon": "fa-solid fa-mosque" },
+      { "saat": "20:00", "baslik": "Yatsı", "aciklama": "Yatsı namazı ve tesbihat", "ikon": "fa-solid fa-moon" },
+      { "saat": "23:00", "baslik": "İstirahat", "aciklama": "Yurt içi sessizlik ve gece istirahati", "ikon": "fa-solid fa-bed" }
+    ]
+  },
+
+  "pazar": null
+}

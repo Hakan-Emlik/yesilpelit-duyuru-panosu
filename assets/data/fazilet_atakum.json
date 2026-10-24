@@ -1,0 +1,36 @@
+{
+  "kaynak": "https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025",
+  "bolge": "Atakum",
+  "ilceId": 2025,
+  "saatDilimi": "Europe/Istanbul",
+  "guncellendi": "2026-10-24T14:17:31.464Z",
+  "gunler": {
+    "2026-10-23": {
+      "imsak": "05:07",
+      "gunes": "06:47",
+      "ogle": "12:29",
+      "ikindi": "15:26",
+      "aksam": "17:51",
+      "yatsi": "19:20",
+      "hicri": "12 Cemâziyelevvel 1448"
+    },
+    "2026-10-24": {
+      "imsak": "05:08",
+      "gunes": "06:48",
+      "ogle": "12:29",
+      "ikindi": "15:25",
+      "aksam": "17:50",
+      "yatsi": "19:19",
+      "hicri": "13 Cemâziyelevvel 1448"
+    },
+    "2026-10-25": {
+      "imsak": "05:09",
+      "gunes": "06:49",
+      "ogle": "12:29",
+      "ikindi": "15:24",
+      "aksam": "17:48",
+      "yatsi": "19:17",
+      "hicri": "14 Cemâziyelevvel 1448"
+    }
+  }
+}

@@ -9,213 +9,215 @@
   },
   "ayin_safhalari": [
     {
-      "tarih": "2026-10-13",
-      "resim": "https://cmspanel.internal.fazilettakvimi.com/public/resimler/aylar/29/02.png"
+      "tarih": "2026-10-23",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/29/12.png"
     },
     {
-      "tarih": "2026-10-14",
-      "resim": "https://cmspanel.internal.fazilettakvimi.com/public/resimler/aylar/29/03.png"
+      "tarih": "2026-10-24",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/29/13.png"
     },
     {
-      "tarih": "2026-10-15",
-      "resim": "https://cmspanel.internal.fazilettakvimi.com/public/resimler/aylar/29/04.png"
+      "tarih": "2026-10-25",
+      "resim": "https://files.camlicabasim.com/ft/moon_imgs/29/14.png"
     }
   ],
   "istatistikler": [
     {
-      "tarih": "2026-10-13",
-      "kacinci_gun": 286,
-      "kacinci_hafta": 42,
+      "tarih": "2026-10-23",
+      "kacinci_gun": 296,
+      "kacinci_hafta": 43,
       "kacinci_ay": 10
     },
     {
-      "tarih": "2026-10-14",
-      "kacinci_gun": 287,
-      "kacinci_hafta": 42,
+      "tarih": "2026-10-24",
+      "kacinci_gun": 297,
+      "kacinci_hafta": 43,
       "kacinci_ay": 10
     },
     {
-      "tarih": "2026-10-15",
-      "kacinci_gun": 288,
-      "kacinci_hafta": 42,
+      "tarih": "2026-10-25",
+      "kacinci_gun": 298,
+      "kacinci_hafta": 43,
       "kacinci_ay": 10
     }
   ],
   "kronolojiler": [
     {
-      "tarih": "2026-10-13",
+      "tarih": "2026-10-23",
       "kronoloji": [
-        "Ankara'nın başşehir olması (1923)"
+        "Posta Nezâreti (PTT)'nin kurulması (1840)",
+        "Kırım Harbi'nin başlaması (1853)",
+        "Van depremi (2011)"
       ]
     },
     {
-      "tarih": "2026-10-14",
+      "tarih": "2026-10-24",
       "kronoloji": [
-        "Nizâmü'l-mülk'ün şehâdeti (1092)",
-        "(Tarsus) Lokman Hekim'i Anma Günü",
-        "Dünya Standartlar Günü"
+        "Birleşmiş Milletler (BM) kuruldu (1945)"
       ]
     },
     {
-      "tarih": "2026-10-15",
+      "tarih": "2026-10-25",
       "kronoloji": [
-        "Avrupa'da (halen kullanılan) Gregoryan Takvimi'nin kabulü (1582)",
-        "Fırtına"
+        "Uluğ Bey'in şehid edilmesi (1449)",
+        "Suların soğuması",
+        "ABD'de ilk renkli TV kullanımı başladı (1951)",
+        "Birleşmiş Milletler Günü"
       ]
     }
   ],
   "takvimler": [
     {
-      "tarih": "2026-10-13",
-      "hicri_tarih": "02 Cemâziyelevvel 1448",
-      "rumi_tarih": "30 Eylül 1442"
+      "tarih": "2026-10-23",
+      "hicri_tarih": "12 Cemâziyelevvel 1448",
+      "rumi_tarih": "10 Teşrin-i Evvel 1442"
     },
     {
-      "tarih": "2026-10-14",
-      "hicri_tarih": "03 Cemâziyelevvel 1448",
-      "rumi_tarih": "1 Teşrin-i Evvel 1442"
+      "tarih": "2026-10-24",
+      "hicri_tarih": "13 Cemâziyelevvel 1448",
+      "rumi_tarih": "11 Teşrin-i Evvel 1442"
     },
     {
-      "tarih": "2026-10-15",
-      "hicri_tarih": "04 Cemâziyelevvel 1448",
-      "rumi_tarih": "2 Teşrin-i Evvel 1442"
+      "tarih": "2026-10-25",
+      "hicri_tarih": "14 Cemâziyelevvel 1448",
+      "rumi_tarih": "12 Teşrin-i Evvel 1442"
     }
   ],
   "vakitler": [
     {
-      "tarih": "2026-10-13",
+      "tarih": "2026-10-23",
       "imsak": [
         {
-          "tarih": "2026-10-13T01:56:00Z",
+          "tarih": "2026-10-23T02:07:00Z",
           "is_takdiri": false
         }
       ],
       "israk": [],
       "sabah": [
         {
-          "tarih": "2026-10-13T02:16:00Z",
+          "tarih": "2026-10-23T02:27:00Z",
           "is_takdiri": false
         }
       ],
       "gunes": [
         {
-          "tarih": "2026-10-13T03:36:00Z",
+          "tarih": "2026-10-23T03:47:00Z",
           "is_takdiri": false
         }
       ],
       "ogle": [
         {
-          "tarih": "2026-10-13T09:31:00Z",
+          "tarih": "2026-10-23T09:29:00Z",
           "is_takdiri": false
         }
       ],
       "ikindi": [
         {
-          "tarih": "2026-10-13T12:38:00Z",
+          "tarih": "2026-10-23T12:26:00Z",
           "is_takdiri": false
         }
       ],
       "aksam": [
         {
-          "tarih": "2026-10-13T15:06:00Z",
+          "tarih": "2026-10-23T14:51:00Z",
           "is_takdiri": false
         }
       ],
       "yatsi": [
         {
-          "tarih": "2026-10-13T16:34:00Z",
+          "tarih": "2026-10-23T16:20:00Z",
           "is_takdiri": false
         }
       ]
     },
     {
-      "tarih": "2026-10-14",
+      "tarih": "2026-10-24",
       "imsak": [
         {
-          "tarih": "2026-10-14T01:58:00Z",
+          "tarih": "2026-10-24T02:08:00Z",
           "is_takdiri": false
         }
       ],
       "israk": [],
       "sabah": [
         {
-          "tarih": "2026-10-14T02:18:00Z",
+          "tarih": "2026-10-24T02:28:00Z",
           "is_takdiri": false
         }
       ],
       "gunes": [
         {
-          "tarih": "2026-10-14T03:37:00Z",
+          "tarih": "2026-10-24T03:48:00Z",
           "is_takdiri": false
         }
       ],
       "ogle": [
         {
-          "tarih": "2026-10-14T09:31:00Z",
+          "tarih": "2026-10-24T09:29:00Z",
           "is_takdiri": false
         }
       ],
       "ikindi": [
         {
-          "tarih": "2026-10-14T12:37:00Z",
+          "tarih": "2026-10-24T12:25:00Z",
           "is_takdiri": false
         }
       ],
       "aksam": [
         {
-          "tarih": "2026-10-14T15:04:00Z",
+          "tarih": "2026-10-24T14:50:00Z",
           "is_takdiri": false
         }
       ],
       "yatsi": [
         {
-          "tarih": "2026-10-14T16:33:00Z",
+          "tarih": "2026-10-24T16:19:00Z",
           "is_takdiri": false
         }
       ]
     },
     {
-      "tarih": "2026-10-15",
+      "tarih": "2026-10-25",
       "imsak": [
         {
-          "tarih": "2026-10-15T01:59:00Z",
+          "tarih": "2026-10-25T02:09:00Z",
           "is_takdiri": false
         }
       ],
       "israk": [],
       "sabah": [
         {
-          "tarih": "2026-10-15T02:19:00Z",
+          "tarih": "2026-10-25T02:29:00Z",
           "is_takdiri": false
         }
       ],
       "gunes": [
         {
-          "tarih": "2026-10-15T03:38:00Z",
+          "tarih": "2026-10-25T03:49:00Z",
           "is_takdiri": false
         }
       ],
       "ogle": [
         {
-          "tarih": "2026-10-15T09:31:00Z",
+          "tarih": "2026-10-25T09:29:00Z",
           "is_takdiri": false
         }
       ],
       "ikindi": [
         {
-          "tarih": "2026-10-15T12:35:00Z",
+          "tarih": "2026-10-25T12:24:00Z",
           "is_takdiri": false
         }
       ],
       "aksam": [
         {
-          "tarih": "2026-10-15T15:03:00Z",
+          "tarih": "2026-10-25T14:48:00Z",
           "is_takdiri": false
         }
       ],
       "yatsi": [
         {
-          "tarih": "2026-10-15T16:31:00Z",
+          "tarih": "2026-10-25T16:17:00Z",
           "is_takdiri": false
         }
       ]
