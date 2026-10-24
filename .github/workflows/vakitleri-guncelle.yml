@@ -1,0 +1,43 @@
+name: Günlük Namaz Vakitleri Güncellemesi
+
+on:
+  schedule:
+    # Her gece Türkiye saatiyle 01:00'de çalışır (22:00 UTC)
+    - cron: '0 22 * * *'
+  workflow_dispatch: # GitHub arayüzünden manuel tetikleme
+
+permissions:
+  contents: write
+
+jobs:
+  update-prayer-times:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu Çek
+        uses: actions/checkout@v4
+
+      - name: Node.js Kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Bağımlılıkları Kur
+        run: npm ci || npm install
+
+      - name: Fazilet Takvimi Vakitlerini Güncelle ve Derle
+        run: |
+          npm run fetch:prayer
+          npm run build
+
+      - name: Değişiklikleri Kaydet ve Gönder
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/fazilet_atakum.json index.html assets/data/version.json
+          if ! git diff --staged --quiet; then
+            git commit -m "Otomatik Güncelleme: Fazilet Takvimi Atakum Namaz Vakitleri"
+            git push
+            echo "Vakitler güncellendi ve GitHub Pages'e yüklendi."
+          else
+            echo "Yeni vakit verisi yok, değişiklik yapılmadı."
+          fi

@@ -4,55 +4,37 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const { exec } = require('child_process');
+const {
+  fetchArchive, readArchive, mergeArchives, pruneArchive, writeArchive
+} = require('./scripts/lib/fazilet');
 
 let PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-// Fazilet Takvimi Samsun Atakum (2025) API
-// Kaynak: https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025
-const FAZILET_ATAKUM_URL = 'https://backend.fazilettakvimi.com/content/public/daily?districtId=2025&lang=tr';
-const CACHE_FILE = path.join(__dirname, 'assets', 'data', 'samsun_vakitler.json');
-const ATAKUM_CACHE_FILE = path.join(__dirname, 'assets', 'data', 'atakum_vakitler.json');
+const FAZILET_ARCHIVE_FILE = path.join(__dirname, 'assets', 'data', 'fazilet_atakum.json');
+const VERSION_FILE = path.join(__dirname, 'assets', 'data', 'version.json');
 
 let cachedFaziletData = null;
 let lastFetchTime = 0;
 
-function fetchFaziletData(callback) {
-  https.get(FAZILET_ATAKUM_URL, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-      'Accept': 'application/json, text/plain, */*',
-      'Referer': 'https://namaz-vakitleri.fazilettakvimi.com/samsun-atakum/2025'
+function syncFaziletData(callback) {
+  fetchArchive(12000).then(fresh => {
+    const existing = readArchive(FAZILET_ARCHIVE_FILE);
+    const merged = pruneArchive(mergeArchives(existing, fresh), 14);
+    cachedFaziletData = merged;
+    lastFetchTime = Date.now();
+    writeArchive(FAZILET_ARCHIVE_FILE, merged);
+    if (callback) callback(null, merged);
+  }).catch(err => {
+    // Ağ hatası durumunda diskteki arşive başvur
+    if (!cachedFaziletData) {
+      cachedFaziletData = readArchive(FAZILET_ARCHIVE_FILE);
     }
-  }, (res) => {
-    if (res.statusCode !== 200) {
-      return callback(new Error(`Fazilet API HTTP ${res.statusCode}`));
-    }
-    let raw = '';
-    res.on('data', chunk => raw += chunk);
-    res.on('end', () => {
-      try {
-        const parsed = JSON.parse(raw);
-        if (parsed && parsed.success) {
-          cachedFaziletData = parsed;
-          lastFetchTime = Date.now();
-          // Önbellek dosyalarına da yaz
-          const jsonStr = JSON.stringify(parsed, null, 2);
-          fs.mkdir(path.dirname(CACHE_FILE), { recursive: true }, () => {
-            fs.writeFile(CACHE_FILE, jsonStr, 'utf8', () => { });
-            fs.writeFile(ATAKUM_CACHE_FILE, jsonStr, 'utf8', () => { });
-          });
-          return callback(null, parsed);
-        }
-        callback(new Error('Geçersiz Fazilet yanıtı'));
-      } catch (err) {
-        callback(err);
-      }
-    });
-  }).on('error', callback);
+    if (callback) callback(err, cachedFaziletData);
+  });
 }
 
 function handleFaziletApiRequest(req, res) {
-  // Önbellek 15 dakikadan yeniyse hemen ver
+  // Önbellek 15 dakikadan yeniyse doğrudan ver
   if (cachedFaziletData && (Date.now() - lastFetchTime < 15 * 60 * 1000)) {
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf-8',
@@ -63,8 +45,8 @@ function handleFaziletApiRequest(req, res) {
     return;
   }
 
-  fetchFaziletData((err, data) => {
-    if (!err && data) {
+  syncFaziletData((err, data) => {
+    if (data) {
       res.writeHead(200, {
         'Content-Type': 'application/json; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
@@ -72,26 +54,11 @@ function handleFaziletApiRequest(req, res) {
       });
       res.end(JSON.stringify(data));
     } else {
-      // Ağ hatası varsa diskteki önbelleğe başvur
-      fs.readFile(CACHE_FILE, 'utf8', (readErr, fileData) => {
-        if (!readErr && fileData) {
-          try {
-            cachedFaziletData = JSON.parse(fileData);
-          } catch (e) { }
-          res.writeHead(200, {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'no-cache'
-          });
-          res.end(fileData);
-        } else {
-          res.writeHead(500, {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin': '*'
-          });
-          res.end(JSON.stringify({ success: false, error: err ? err.message : 'Veri alınamadı' }));
-        }
+      res.writeHead(500, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
       });
+      res.end(JSON.stringify({ success: false, error: err ? err.message : 'Veri alınamadı' }));
     }
   });
 }
@@ -128,15 +95,10 @@ function getLocalIpAddress() {
 
 function openBrowser(url) {
   if (process.platform === 'win32') {
-    // 1. Chrome ile dene
     exec(`start chrome "${url}"`, (err) => {
       if (err) {
-        // 2. Edge ile dene
         exec(`start msedge "${url}"`, (err2) => {
-          if (err2) {
-            // 3. Varsayılan tarayıcı
-            exec(`start "" "${url}"`);
-          }
+          if (err2) exec(`start "" "${url}"`);
         });
       }
     });
@@ -150,7 +112,6 @@ function openBrowser(url) {
 // Canlı Senkronizasyon Sistemi (Bağlı TV ve ekranların anında yenilenmesi)
 let currentVersion = Date.now();
 let sseClients = [];
-const VERSION_FILE = path.join(__dirname, 'assets', 'data', 'version.json');
 
 function updateVersionFile() {
   try {
@@ -179,23 +140,46 @@ function notifyClients() {
 }
 
 let watchDebounce = null;
+let isRebuilding = false;
+
+function triggerRebuildAndNotify() {
+  if (isRebuilding) return;
+  isRebuilding = true;
+
+  const buildScript = path.join(__dirname, 'scripts', 'build_standalone.js');
+  exec(`node "${buildScript}"`, (err) => {
+    isRebuilding = false;
+    if (!err) {
+      notifyClients();
+    } else {
+      console.error('[Otomatik Derleme Hatası]:', err);
+    }
+  });
+}
+
 function watchForChanges() {
   const watchTargets = [
-    path.join(__dirname, 'index.html'),
     path.join(__dirname, 'assets', 'css'),
     path.join(__dirname, 'assets', 'js'),
+    path.join(__dirname, 'assets', 'data', 'program.json'),
+    path.join(__dirname, 'assets', 'data', 'hikmet.json'),
     path.join(__dirname, 'assets', 'images'),
     path.join(__dirname, 'assets', 'docs')
   ];
 
   const trigger = (filename) => {
-    if (filename && (filename.includes('vakitler.json') || filename.includes('version.json'))) {
+    if (filename && (
+      filename.includes('vakitler.json') ||
+      filename.includes('version.json') ||
+      filename.includes('fazilet_atakum.json') ||
+      filename.startsWith('.')
+    )) {
       return;
     }
     if (watchDebounce) clearTimeout(watchDebounce);
     watchDebounce = setTimeout(() => {
-      notifyClients();
-    }, 700);
+      triggerRebuildAndNotify();
+    }, 800);
   };
 
   watchTargets.forEach(target => {
@@ -211,7 +195,7 @@ function startServer(portToTry) {
   const server = http.createServer((req, res) => {
     let reqPath = decodeURI(req.url.split('?')[0]);
 
-    // Fazilet Takvimi Samsun Atakum (2025) API rotası
+    // Fazilet Takvimi Samsun Atakum API rotası
     if (
       reqPath === '/api/fazilet/atakum' ||
       reqPath === '/api/fazilet/samsun' ||
@@ -271,8 +255,6 @@ function startServer(portToTry) {
       return;
     }
 
-
-
     fs.stat(filePath, (err, stats) => {
       if (err || !stats.isFile()) {
         res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
@@ -313,13 +295,11 @@ function startServer(portToTry) {
     console.log(`👉 Bu Bilgisayarda:  ${localUrl}`);
     console.log(`👉 Yurt Ağındaki Diğer Cihazlardan (Aynı Wi-Fi):`);
     console.log(`   ${lanUrl}`);
-    console.log(`   (Telefon, tablet veya TV tarayıcısına bu adresi yazınız)`);
-    console.log(`   (Sayfa zaten açıksa F5 / Yenile yapınız)`);
     console.log(`======================================================`);
 
     // Fazilet Takvimi Samsun Atakum namaz vakitlerini başlangıçta senkronize et
-    fetchFaziletData((err, data) => {
-      if (!err && data && data.success) {
+    syncFaziletData((err, data) => {
+      if (!err && data) {
         console.log(`🕌 [Fazilet Takvimi] Samsun Atakum (2025) namaz vakitleri başarıyla senkronize edildi.`);
       } else {
         console.log(`⚠️ [Fazilet Takvimi] Canlı bağlantı bekleniyor, yerel önbellek devrede.`);
@@ -328,7 +308,7 @@ function startServer(portToTry) {
 
     // Her 30 dakikada bir arka planda vakitleri tazele
     setInterval(() => {
-      fetchFaziletData((err) => {
+      syncFaziletData((err) => {
         if (!err) console.log(`🕌 [Fazilet Takvimi] Samsun Atakum (2025) vakitleri periyodik olarak güncellendi.`);
       });
     }, 30 * 60 * 1000);
@@ -338,11 +318,9 @@ function startServer(portToTry) {
     watchForChanges();
     console.log(`📡 [Canlı Senkronizasyon] TV ve bağlı ekran izleyici devrede.`);
 
-
     // Tarayıcıyı otomatik olarak aç
     openBrowser(localUrl);
   });
 }
-
 
 startServer(PORT);

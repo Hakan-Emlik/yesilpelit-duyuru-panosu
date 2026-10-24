@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
+    "build": "node scripts/build_standalone.js",
+    "fetch:prayer": "node scripts/fetch_prayer.js",
     "build:pdf": "node scripts/generate_pdf.js"
   },
   "dependencies": {
