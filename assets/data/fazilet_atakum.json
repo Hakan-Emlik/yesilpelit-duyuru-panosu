@@ -3,7 +3,7 @@
   "bolge": "Atakum",
   "ilceId": 2025,
   "saatDilimi": "Europe/Istanbul",
-  "guncellendi": "2026-10-27T01:04:18.679Z",
+  "guncellendi": "2026-10-28T00:56:43.395Z",
   "gunler": {
     "2026-10-23": {
       "imsak": "05:07",
@@ -58,6 +58,15 @@
       "aksam": "17:44",
       "yatsi": "19:14",
       "hicri": "17 Cemâziyelevvel 1448"
+    },
+    "2026-10-29": {
+      "imsak": "05:14",
+      "gunes": "06:54",
+      "ogle": "12:29",
+      "ikindi": "15:20",
+      "aksam": "17:43",
+      "yatsi": "19:12",
+      "hicri": "18 Cemâziyelevvel 1448"
     }
   }
 }
